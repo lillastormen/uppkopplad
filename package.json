@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/mongoose": "^5.11.96",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "mongoose": "^9.2.1"
   }
 }
