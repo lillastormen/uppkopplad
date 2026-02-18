@@ -1,16 +1,13 @@
 import 'dotenv/config';
-import app from './app.ts';
+import app from "./app.js";
 // import { mongoDBConnect } from './db/mongo.ts';
-import mySqlDbConnection from './db/mysql.ts';
-
+import mySqlDbConnection from "./db/mysql.js";
 const PORT = Number(process.env.PORT) || 3000;
-
 /* Middleware för senare
     app.use(express.json());
     app.use(cors());
     app.use('/api/lessons', lessonsRouter);
  */
-
 // async function startMongoServer() {
 //     try {
 //         await mongoDBConnect();
@@ -23,16 +20,12 @@ const PORT = Number(process.env.PORT) || 3000;
 //         process.exit(1);
 //     }
 // }
-
 mySqlDbConnection.connect((error) => {
     if (error) {
         console.log('MySQL connection failed: ', error);
         process.exit(1);
     }
-
     console.log('MySQL connected successfully');
-})
-
-
-
+});
 // startMongoServer();
+//# sourceMappingURL=server.js.map

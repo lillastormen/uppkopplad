@@ -1,10 +1,10 @@
 import mysql from 'mysql2';
-import type { ConnectionOptions } from 'mysql2';
+import type { ConnectionOptions, Connection } from 'mysql2';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const dbAccess: ConnectionOptions = {
+const mySqlDbAccess: ConnectionOptions = {
     host: process.env.DB_HOST as string,
     port: Number(process.env.DB_PORT),
     user: process.env.DB_USER as string,
@@ -12,4 +12,6 @@ const dbAccess: ConnectionOptions = {
     database: process.env.DB_DATABASE as string
 }
 
-const dbConnection = mysql.createConnection(dbAccess);
+const mySqlDbConnection: Connection = mysql.createConnection(mySqlDbAccess);
+
+export default mySqlDbConnection;
