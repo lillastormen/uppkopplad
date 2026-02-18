@@ -1,7 +1,7 @@
 INSERT INTO user(username, password)
-VALUES('anvandare1', 'hemligtpassword'),
-      ('anvandare2', 'superhemligtpassword'),
-      ('anvandare3', 'ganskahemligtpassword');
+VALUES ('user1', 'hemligtpassword'),
+       ('user2', 'superhemligtpassword'),
+       ('user3', 'ganskahemligtpassword');
 
 INSERT INTO category(name)
 VALUES ('dator'),
@@ -21,16 +21,18 @@ VALUES ('bankID', 'mobil'),
        ('säkerhet', 'internet');
 
 INSERT INTO quiz_result(user_username, quiz_id)
-VALUES ('anvandare1', 1),
-       ('anvandare1', 4),
-       ('anvandare2', 1),
-       ('anvandare2', 10),
-       ('anvandare3', 10);
+VALUES ('user1', 1),
+       ('user1', 4),
+       ('user2', 1),
+       ('user2', 10),
+       ('user3', 10);
 
 INSERT INTO quiz_question(quiz_id, question)
 VALUES (1, 'Vilka sätt kan du identifiera dig med bankID? Flera svar kan vara rätt.'),
        (4, 'Är Windows ett operativsystem?'),
-       (10, 'Vad är ett säkert lösenord?');
+       (10, 'Vad är ett säkert lösenord?'),
+       (1, 'Är bankID säkert att använda?'),
+       (1, 'Kan seniorer lära sig använda bankID?')
 
 INSERT INTO quiz_answer(quiz_question_id, answer, is_correct)
 VALUES (1, 'Fingeravtryck', true),
@@ -42,11 +44,17 @@ VALUES (1, 'Fingeravtryck', true),
        (3, 'Lösenord behövs inte', false),
        (3, 'hej123', false),
        (3, 'Det ska vara kort', false),
-       (3, 'Långt och med olika tecken', true);
+       (3, 'Långt och med olika tecken', true),
+       (4, 'Ja', true),
+       (4, 'Nej', false),
+       (5, 'Ja', true),
+       (5, 'Nej', false);
 
 INSERT INTO user_answer(quiz_result_id, quiz_question_id, quiz_answer_id)
 VALUES (1, 1, 1),
        (1, 1, 2),
+       (1, 4, 11),
+       (1, 5, 14),
        (2, 2, 6),
        (3, 1, 2),
        (3, 1, 3),
