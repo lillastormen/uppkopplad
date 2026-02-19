@@ -31,7 +31,11 @@ mySqlDbConnection.connect((error) => {
     }
 
     console.log('MySQL connected successfully');
-})
+
+    app.listen(PORT, () => {
+        console.log(`Server started and listening on port: ${PORT}`);
+    });
+});
 
 
 
