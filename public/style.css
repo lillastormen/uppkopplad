@@ -24,12 +24,13 @@ header {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100px;
+  height: 70px;
   background-color: var(--secondary);
 }
 header img {
   display: block;
-  height: 100px;
+  height: 50px;
+  margin: 10px;
 }
 
 main {
