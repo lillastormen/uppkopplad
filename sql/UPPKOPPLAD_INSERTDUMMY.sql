@@ -27,12 +27,12 @@ VALUES ('user1', 1),
        ('user2', 10),
        ('user3', 10);
 
-INSERT INTO quiz_question(quiz_id, question)
-VALUES (1, 'Vilka sätt kan du identifiera dig med bankID? Flera svar kan vara rätt.'),
-       (4, 'Är Windows ett operativsystem?'),
-       (10, 'Vad är ett säkert lösenord?'),
-       (1, 'Är bankID säkert att använda?'),
-       (1, 'Kan seniorer lära sig använda bankID?')
+INSERT INTO quiz_question(quiz_id, question, multiple_choices)
+VALUES (1, 'Vilka sätt kan du identifiera dig med bankID? Flera svar kan vara rätt.', true),
+       (4, 'Är Windows ett operativsystem?', false),
+       (10, 'Vad är ett säkert lösenord?', false),
+       (1, 'Är bankID säkert att använda?', false),
+       (1, 'Kan seniorer lära sig använda bankID?', false)
 
 INSERT INTO quiz_answer(quiz_question_id, answer, is_correct)
 VALUES (1, 'Fingeravtryck', true),
