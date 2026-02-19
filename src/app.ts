@@ -9,6 +9,8 @@ const port = process.env.PORT
 
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 app.use('/api/lessons', router);
 
@@ -18,3 +20,5 @@ app.use('/api/lessons', router);
         console.log(`App is listening on port: ${port}`);
     });
 })();
+
+export default app;
