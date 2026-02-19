@@ -32,6 +32,7 @@ CREATE TABLE quiz_question(
     id INT AUTO_INCREMENT,
     quiz_id INT,
     question VARCHAR(200),
+    multiple_choices BOOL,
     PRIMARY KEY (id),
     FOREIGN KEY (quiz_id) REFERENCES quiz(id)
 );

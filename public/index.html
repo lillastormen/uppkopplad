@@ -3,13 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uppkopplad</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="../dist/index.js" type="module" defer></script>
   </head>
   <body>
     <header>
-      <nav><img src="./logo.img" alt="logoimg" /></nav>
+      <nav>
+        <a href="index.html"
+          ><img src="../images/uppkoppladLogo.png" alt="uppkoppladLogo"
+        /></a>
+      </nav>
     </header>
-    <main><p>Maincontent</p></main>
-    <footer>&copy; Uppkopplad 2026</footer>
+    <main>
+      <section id="initialQuiz">
+        <h1>Testa dina kunskaper!</h1>
+        <form>
+          <p id="questionInitialQuiz">Laddar quizfråga...</p>
+          <article id="radioInputs">
+            <label for="ra1">Laddar svar 1...</label>
+            <input type="radio" name="q1" value="ra1" />
+            <label for="ra2">Laddar svar 2...</label>
+            <input type="radio" name="q1" value="ra2" />
+            <label for="ra3">Laddar svar 3...</label>
+            <input type="radio" name="q1" value="ra3" />
+            <label for="ra4">Laddar svar 4...</label>
+            <input type="radio" name="q1" value="ra4" />
+          </article>
+          <article id="checkboxInputs">
+            <label for="cba1">Laddar svar 1...</label>
+            <input type="checkbox" name="q1" value="cba1" />
+            <label for="cba2">Laddar svar 2...</label>
+            <input type="checkbox" name="q1" value="cba2" />
+            <label for="cba3">Laddar svar 3...</label>
+            <input type="checkbox" name="q1" value="cba3" />
+            <label for="cba4">Laddar svar 4...</label>
+            <input type="checkbox" name="q1" value="cba4" />
+          </article>
+          <button type="submit">Svara och gå vidare...</button>
+        </form>
+      </section>
+    </main>
+    <footer><p>&copy; Uppkopplad 2026</p></footer>
   </body>
 </html>
