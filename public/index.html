@@ -3,13 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uppkopplad</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="../dist/index.js" type="module" defer></script>
   </head>
   <body>
     <header>
       <nav><img src="./logo.img" alt="logoimg" /></nav>
     </header>
-    <main><p>Maincontent</p></main>
+    <main>
+      <section id="initialQuiz">
+        <p>Testa dina kunskaper!</p>
+        <form>
+          <p id="questionInitialQuiz">Laddar quizfråga...</p>
+          <label for="a1">Laddar svar 1...</label>
+          <input type="radio" name="q1" value="a1" />
+          <label for="a2">Laddar svar 2...</label>
+          <input type="radio" name="q1" value="a2" />
+          <label for="a3">Laddar svar 3...</label>
+          <input type="radio" name="q1" value="a3" />
+          <label for="a4">Laddar svar 4...</label>
+          <input type="radio" name="q1" value="a4" />
+          <button type="submit">Svar</button>
+        </form>
+      </section>
+    </main>
     <footer>&copy; Uppkopplad 2026</footer>
   </body>
 </html>
