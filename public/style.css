@@ -17,12 +17,19 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  background-color: var(--offwhite);
 }
 
 header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  background-color: var(--secondary);
 }
-
-nav {
+header img {
+  display: block;
+  height: 100px;
 }
 
 main {
@@ -30,5 +37,15 @@ main {
   flex-grow: 1;
 }
 
-footer {
+#initialQuiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#checkboxInputs,
+#radioInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
