@@ -1,12 +1,12 @@
-import { Lesson } from "../mongoModels/lessons.ts";
 import { type lessons, type lessonsDocument } from "../types/mongo.ts";
+import { Lesson } from "../mongoModels/lessons.ts";
 
-export async function addLesson (data: lessons): Promise<lessonsDocument> {
+export async function createLesson (data: lessons): Promise<lessonsDocument> {
     try {
         const lesson = new Lesson(data);
-        const savedLesson = await lesson.save();
+        await lesson.save();
 
-        return savedLesson;
+        return lesson;
     } catch (err) {
         throw new Error(`Could not create new lesson: ${(err as Error).message}`);
     }
