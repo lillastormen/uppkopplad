@@ -16,14 +16,14 @@ CREATE TABLE category(
 CREATE TABLE quiz(
     id INT AUTO_INCREMENT,
     name VARCHAR(50),
-    category_id VARCHAR(50),
+    category_id INT,
     PRIMARY KEY (id),
     FOREIGN KEY (category_id) REFERENCES category(id)
 );
 
 CREATE TABLE quiz_result(
     id INT AUTO_INCREMENT,
-    user_id VARCHAR(50),
+    user_id INT,
     quiz_id INT,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES user(id),

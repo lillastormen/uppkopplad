@@ -5,29 +5,29 @@ VALUES ('user1', 'hemligtpassword'),
 
 INSERT INTO category(name)
 VALUES ('generell'),
-       ('dator'),
        ('mobil'),
+       ('dator'),
        ('internet');
 
-INSERT INTO quiz(name, category_name)
-VALUES ('initial', 'generell'),
-       ('bankID', 'mobil'),
-       ('iOS', 'mobil'),
-       ('android', 'mobil'),
-       ('windows', 'dator'),
-       ('linux', 'dator'),
-       ('hårdvara', 'dator'),
-       ('mjukvara', 'dator'),
-       ('webbläsare', 'internet'),
-       ('nätverk', 'internet'),
-       ('säkerhet', 'internet');
+INSERT INTO quiz(name, category_id)
+VALUES ('initial', 1),
+       ('bankID', 2),
+       ('iOS', 2),
+       ('android', 2),
+       ('windows', 3),
+       ('linux', 3),
+       ('hårdvara', 3),
+       ('mjukvara', 3),
+       ('webbläsare', 4),
+       ('nätverk', 4),
+       ('säkerhet', 4);
 
-INSERT INTO quiz_result(user_username, quiz_id)
-VALUES ('user1', 2),
-       ('user1', 5),
-       ('user2', 2),
-       ('user2', 11),
-       ('user3', 11);
+INSERT INTO quiz_result(user_id, quiz_id)
+VALUES (1, 2),
+       (1, 5),
+       (2, 2),
+       (2, 11),
+       (3, 11);
 
 INSERT INTO quiz_question(quiz_id, question, multiple_choices)
 VALUES (1, 'Vad är syftet med att aktivera tvåfaktorsautentisering på en mobiltelefon?', true),
