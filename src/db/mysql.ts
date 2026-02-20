@@ -14,4 +14,15 @@ const mySqlDbAccess: ConnectionOptions = {
 
 const mySqlDbConnection: Connection = mysql.createConnection(mySqlDbAccess);
 
+
+export function connectMySQL(): Promise<void> {
+    return new Promise((resolve, reject) => {
+        mySqlDbConnection.connect((error) => {
+            if(error)
+                return reject(error);
+            resolve();
+        })
+    })
+}
+
 export default mySqlDbConnection;
