@@ -1,6 +1,25 @@
 import mySqlDbConnection from "../../db/mysql.ts";
 import type { CreateUserInput, CreatedUser } from "../../types/users.ts";
 
+
+export function getUserByUsername(username: string): Promise<CreatedUser | null> {
+    return new Promise((resolve, reject) => {
+        let sql = `
+            SELECT username, password
+            FROM user
+            WHERE username = ? 
+            LIMIT 1
+        `;
+
+        mySqlDbConnection.query(sql, [username], (error: unknown, result: any) => {
+            if (error)
+                return reject(error);
+            else
+                return resolve(result);
+        })
+    })
+}
+
 export function createUser({username, password}: CreateUserInput): Promise<CreatedUser> {
     return new Promise((resolve, reject) => {
         let sql = `

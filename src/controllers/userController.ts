@@ -1,6 +1,34 @@
-import { createUser } from "../repositories/mysql/userRepository.ts";
-import type { CreatedUser } from "../types/users.ts";
+import { createUser, getUserByUsername } from "../repositories/mysql/userRepository.ts";
+import type { CreatedUser, GetUserParams } from "../types/users.ts";
 import type { Request, Response } from "express";
+
+
+export async function getUser(req: Request<GetUserParams>, res: Response) {
+    
+    const {username} = req.params;
+    
+    try {
+        const user = await getUserByUsername(username);
+
+        if(!user) {
+            return res.status(404).json({
+                success: false,
+                error: 'User not found'
+            })
+        }
+        return res.status(200).json({
+            success: true,
+            data: user
+        })
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : 'Unknown error occured'
+            return res.status(500).json({
+                success: false,
+                error: message
+            });
+        
+    }
+}
 
 export async function createNewUser(req: Request, res: Response) {
     try {
