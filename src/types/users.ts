@@ -7,3 +7,7 @@ export type CreatedUser = {
     id: number;
     username: string;
 }
+
+export type GetUserParams = {
+    username: string
+}
