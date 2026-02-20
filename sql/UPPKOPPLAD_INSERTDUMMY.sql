@@ -4,12 +4,14 @@ VALUES ('user1', 'hemligtpassword'),
        ('user3', 'ganskahemligtpassword');
 
 INSERT INTO category(name)
-VALUES ('dator'),
+VALUES ('generell'),
+       ('dator'),
        ('mobil'),
        ('internet');
 
 INSERT INTO quiz(name, category_name)
-VALUES ('bankID', 'mobil'),
+VALUES ('initial', 'generell'),
+       ('bankID', 'mobil'),
        ('iOS', 'mobil'),
        ('android', 'mobil'),
        ('windows', 'dator'),
@@ -21,42 +23,55 @@ VALUES ('bankID', 'mobil'),
        ('säkerhet', 'internet');
 
 INSERT INTO quiz_result(user_username, quiz_id)
-VALUES ('user1', 1),
-       ('user1', 4),
-       ('user2', 1),
-       ('user2', 10),
-       ('user3', 10);
+VALUES ('user1', 2),
+       ('user1', 5),
+       ('user2', 2),
+       ('user2', 11),
+       ('user3', 11);
 
 INSERT INTO quiz_question(quiz_id, question, multiple_choices)
-VALUES (1, 'Vilka sätt kan du identifiera dig med bankID? Flera svar kan vara rätt.', true),
-       (4, 'Är Windows ett operativsystem?', false),
-       (10, 'Vad är ett säkert lösenord?', false),
-       (1, 'Är bankID säkert att använda?', false),
-       (1, 'Kan seniorer lära sig använda bankID?', false)
+VALUES (1, 'Vad är syftet med att aktivera tvåfaktorsautentisering på en mobiltelefon?', true),
+       (1, 'Är det någon skillnad mellan RAM-minne och lagringsutrymme?', false),
+       (1, 'Vad betyder det att en webbplats använder HTTPS istället för HTTP? Flera svar kan vara rätt.', true),
+       (2, 'Vilka sätt kan du identifiera dig med bankID? Flera svar kan vara rätt.', true),
+       (5, 'Är Windows ett operativsystem?', false),
+       (11, 'Vad är ett säkert lösenord?', false),
+       (2, 'Är bankID säkert att använda?', false),
+       (2, 'Kan seniorer lära sig använda bankID?', false);
 
 INSERT INTO quiz_answer(quiz_question_id, answer, is_correct)
-VALUES (1, 'Fingeravtryck', true),
-       (1, 'Sifferkod', true),
-       (1, 'Vinka i kameran', false),
-       (1, 'Inget av alternativen', false),
-       (2, 'Ja', true),
-       (2, 'Nej', false),
-       (3, 'Lösenord behövs inte', false),
-       (3, 'hej123', false),
-       (3, 'Det ska vara kort', false),
-       (3, 'Långt och med olika tecken', true),
-       (4, 'Ja', true),
-       (4, 'Nej', false),
+VALUES (1, 'Att förbättra batteritiden', false),
+       (1, 'Att lägga till ett extra säkerhetssteg vid inloggning', true),
+       (1, 'Att öka mobilens lagringsutrymme', false),
+       (1, 'Att göra internetuppkopplingen snabbare', false),
+       (2, 'Ja, RAM lagrar filer permanent, lagring används bara tillfälligt', true),
+       (2, 'Nej, det är samma sak', false),
+       (3, 'Att informationen mellan användaren och webbplatsen är krypterad', true),
+       (3, 'Att webbplatsen alltid laddar snabbare', false),
+       (3, 'Att anslutningen är säkrare än vanlig HTTP', true),
+       (3, 'Att sidan inte kan innehålla virus', false),
+       (4, 'Fingeravtryck', true),
+       (4, 'Sifferkod', true),
+       (4, 'Vinka i kameran', false),
+       (4, 'Inget av alternativen', false),
        (5, 'Ja', true),
-       (5, 'Nej', false);
+       (5, 'Nej', false),
+       (6, 'Lösenord behövs inte', false),
+       (6, 'hej123', false),
+       (6, 'Det ska vara kort', false),
+       (6, 'Långt och med olika tecken', true),
+       (7, 'Ja', true),
+       (7, 'Nej', false),
+       (8, 'Ja', true),
+       (8, 'Nej', false);
 
 INSERT INTO user_answer(quiz_result_id, quiz_question_id, quiz_answer_id)
-VALUES (1, 1, 1),
-       (1, 1, 2),
-       (1, 4, 11),
-       (1, 5, 14),
-       (2, 2, 6),
-       (3, 1, 2),
-       (3, 1, 3),
-       (4, 3, 10),
-       (5, 3, 8);
+VALUES (1, 4, 11),
+       (1, 4, 12),
+       (1, 7, 21),
+       (1, 8, 24),
+       (2, 5, 16),
+       (3, 4, 12),
+       (3, 4, 13),
+       (4, 6, 20),
+       (5, 6, 18);
