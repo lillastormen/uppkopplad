@@ -1,14 +1,16 @@
 CREATE SCHEMA IF NOT EXISTS Uppkopplad;
 
 CREATE TABLE user(
+    id INT AUTO_INCREMENT,
     username VARCHAR(50),
     password VARCHAR(50),
-    PRIMARY KEY (username)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE category(
+    id INT AUTO_INCREMENT,
     name VARCHAR(50),
-    PRIMARY KEY (name)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE quiz(
