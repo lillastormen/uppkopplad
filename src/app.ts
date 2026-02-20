@@ -1,3 +1,5 @@
+import express from "express";
+import userRoutes  from './routes/userRoutes.ts'
 import express from 'express';
 import 'dotenv/config';
 import { startMongoServer } from './server.js';
@@ -12,6 +14,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+//Users Routes
+app.use('/users', userRoutes)
 app.use('/api/lessons', router);
 
 (async () => {
