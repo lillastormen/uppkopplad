@@ -1,13 +1,9 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes.ts";
 import quizRoutes from "./routes/quizRoutes.ts";
-import lessonRoutes from "./routes/moduleRoutes.ts";
-import "dotenv/config";
-import "dotenv/config";
 import router from "./routes/moduleRoutes.ts";
 
 const app = express();
-const port = process.env.PORT;
 
 app.use(express.json());
 // app.use(cors());
