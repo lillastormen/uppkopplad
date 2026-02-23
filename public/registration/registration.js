@@ -30,3 +30,19 @@ form.addEventListener('submit', async (event) => {
     message.textContent = 'Ditt konto har skapats';
     form.reset();
 });
+
+//toggle visibility button
+const input = document.getElementById('password') || null;
+const toggleButton = document.getElementById('toggle-visibility');
+
+if (input && toggleButton) {
+    toggleButton.addEventListener('click', () => {
+        if (input.type === 'password') {
+            input.type = 'text';
+            toggleButton.textContent = '🙈';
+        } else {
+            input.type = 'password';
+            toggleButton.textContent = '👀'
+        }
+    })
+}
