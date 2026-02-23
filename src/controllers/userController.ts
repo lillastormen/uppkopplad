@@ -1,6 +1,8 @@
 import { createUser, getUserByUsername } from "../repositories/mysql/userRepository.ts";
 import type { CreatedUser, GetUserParams } from "../types/users.ts";
 import type { Request, Response } from "express";
+import * as userService from "../services/userService.ts";
+
 
 
 export async function getUser(req: Request<GetUserParams>, res: Response) {
@@ -31,8 +33,17 @@ export async function getUser(req: Request<GetUserParams>, res: Response) {
 }
 
 export async function createNewUser(req: Request, res: Response) {
+    const { username, password } = req.body as { username?: string; password?: string };
+
+    if (!username || ! password) {
+        return res.status(400). json({
+            success: false,
+            error: 'Username and password required.'
+        })
+    }
+
     try {
-        const newUser: CreatedUser = await createUser(req.body);
+        const newUser: CreatedUser = await userService.register(req.body);
 
         return res.status(201).json({
             success: true,
@@ -45,6 +56,5 @@ export async function createNewUser(req: Request, res: Response) {
                 success: false,
                 error: message
             });
-        
     }
 }
