@@ -15,6 +15,20 @@ export async function createMainModule (data: mainModules): Promise<mainModulesD
     }
 }
 
+export async function getAllMainModules (): Promise<mainModulesDocument[]> {
+    try {
+        const modules = await MainModule.find()
+            .sort({ order: 1 })
+            .lean()
+            .exec();
+
+        return modules;
+    } catch (err) {
+        const error = err as Error;
+        throw new Error(`Could not fetch Main Modules: ${error.message}`);
+    }
+}
+
 // CRUD for lessons
 export async function createLesson (data: lessons): Promise<lessonsDocument> {
     try {

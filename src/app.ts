@@ -1,7 +1,7 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes.ts";
 import quizRoutes from "./routes/quizRoutes.ts";
-import router from "./routes/moduleRoutes.ts";
+import modulesRoutes from "./routes/moduleRoutes.ts";
 
 const app = express();
 
@@ -14,8 +14,11 @@ app.use(express.static("public"));
 //Users Routes
 app.use("/users", userRoutes);
 
+// Main modules Routes
+app.use("/api/mainModules", modulesRoutes);
+
 //Lessons Routes
-app.use("/api/lessons", router);
+app.use("/api/lessons", modulesRoutes);
 
 //Quiz Routes
 app.use("/quiz", quizRoutes);
