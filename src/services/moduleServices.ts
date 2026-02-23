@@ -40,3 +40,13 @@ export async function createLesson (data: lessons): Promise<lessonsDocument> {
         throw new Error(`Could not create new Lesson: ${(err as Error).message}`);
     }
 }
+
+export async function getAllLessons (): Promise<lessonsDocument[]> {
+    try {
+        const lessons = await Lesson.find();
+        return lessons;
+    } catch (err) {
+        const error = err as Error;
+        throw new Error(`Could not fetch lessons: ${error.message}`);
+    }
+}

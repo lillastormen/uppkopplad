@@ -1,5 +1,5 @@
 import express from 'express';
-import {LessonCreate, mainModuleCreate, mainModulesGet} from '../controllers/moduleControllers.ts';
+import {LessonCreate, lessonGet, mainModuleCreate, mainModulesGet} from '../controllers/moduleControllers.ts';
 
 const modulesRoutes = express.Router();
 
@@ -9,5 +9,6 @@ modulesRoutes.get('/', mainModulesGet);
 
 // Lesson modules routes
 modulesRoutes.post('/', LessonCreate);
+modulesRoutes.get('/', lessonGet);
 
 export default modulesRoutes;
