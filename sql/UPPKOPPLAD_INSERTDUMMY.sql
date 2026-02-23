@@ -1,7 +1,7 @@
-INSERT INTO user(username, password)
-VALUES ('user1', 'hemligtpassword'),
-       ('user2', 'superhemligtpassword'),
-       ('user3', 'ganskahemligtpassword');
+INSERT INTO user(username, hashed_password)
+VALUES ('user1', '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy'),
+       ('user2', '$2b$12$KbQi1Sx9rY6uLm2pQw8eRtYzXaBcDeFgHiJkLmNoPqRsTuVwXyZaB'),
+       ('user3', '$2b$10$C6UzMDM.H6dfIafyIKcEeO7f8uIuXl2kPp2rV2uKk1F9xLwZlC3hB');
 
 INSERT INTO category(name)
 VALUES ('generell'),

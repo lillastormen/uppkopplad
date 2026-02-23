@@ -3,7 +3,7 @@ CREATE SCHEMA IF NOT EXISTS Uppkopplad;
 CREATE TABLE user(
     id INT AUTO_INCREMENT,
     username VARCHAR(50),
-    password VARCHAR(50),
+    hashed_password VARCHAR(60),
     PRIMARY KEY (id)
 );
 

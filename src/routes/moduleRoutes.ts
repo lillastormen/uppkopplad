@@ -1,8 +1,13 @@
 import express from 'express';
-import { LessonCreate } from '../controllers/moduleControllers.ts';
+import {LessonCreate, mainModuleCreate, mainModulesGet} from '../controllers/moduleControllers.ts';
 
-const router = express.Router();
+const modulesRoutes = express.Router();
 
-router.post('/', LessonCreate);
+// Main modules routes
+modulesRoutes.post('/', mainModuleCreate);
+modulesRoutes.get('/', mainModulesGet);
 
-export default router;
+// Lesson modules routes
+modulesRoutes.post('/', LessonCreate);
+
+export default modulesRoutes;
