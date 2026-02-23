@@ -1,4 +1,4 @@
-import { createLesson, createMainModule, getAllMainModules } from '../services/moduleServices.ts';
+import { createLesson, getAllLessons, createMainModule, getAllMainModules } from '../services/moduleServices.ts';
 import { type Request, type Response } from 'express';
 
 // CRUD for Main Modules
@@ -33,5 +33,16 @@ export const LessonCreate = async (req: Request, res: Response): Promise<void> =
         const error = err as Error;
         res.status(500).json({ error: 'Internal server error'});
         console.error('Error creating Lesson: ', error.message, error.stack);
+    }
+}
+
+export const lessonGet = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const getLessons = await getAllLessons();
+        res.status(200).json(getLessons);
+    } catch (err) {
+        const error = err as Error;
+        res.status(500).json({error: 'Internal server error'});
+        console.error('Error fetching lesson modules:', error.message, error.stack);
     }
 }
