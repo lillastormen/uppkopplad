@@ -11,11 +11,11 @@ export function getUserByUsername(username: string): Promise<CreatedUser | null>
             LIMIT 1
         `;
 
-        mySqlDbConnection.query(sql, [username], (error: unknown, result: any) => {
+        mySqlDbConnection.query(sql, [username], (error: unknown, result: any[]) => {
             if (error)
                 return reject(error);
             else
-                return resolve(result);
+                return resolve(result?.[0] ?? null);
         })
     })
 }

@@ -4,7 +4,8 @@ import type { CreateUserInput } from '../types/users.ts';
 
 const SALT_ROUNDS = 12;
 
-export async function register(input: CreateUserInput) {
+export async function registerUser(input: CreateUserInput) {
+    
     const hashedPassword = await bcrypt.hash(input.password, SALT_ROUNDS);
 
     return createUser({

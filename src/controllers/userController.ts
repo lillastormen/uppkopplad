@@ -6,8 +6,7 @@ import * as userService from "../services/userService.ts";
 
 
 export async function getUser(req: Request<GetUserParams>, res: Response) {
-    
-    const {username} = req.params;
+    const { username } = req.params;
     
     try {
         const user = await getUserByUsername(username);
@@ -28,7 +27,6 @@ export async function getUser(req: Request<GetUserParams>, res: Response) {
                 success: false,
                 error: message
             });
-        
     }
 }
 
@@ -43,7 +41,7 @@ export async function createNewUser(req: Request, res: Response) {
     }
 
     try {
-        const newUser: CreatedUser = await userService.register(req.body);
+        const newUser = await userService.registerUser({ username, password });
 
         return res.status(201).json({
             success: true,
