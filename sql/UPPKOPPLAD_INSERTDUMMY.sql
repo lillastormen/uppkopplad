@@ -30,7 +30,7 @@ VALUES (1, 2),
        (3, 11);
 
 INSERT INTO quiz_question(quiz_id, question, multiple_choices)
-VALUES (1, 'Vad är syftet med att aktivera tvåfaktorsautentisering på en mobiltelefon?', true),
+VALUES (1, 'Vad är syftet med att aktivera tvåfaktorsautentisering på en mobiltelefon?', false),
        (1, 'Är det någon skillnad mellan RAM-minne och lagringsutrymme?', false),
        (1, 'Vad betyder det att en webbplats använder HTTPS istället för HTTP? Flera svar kan vara rätt.', true),
        (2, 'Vilka sätt kan du identifiera dig med bankID? Flera svar kan vara rätt.', true),

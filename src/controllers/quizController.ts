@@ -19,6 +19,7 @@ export async function getAQuiz(req: Request, res: Response) {
 
     res.status(200).json(quiz);
   } catch (error) {
-    res.status(500).json({ message: "Unknown Error" });
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
   }
 }
