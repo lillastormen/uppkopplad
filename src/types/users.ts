@@ -8,6 +8,10 @@ export type CreatedUser = {
     username: string;
 }
 
-export type GetUserParams = {
+export type GetUserParamsUsername = {
     username: string
+}
+
+export type GetUserParamsId = {
+    id: Number
 }
