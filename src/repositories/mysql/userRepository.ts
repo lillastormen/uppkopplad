@@ -20,6 +20,24 @@ export function getUserByUsername(username: string): Promise<CreatedUser | null>
     })
 }
 
+export function getUserById(id: Number): Promise<CreatedUser | null> {
+    return new Promise((resolve, reject) => {
+        let sql = `
+            SELECT id, username
+            FROM user
+            WHERE id = ? 
+            LIMIT 1
+        `;
+
+        mySqlDbConnection.query(sql, [id], (error: unknown, result: any[]) => {
+            if (error)
+                return reject(error);
+            else
+                return resolve(result?.[0] ?? null);
+        })
+    })
+}
+
 export function createUser({username, password}: CreateUserInput): Promise<CreatedUser> {
     return new Promise((resolve, reject) => {
         let sql = `

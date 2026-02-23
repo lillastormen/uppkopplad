@@ -1,11 +1,11 @@
-import { createUser, getUserByUsername } from "../repositories/mysql/userRepository.ts";
-import type { CreatedUser, GetUserParams } from "../types/users.ts";
+import { createUser, getUserByUsername, getUserById } from "../repositories/mysql/userRepository.ts";
+import type { CreatedUser, GetUserParamsUsername, GetUserParamsId } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
 
 
 
-export async function getUser(req: Request<GetUserParams>, res: Response) {
+export async function getUser(req: Request<GetUserParamsUsername>, res: Response) {
     const { username } = req.params;
     
     try {
@@ -30,10 +30,35 @@ export async function getUser(req: Request<GetUserParams>, res: Response) {
     }
 }
 
+export async function getUserId(req: Request<GetUserParamsId>, res: Response) {
+    const { id } = req.params;
+
+    try {
+        const userId = await getUserById(id);
+
+        if(!userId) {
+            return res.status(404).json({
+                success: false,
+                error: 'User Id not found'
+            })
+        }
+        return res.status(200).json({
+            success: true,
+            data: userId
+        })
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : "Unknown error occured." 
+            return res.status(500).json({
+                success: false,
+                error: message
+            });
+    }
+}
+
 export async function createNewUser(req: Request, res: Response) {
     const { username, password } = req.body as { username?: string; password?: string };
 
-    if (!username || ! password) {
+    if (!username || !password) {
         return res.status(400). json({
             success: false,
             error: 'Username and password required.'
