@@ -31,7 +31,7 @@ form.addEventListener('submit', async (event) => {
     form.reset();
 });
 
-//toggle visibility button
+//toggle password visibility button
 const input = document.getElementById('password') || null;
 const toggleButton = document.getElementById('toggle-visibility');
 
@@ -44,5 +44,5 @@ if (input && toggleButton) {
             input.type = 'password';
             toggleButton.textContent = '👀'
         }
-    })
+    });
 }

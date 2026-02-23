@@ -78,11 +78,20 @@ export async function createNewUser(req: Request, res: Response) {
     if (!username || !password) {
         return res.status(400). json({
             success: false,
-            error: 'Username and password required.'
+            error: 'Användarnamn och lösenord saknas.'
         })
     }
 
     try {
+        const exsistingUser = await getUserByUsername(username);
+
+        if(exsistingUser){
+            return res.status(409).json({
+                success: false,
+                error: 'Användarnamn redan finns, välj ett annat namn.'
+            });
+        }
+
         const newUser = await userService.registerUser({ username, password });
 
         return res.status(201).json({

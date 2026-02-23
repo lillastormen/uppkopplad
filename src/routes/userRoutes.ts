@@ -8,8 +8,6 @@ router.get('/id/:id', getUserId);
 router.get('/username/:username', getUser);
 router.get('/all/', getUsers);
 
-
-
 router.post('/registration', createNewUser);
 
 export default router;
