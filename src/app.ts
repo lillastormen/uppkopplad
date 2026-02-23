@@ -5,20 +5,23 @@ import lessonRoutes from "./routes/moduleRoutes.ts";
 import "dotenv/config";
 import router from "./routes/moduleRoutes.ts";
 import cors from "cors";
+import modulesRoutes from "./routes/moduleRoutes.ts";
 
 const app = express();
-const port = process.env.PORT;
 
 app.use(express.json());
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(cors());
 
 //Users Routes
 app.use("/users", userRoutes);
 
+// Main modules Routes
+app.use("/api/mainModules", modulesRoutes);
+
 //Lessons Routes
-app.use("/api/lessons", router);
+app.use("/api/lessons", modulesRoutes);
 
 //Quiz Routes
 app.use("/quiz", quizRoutes);
