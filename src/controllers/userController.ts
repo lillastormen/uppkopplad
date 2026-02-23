@@ -1,4 +1,4 @@
-import { createUser, getUserByUsername, getUserById } from "../repositories/mysql/userRepository.ts";
+import { createUser, getUserByUsername, getUserById, getAllUsers } from "../repositories/mysql/userRepository.ts";
 import type { CreatedUser, GetUserParamsUsername, GetUserParamsId } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
@@ -46,6 +46,23 @@ export async function getUserId(req: Request<GetUserParamsId>, res: Response) {
             success: true,
             data: userId
         })
+    } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : "Unknown error occured." 
+            return res.status(500).json({
+                success: false,
+                error: message
+            });
+    }
+}
+
+export async function getUsers(req: Request, res: Response) {
+    try {
+        const users = await getAllUsers();
+
+        return res.status(200).json({
+            success: true,
+            data: users
+        });
     } catch (error: unknown) {
         const message = error instanceof Error ? error.message : "Unknown error occured." 
             return res.status(500).json({

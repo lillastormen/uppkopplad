@@ -38,6 +38,23 @@ export function getUserById(id: Number): Promise<CreatedUser | null> {
     })
 }
 
+export function getAllUsers(): Promise<void> {
+    return new Promise((resolve, reject) => {
+        let sql = `
+            SELECT id, username
+            FROM user
+            ORDER BY id ASC
+        `;
+
+        mySqlDbConnection.query(sql, (error: unknown, result: any) => {
+            if (error) 
+                return reject(error);
+            else
+                return resolve(result);
+        })
+    })
+}
+
 export function createUser({username, password}: CreateUserInput): Promise<CreatedUser> {
     return new Promise((resolve, reject) => {
         let sql = `
