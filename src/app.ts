@@ -1,11 +1,9 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes.ts";
 import quizRoutes from "./routes/quizRoutes.ts";
-import lessonRoutes from "./routes/moduleRoutes.ts";
 import "dotenv/config";
-import router from "./routes/moduleRoutes.ts";
 import cors from "cors";
-import modulesRoutes from "./routes/moduleRoutes.ts";
+import routes from './routes/moduleRoutes.ts';
 
 const app = express();
 
@@ -18,10 +16,10 @@ app.use(cors());
 app.use("/users", userRoutes);
 
 // Main modules Routes
-app.use("/api/mainModules", modulesRoutes);
+app.use("/api/mainModules", routes.mainModulesRoutes);
 
 //Lessons Routes
-app.use("/api/lessons", modulesRoutes);
+app.use("/api/lessons", routes.lessonsRoutes);
 
 //Quiz Routes
 app.use("/quiz", quizRoutes);
