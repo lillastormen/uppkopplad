@@ -32,16 +32,17 @@ JOIN quiz_answer qa
 ON qq.id = qa.quiz_question_id
 WHERE quiz.id = 1
 
+-- Hämtar quizfrågan och dess tillhörande svar+attribut
 SELECT
-  qq.id,
-  qq.question,
-  qq.multiple_choices,
-  JSON_ARRAYAGG(
-    JSON_OBJECT(
-      'answer', qa.answer,
-      'is_correct', qa.is_correct
-    )
-  ) AS answers
+qq.id,
+qq.question,
+qq.multiple_choices,
+JSON_ARRAYAGG(
+JSON_OBJECT(
+'answer', qa.answer,
+'is_correct', qa.is_correct
+))
+AS answers
 FROM quiz_question qq
 JOIN quiz_answer qa ON qq.id = qa.quiz_question_id
 WHERE qq.quiz_id = 1

@@ -45,6 +45,8 @@ main {
 }
 
 #checkboxInputs,
-#radioInputs {
+#radioInputs,
+#quizSubmitBtn,
+#quizNextBtn {
   display: none;
 }

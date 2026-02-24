@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uppkopplad</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="../dist/index.js" type="module" defer></script>
+    <script src="index.js" type="module" defer></script>
   </head>
   <body>
     <header>
@@ -18,8 +18,8 @@
     <main>
       <section id="initialQuiz">
         <h1>Testa dina kunskaper!</h1>
-        <form>
-          <p id="quizQuestion">Laddar quizfråga...</p>
+        <form id="quizForm">
+          <p id="quizQuestion">Laddar quiz...</p>
           <article id="radioInputs">
             <label for="ra1">Laddar svar 1...</label>
             <input type="radio" name="q1" value="ra1" />
@@ -40,7 +40,8 @@
             <label for="cba4">Laddar svar 4...</label>
             <input type="checkbox" name="q1" value="cba4" />
           </article>
-          <button type="submit">Skicka svar</button>
+          <button type="submit" id="quizSubmitBtn">Slutför</button>
+          <button type="button" id="quizNextBtn">Skicka svar</button>
         </form>
       </section>
     </main>
