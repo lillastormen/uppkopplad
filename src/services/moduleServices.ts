@@ -10,6 +10,7 @@ export async function createMainModule (data: mainModules): Promise<mainModulesD
         await mainModule.save();
 
         return mainModule;
+
     } catch (err) {
         throw new Error(`Could not create new Main Module: ${(err as Error).message}`);
     }
@@ -26,6 +27,21 @@ export async function getAllMainModules (): Promise<mainModulesDocument[]> {
     } catch (err) {
         const error = err as Error;
         throw new Error(`Could not fetch Main Modules: ${error.message}`);
+    }
+}
+
+export async function getSubModulesForMainModule (mainModuleName: 'mobil' | 'dator' | 'internet'): Promise<lessonsDocument[]> {
+    try {
+        const mainModule = await MainModule.findOne(
+            { nameOfModule: mainModuleName })
+            .lean()
+            .exec();
+
+        if (!mainModule || mainModule.subModuleSlug.length === 0) {
+            return [];
+        }
+
+        // Continue building this function
     }
 }
 

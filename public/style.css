@@ -45,8 +45,8 @@ main {
 }
 
 #checkboxInputs,
-#radioInputs {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
+#radioInputs,
+#quizSubmitBtn,
+#quizNextBtn {
+  display: none;
 }

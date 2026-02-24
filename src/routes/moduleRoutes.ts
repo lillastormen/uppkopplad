@@ -1,14 +1,15 @@
 import express from 'express';
 import {LessonCreate, lessonGet, mainModuleCreate, mainModulesGet} from '../controllers/moduleControllers.ts';
 
-const modulesRoutes = express.Router();
+const mainModulesRoutes = express.Router();
+const lessonRoutes = express.Router();
 
 // Main modules routes
-modulesRoutes.post('/', mainModuleCreate);
-modulesRoutes.get('/', mainModulesGet);
+mainModulesRoutes.post('/', mainModuleCreate);
+mainModulesRoutes.get('/', mainModulesGet);
 
 // Lesson modules routes
-modulesRoutes.post('/', LessonCreate);
-modulesRoutes.get('/', lessonGet);
+lessonRoutes.post('/', LessonCreate);
+lessonRoutes.get('/', lessonGet);
 
-export default modulesRoutes;
+export default { mainModulesRoutes, lessonRoutes };
