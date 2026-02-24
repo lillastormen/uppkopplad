@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { createUser } from '../repositories/mysql/userRepository.ts';
+import { createUser, getUserCredentials } from '../repositories/mysql/userRepository.ts';
 import type { CreateUserInput } from '../types/users.ts';
 
 //crypting password
@@ -13,4 +13,18 @@ export async function registerUser(input: CreateUserInput) {
         username: input.username,
         password: hashedPassword
     });
+}
+
+export async function loginUser(username: string, password: string) {
+    
+    const user = await getUserCredentials(username);
+    if(!user) return null;
+
+    const passwordOk = await bcrypt.compare(password, user.password);
+    if(!passwordOk) return null;
+
+    return {
+        id: user.id,
+        username: user.username
+    }
 }

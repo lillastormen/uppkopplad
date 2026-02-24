@@ -1,11 +1,12 @@
 import mySqlDbConnection from "../../db/mysql.ts";
-import type { CreateUserInput, CreatedUser } from "../../types/users.ts";
+import type { CreateUserInput, CreatedUser, UserCredentials } from "../../types/users.ts";
+
 
 
 export function getUserByUsername(username: string): Promise<CreatedUser | null> {
     return new Promise((resolve, reject) => {
         let sql = `
-            SELECT username, password
+            SELECT username, hashed_password
             FROM user
             WHERE username = ? 
             LIMIT 1
@@ -14,6 +15,7 @@ export function getUserByUsername(username: string): Promise<CreatedUser | null>
         mySqlDbConnection.query(sql, [username], (error: unknown, result: any[]) => {
             if (error)
                 return reject(error);
+
             else
                 return resolve(result?.[0] ?? null);
         })
@@ -30,6 +32,24 @@ export function getUserById(id: Number): Promise<CreatedUser | null> {
         `;
 
         mySqlDbConnection.query(sql, [id], (error: unknown, result: any[]) => {
+            if (error)
+                return reject(error);
+            else
+                return resolve(result?.[0] ?? null);
+        })
+    })
+}
+
+export function getUserCredentials(username: string): Promise<UserCredentials> {
+    return new Promise((resolve, reject) => {
+        let sql = `
+            SELECT id, username, hashed_password AS password
+            FROM user
+            WHERE username = ?
+            LIMIT 1
+        `;
+
+        mySqlDbConnection.query(sql, [username], (error: unknown, result: any[]) => {
             if (error)
                 return reject(error);
             else
@@ -58,7 +78,7 @@ export function getAllUsers(): Promise<void> {
 export function createUser({username, password}: CreateUserInput): Promise<CreatedUser> {
     return new Promise((resolve, reject) => {
         let sql = `
-            INSERT INTO user (username, password)
+            INSERT INTO user (username, hashed_password)
             VALUES (?, ?)
         `;
 
