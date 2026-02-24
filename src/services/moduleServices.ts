@@ -40,8 +40,8 @@ export async function getSubModulesForMainModule (mainModuleName: 'mobil' | 'dat
         if (!mainModule || mainModule.subModuleSlug.length === 0) {
             return [];
         }
-    } catch (err) {
-        
+
+        // Continue building this function
     }
 }
 
