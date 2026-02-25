@@ -3,14 +3,18 @@ import userRoutes from "./routes/userRoutes.ts";
 import quizRoutes from "./routes/quizRoutes.ts";
 import "dotenv/config";
 import cors from "cors";
+import modulesRoutes from "./routes/moduleRoutes.ts";
+import { createSession } from "./config/session.ts";
 import routes from './routes/moduleRoutes.ts';
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(createSession());
 app.use(express.static("public"));
 app.use(cors());
+
 
 //Users Routes
 app.use("/users", userRoutes);
