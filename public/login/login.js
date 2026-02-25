@@ -9,19 +9,20 @@ form.addEventListener('submit', async (event) => {
     const password = form.password.value;
 
 
-   await fetch(url, {
+   const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
+        credentials: "include",
         body: JSON.stringify({ username, password })
     });
 
-    // const data = await response.json();
-
-    // if (!response.ok) {
-    //     message.textContent = data.error || 'Fel lösenord. Kontrollera dina uppgifter och försök igen.';
-    //     return;
-    // }
-    message.textContent = `Inloggad som ${username}`;
+    if (!response.ok) {
+        message.textContent = data.error || 'Fel lösenord. Kontrollera dina uppgifter och försök igen.';
+        return;
+    } else {
+        window.location.href="/account"
+    }
+    // message.textContent = `Inloggad som ${username}`;
     form.reset();
 });
 
@@ -39,4 +40,8 @@ if (input && toggleButton) {
             toggleButton.textContent = '👀'
         }
     });
+}
+
+function login() {
+    
 }

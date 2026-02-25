@@ -6,13 +6,16 @@ import "dotenv/config";
 import router from "./routes/moduleRoutes.ts";
 import cors from "cors";
 import modulesRoutes from "./routes/moduleRoutes.ts";
+import { createSession } from "./config/session.ts";
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(createSession());
 app.use(express.static("public"));
 app.use(cors());
+
 
 //Users Routes
 app.use("/users", userRoutes);

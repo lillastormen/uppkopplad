@@ -4,12 +4,22 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+//function to figure out which one of the var is not loading correctly (got it...trololo)
+export function reqEnv(name: string): string {
+
+    const varEnv = process.env[name];
+
+    if(!varEnv) 
+        throw new Error(`${name} is not set`);
+    return varEnv;
+}
+
 const mySqlDbAccess: ConnectionOptions = {
-    host: process.env.DB_HOST as string,
+    host: reqEnv('DB_HOST'),
     port: Number(process.env.DB_PORT),
-    user: process.env.DB_USER as string,
-    password: process.env.DB_PASSWORD as string,
-    database: process.env.DB_DATABASE as string
+    user: reqEnv('DB_USER'),
+    password: reqEnv('DB_PASSWORD'),
+    database: reqEnv('DB_DATABASE')
 }
 
 const mySqlDbConnection: Connection = mysql.createConnection(mySqlDbAccess);
