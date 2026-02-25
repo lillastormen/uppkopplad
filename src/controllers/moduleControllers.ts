@@ -1,4 +1,11 @@
-import { createLesson, getAllLessons, createMainModule, getAllMainModules } from '../services/moduleServices.ts';
+import {
+    createLesson,
+    getAllLessons,
+    createMainModule,
+    getAllMainModules,
+    getSubModulesForMainModule
+} from '../services/moduleServices.ts';
+
 import { type Request, type Response } from 'express';
 
 // CRUD for Main Modules
@@ -21,6 +28,22 @@ export const mainModulesGet = async (req: Request, res: Response): Promise<void>
         const error = err as Error;
         res.status(500).json({ error: 'Internal server error' });
         console.error('Error fetching Main Modules: ', error.message, error.stack);
+    }
+}
+
+export const allSubModulesForMainModuleGet = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const {nameOfModule} = req.params;
+
+        const subModules = await getSubModulesForMainModule(
+            nameOfModule as 'mobil' | 'dator' | 'internet'
+        );
+
+        res.status(200).json(subModules);
+    } catch (err) {
+        const error = err as Error;
+        res.status(500).json('Internal server error');
+        console.error('Error fetching submodules: ', error.message, error.stack);
     }
 }
 
