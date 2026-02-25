@@ -38,6 +38,8 @@ main {
   flex-grow: 1;
 }
 
+/* Quiz */
+
 #initialQuiz {
   display: flex;
   flex-direction: column;
@@ -49,4 +51,9 @@ main {
 #quizSubmitBtn,
 #quizNextBtn {
   display: none;
+}
+
+#noSelected {
+  display: none;
+  color: red;
 }
