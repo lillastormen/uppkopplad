@@ -29,3 +29,8 @@ p {
     border: none;
     border-radius: 5%;
 }
+
+#module-buttons button:hover {
+    background-color: #2d4a47;
+    color: #e1dede;
+}
