@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Login</title>
 </head>
 <body>
-    <form id="registration-form">
-    <h1>Register</h1>
+    <form id="login-form">
+    <h1>Logga in</h1>
     <div class="container">
-        <p>Fyll i formuläret för att skapa ditt konto</p>
+        <p>Fyll i formuläret för att logga in</p>
 
         <label for="username">Användarnamn: </label>
         <input type="text" placeholder="Fyll i ditt Användarnamn" name="username" id="username" required>
@@ -18,15 +18,11 @@
         <input type="password" placeholder="Fyll i ditt Lösenord" name="password" id="password" required>
         <button type="button" id="toggle-visibility" aria-label="Visa lösenord">👀</button>
 
-        <label for="passwordRepeat">Bekfräta: </label>
-        <input type="password" placeholder="Bekfräta ditt lösenord" name="passwordRepeat" id="passwordRepeat" required>
-
-        <p>Genom att skapa ett konto accepterar du våra <a href="#">Användarvillkor och integritetspolicy</a>.</p>
-
-        <button type="submit" class="registration-btn">Registera</button>
+        <button type="submit" class="login-btn">Logga in</button>
+        
     </div>
-    <div id="registration-message"></div>
+    <div id="login-message"></div>
 </form>
-<script src="./registration.js"></script>
+    <script src="./login.js"></script>
 </body>
 </html>

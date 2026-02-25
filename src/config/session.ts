@@ -25,7 +25,7 @@ export function createSession() {
         resave: false,
         saveUninitialized: false,
         store,
-        rolling: true, //refresh cookie expiration on each request - stays loggrf in while
+        rolling: true, //refresh cookie expiration on each request - stays loggrf in while active
         cookie: {
             httpOnly: true,
             sameSite: "lax",

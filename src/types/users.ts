@@ -8,8 +8,10 @@ export type CreatedUser = {
     username: string;
 }
 
-export type GetUserParamsUsername = {
-    username: string
+export type UserCredentials = {
+    id: Number;
+    username: string;
+    password: string;
 }
 
 export type GetUserParamsId = {
