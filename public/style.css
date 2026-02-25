@@ -38,6 +38,8 @@ main {
   flex-grow: 1;
 }
 
+/* Quiz */
+
 #initialQuiz {
   display: flex;
   flex-direction: column;
@@ -45,6 +47,13 @@ main {
 }
 
 #checkboxInputs,
-#radioInputs {
+#radioInputs,
+#quizSubmitBtn,
+#quizNextBtn {
   display: none;
+}
+
+#noSelected {
+  display: none;
+  color: red;
 }
