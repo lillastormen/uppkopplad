@@ -1,5 +1,17 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 0 1.5rem;
+    background-color: var(--offwhite);
+}
+
+#reg-img {
+    width: 260px;
+    height: 390px;
+}
+
+#registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

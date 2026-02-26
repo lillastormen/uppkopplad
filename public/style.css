@@ -27,9 +27,9 @@
 :root {
   --primary: #3b615e;
   --secondary: #a65a00;
-  --background: #fbfbfb;
+  --background: #F1F0EA;
   --offblack: #1f1f1f;
-  --offwhite: #f1f1f1;
+  --offwhite: #fffffb;
   --error: #a52422;
   --success: #3e7c4c;
   --text: #1c1c1c;
