@@ -1,0 +1,24 @@
+#quizForm {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background-color: var(--offwhite);
+}
+
+#radios,
+#checkboxes {
+  display: flex;
+  flex-direction: column;
+}
+
+#checkboxInputs,
+#radioInputs,
+#quizSubmitBtn,
+#quizNextBtn {
+  display: none;
+}
+
+#noSelected {
+  opacity: 0;
+  color: var(--error);
+}
