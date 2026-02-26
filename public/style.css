@@ -11,6 +11,31 @@
   --text-light-grey: #6B6B6B;
 }
 
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+}
+
+
+
 @font-face {
   font-family: 'Atkinson Hyperlegible';
   font-style: normal;
