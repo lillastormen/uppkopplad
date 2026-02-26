@@ -27,15 +27,15 @@
 :root {
   --primary: #3b615e;
   --secondary: #a65a00;
-  --background: #F1F0EA;
+  --background: #f1f0ea;
   --offblack: #1f1f1f;
   --offwhite: #fffffb;
   --error: #a52422;
   --success: #3e7c4c;
+  --border: #8d8d8d;
   --text: #1c1c1c;
   --text-medium-grey: #2e2e2e;
   --text-light-grey: #6b6b6b;
-
   --font-primary: "Atkinson Hyperlegible";
 }
 
@@ -80,6 +80,7 @@ header {
   width: 100%;
   height: 70px;
   background-color: var(--offwhite);
+  border-bottom: 1px solid var(--border);
 }
 
 header img {

@@ -1,8 +1,20 @@
+#quizLayout {
+  border-radius: 5px;
+  background-color: var(--offwhite);
+}
+
+#quizQuestion {
+  border-radius: 5px 5px 0px 0px;
+}
+
+#quizSubmitBtn,
+#quizNextBtn {
+  margin-top: 10px;
+}
+
 #quizForm {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border);
-  background-color: var(--offwhite);
 }
 
 #radios,
@@ -21,4 +33,10 @@
 #noSelected {
   opacity: 0;
   color: var(--error);
+}
+
+#quizQuestion {
+  margin-top: 0;
+  padding: 10px;
+  background-color: var(--primary);
 }
