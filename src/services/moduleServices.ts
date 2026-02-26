@@ -30,23 +30,23 @@ export async function getAllMainModules(): Promise<mainModulesDocument[]> {
   }
 }
 
-export async function getSubModulesForMainModule(
-  mainModuleName: "mobil" | "dator" | "internet",
-): Promise<lessonsDocument[]> {
-  try {
-    const mainModule = await MainModule.findOne({
-      nameOfModule: mainModuleName,
-    })
-      .lean()
-      .exec();
+// export async function getSubModulesForMainModule(
+//   mainModuleName: "mobil" | "dator" | "internet",
+// ): Promise<lessonsDocument[]> {
+//   try {
+//     const mainModule = await MainModule.findOne({
+//       nameOfModule: mainModuleName,
+//     })
+//       .lean()
+//       .exec();
 
-    if (!mainModule || mainModule.subModuleSlug.length === 0) {
-      return [];
-    }
+//     if (!mainModule || mainModule.subModuleSlug.length === 0) {
+//       return [];
+//     }
 
-    // Continue building this function
-  } catch (error) {}
-}
+//     // Continue building this function
+//   } catch (error) {}
+// }
 
 // CRUD for lessons
 export async function createLesson(data: lessons): Promise<lessonsDocument> {
