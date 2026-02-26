@@ -1,40 +1,36 @@
 {
   "compilerOptions": {
-    // Mål och modul
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "bundler",
 
-    // Miljö och bibliotek
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
 
-    // Sträng och typkontroll
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
 
-    // Övriga viktiga inställningar
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
 
-    // Utdata
-    "outDir": "./js",
+    "outDir": "./modulesJS",
     "rootDir": "./modules",
     "sourceMap": true,
 
-    // Förhindra onödiga filer
     "noEmitOnError": true,
     "declaration": false,
-    "removeComments": true
+    "removeComments": true,
   },
 
-  "include": ["modules/**/*.ts"],
+  "include": [
+    "modules/**/*.ts",
+  ],
 
   "exclude": [
     "node_modules",
-    "js"
+    "modulesJS"
   ]
 }

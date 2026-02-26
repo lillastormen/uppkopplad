@@ -43,7 +43,7 @@ next.addEventListener("click", () => {
   if (type === "radio") {
     userSelected = document.querySelector('input[name="question"]:checked');
     if (!userSelected) {
-      noSelected.style.display = "inline";
+      noSelected.style.opacity = "1";
       return;
     }
 
@@ -55,13 +55,13 @@ next.addEventListener("click", () => {
       ...document.querySelectorAll('input[name="question"]:checked'),
     ].map(i => i.value);
     if (userSelected.length === 0) {
-      noSelected.style.display = "inline";
+      noSelected.style.opacity = "1";
       return;
     }
     userAnswers[currentQuestion] = userSelected;
   }
 
-  noSelected.style.display = "none";
+  noSelected.style.opacity = "0";
 
   //PROCEED
   if (userSelected) {
@@ -89,6 +89,8 @@ async function loadQuiz(id) {
 
 function showQuestion(quiz) {
   question.textContent = quiz[currentQuestion].question;
+  question.style.setProperty("background-color", "var(--primary");
+
   if (quiz[currentQuestion].multiple_choices) {
     type = "checkbox";
     checkbox.style.display = "flex";

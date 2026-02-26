@@ -5,25 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uppkopplad</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./quiz/quiz.css" />
     <script src="index.js" type="module" defer></script>
   </head>
   <body>
     <header>
       <nav>
         <a href="index.html"
-          ><img src="../images/uppkoppladLogo.svg" alt="uppkoppladLogo"
+          ><img src="./images/uppkoppladLogo.svg" alt="uppkoppladLogo"
         /></a>
       </nav>
     </header>
     <main>
       <section id="quiz">
         <form id="quizForm">
-          <p id="quizQuestion">Laddar quiz...</p>
-          <article id="radios"></article>
-          <article id="checkboxes"></article>
+          <section id="quizLayout">
+            <p id="quizQuestion">Laddar quiz...</p>
+            <article id="radios"></article>
+            <article id="checkboxes"></article>
+            <p id="noSelected">Du har inte valt något alternativ</p>
+          </section>
           <button type="submit" id="quizSubmitBtn">Visa resultat</button>
           <button type="button" id="quizNextBtn">Skicka svar</button>
-          <p id="noSelected">Du har inte valt något alternativ</p>
         </form>
       </section>
     </main>
