@@ -68,6 +68,7 @@ h4 {
 p {
   font-size: 16px;
 }
+
 body {
   display: flex;
   flex-direction: column;
@@ -76,7 +77,6 @@ body {
   min-width: 100vw;
   overflow-x: hidden;
   margin: 0;
-  padding: 0;
   background-color: var(--background);
   font-family: var(--font-primary);
 }
@@ -97,5 +97,19 @@ header img {
 
 main {
   margin-top: 60px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  margin: 2rem;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}
+
+
+.nav-desktop {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+
 }
