@@ -13,8 +13,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(createSession());
 app.use(express.static("public"));
-app.use(cors());
-
+app.use(cors(
+    {
+        origin: 'http://localhost:63342',
+        methods: ['GET', 'POST', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true,
+        preflightContinue: false,
+        optionsSuccessStatus: 204
+    }
+));
 
 //Users Routes
 app.use("/users", userRoutes);
