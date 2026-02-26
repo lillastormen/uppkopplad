@@ -1,6 +1,6 @@
 #quizLayout {
-  border: 1px solid var(--border);
   border-radius: 5px;
+  background-color: var(--offwhite);
 }
 
 #quizQuestion {
