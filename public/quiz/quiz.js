@@ -27,9 +27,8 @@ form.addEventListener("submit", e => {
       result.push(false);
     }
   }
-  const trueAmount = result.filter(t => t === true).length;
   const resultText = document.createElement("p");
-  resultText.textContent = `Ditt fick ${trueAmount} rätt av totalt ${result.length}`;
+  resultText.textContent = `Ditt fick ${result.filter(t => t === true).length} rätt av totalt ${result.length}`;
   quizSection.appendChild(resultText);
 });
 
@@ -90,6 +89,7 @@ async function loadQuiz(id) {
 function showQuestion(quiz) {
   question.textContent = quiz[currentQuestion].question;
   question.style.setProperty("background-color", "var(--primary");
+  numQuestion.textContent = `Fråga ${currentQuestion + 1} av ${quiz.length}`;
 
   if (quiz[currentQuestion].multiple_choices) {
     type = "checkbox";
@@ -105,7 +105,7 @@ function showQuestion(quiz) {
   quiz[currentQuestion].answers.forEach(a => {
     label = document.createElement("label");
     label.innerHTML = `
-      <input type=${type} name=question value="${a.answer}">${a.answer}
+      <input type="${type}" name="question" value="${a.answer}"><span id="answer">${a.answer}</span>
       `;
     if (type === "radio") {
       radio.appendChild(label);

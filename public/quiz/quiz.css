@@ -1,6 +1,8 @@
 #quizLayout {
   border-radius: 5px;
   background-color: var(--offwhite);
+  width: 300px;
+  padding-bottom: 30px;
 }
 
 #quizQuestion {
@@ -21,6 +23,9 @@
 #checkboxes {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  accent-color: var(--secondary);
 }
 
 #checkboxInputs,
@@ -36,7 +41,21 @@
 }
 
 #quizQuestion {
+  color: var(--offwhite);
   margin-top: 0;
   padding: 10px;
   background-color: var(--primary);
+}
+
+input {
+  transform: scale(2);
+  margin-right: 20px;
+}
+label {
+  margin-left: 15px;
+}
+
+#answer {
+  position: absolute;
+  width: 230px;
 }
