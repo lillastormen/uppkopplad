@@ -10,25 +10,25 @@
   </head>
   <body>
     <header>
-        <!-- <div data-include="nav.html">ssssssssss</div> -->
-         <nav class="nav-mobile">
-    <a href="index.html">
-        <img src="./images/upp_logo.svg" alt="uppkoppladLogo" id="logo"/>
-    </a>
-</nav>
+      <nav class="nav-mobile">
+        <a href="index.html">
+          <img src="./images/upp_logo.svg" alt="uppkoppladLogo" id="logo" />
+        </a>
+      </nav>
     </header>
     <main>
       <section id="quiz">
+        <p id="numQuestion"></p>
         <form id="quizForm">
           <section id="quizLayout">
             <p id="quizQuestion">Laddar quiz...</p>
             <article id="radios"></article>
             <article id="checkboxes"></article>
-            <p id="noSelected">Du har inte valt något alternativ</p>
           </section>
           <button type="submit" id="quizSubmitBtn">Visa resultat</button>
           <button type="button" id="quizNextBtn">Skicka svar</button>
         </form>
+        <p id="noSelected">Du har inte valt något alternativ</p>
       </section>
     </main>
     <footer><p>&copy; Uppkopplad 2026</p></footer>

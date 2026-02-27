@@ -5,7 +5,7 @@ import "dotenv/config";
 import cors from "cors";
 import modulesRoutes from "./routes/moduleRoutes.ts";
 import { createSession } from "./config/session.ts";
-import routes from './routes/moduleRoutes.ts';
+import routes from "./routes/moduleRoutes.ts";
 
 const app = express();
 
@@ -13,16 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(createSession());
 app.use(express.static("public"));
-app.use(cors(
-    {
-        origin: 'http://localhost:63342',
-        methods: ['GET', 'POST', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization'],
-        credentials: true,
-        preflightContinue: false,
-        optionsSuccessStatus: 204
-    }
-));
+app.use(cors());
 
 //Users Routes
 app.use("/users", userRoutes);

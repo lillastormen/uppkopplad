@@ -16,5 +16,4 @@ import quiz from "./quiz/quiz.js";
 
 // document.addEventListener("DOMContentLoaded", includeHTML);
 
-
-quiz.loadQuiz(2);
+quiz.loadQuiz(1);
