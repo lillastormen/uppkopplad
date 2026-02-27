@@ -82,6 +82,8 @@ body {
 }
 
 header {
+  display: flex;
+  justify-content: center;
   width: 100vw;
   height: 70px;
   background-color: var(--offwhite);
@@ -106,8 +108,9 @@ footer {
 
 nav {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 #logo {
+  height: 50px;
 }
