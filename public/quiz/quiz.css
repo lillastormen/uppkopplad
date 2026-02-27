@@ -56,6 +56,7 @@ label {
 }
 
 #answer {
+  align-items: center;
   position: absolute;
   width: 230px;
 }

@@ -6,6 +6,7 @@ const radio = document.querySelector("#radios");
 const checkbox = document.querySelector("#checkboxes");
 const noSelected = document.querySelector("#noSelected");
 const quizSection = document.querySelector("#quiz");
+const numQuestion = document.querySelector("#numQuestion");
 let currentQuestion = 0;
 let currentQuiz;
 let userAnswers = [];
@@ -17,8 +18,7 @@ let label;
 form.addEventListener("submit", e => {
   e.preventDefault();
   form.style.display = "none";
-  console.log(userAnswers);
-  console.log(correctAnswers);
+  numQuestion.style.display = "none";
 
   for (let i = 0; i < correctAnswers.length; i++) {
     if (String(correctAnswers[i]) == String(userAnswers[i])) {
