@@ -1,19 +1,19 @@
 import quiz from "./quiz/quiz.js";
 
-// function includeHTML() {
+export function includeHTML() {
 
-//     const includes = document.querySelectorAll('[data-include]');
+    const includes = document.querySelectorAll('[data-include]');
 
-//     includes.forEach(element => {
-//         const file = element.getAttribute('data-include');
+    includes.forEach(element => {
+        const file = element.getAttribute('data-include');
 
-//         fetch(file)
-//             .then(response => response.text())
-//             .then(html => {element.innerHTML = html;
-//         });
-//     });
-// }
+        fetch(file)
+            .then(response => response.text())
+            .then(html => {element.innerHTML = html;
+        });
+    });
+}
 
-// document.addEventListener("DOMContentLoaded", includeHTML);
+document.addEventListener("DOMContentLoaded", includeHTML);
 
 quiz.loadQuiz(1);

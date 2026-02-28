@@ -10,15 +10,16 @@
   </head>
   <body>
     <header>
-      <nav>
+      <!-- <nav>
         <a href="index.html">
           <img
-            src="./images/uppkopplad_logo.svg"
+            src="./images/upp_logo.svg"
             alt="uppkoppladLogo"
             id="logo"
           />
         </a>
-      </nav>
+      </nav> -->
+           <div data-include="nav.html"></div>
     </header>
     <main>
       <section id="quiz">
@@ -29,8 +30,8 @@
             <article id="radios"></article>
             <article id="checkboxes"></article>
           </section>
-          <button type="submit" id="quizSubmitBtn">Visa resultat</button>
-          <button type="button" id="quizNextBtn">Skicka svar</button>
+          <button type="submit" id="quizSubmitBtn" class="primary-btn">Visa resultat</button>
+          <button type="button" id="quizNextBtn" class="primary-btn">Skicka svar</button>
         </form>
         <p id="noSelected">Du har inte valt något alternativ</p>
       </section>
