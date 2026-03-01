@@ -1,8 +1,8 @@
 
 #log-img {
     display: block;
-    width: 260px;
-    height: 250px;
+    width: 100%;
+    height: 300px;
 }
 
 .container {
@@ -15,7 +15,6 @@
 #login-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 1.5rem;
 }
 
@@ -76,5 +75,5 @@ input {
 }
 
 #big-login-btn {
-      margin-top: 3rem;
+    margin-top: 3rem;
 }

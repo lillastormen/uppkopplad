@@ -24,7 +24,7 @@ form.addEventListener('submit', async (event) => {
         message.textContent = data.error || 'Fel lösenord. Kontrollera dina uppgifter och försök igen.';
         return;
     } else {
-        window.location.href="/account"
+         window.location.href = "/modules/mainModules.html";
     }
     // message.textContent = `Inloggad som ${username}`;
     form.reset();
