@@ -9,15 +9,13 @@
 </head>
 <body>
 <header>
-    <nav>
-        <a href="../index.html"
-        ><img src="../images/uppkoppladLogo.svg" alt="uppkoppladLogo"
-        /></a>
-    </nav>
+     <header>
+        <div data-include="/nav.html"></div>
+    </header>
 </header>
 
 <main>
-    <h2>Välkommen, användare!</h2>
+    <h2 id="greeting">Loading...</h2>
 
     <p>Välj en modul för att utveckla dina kunskaper inom det område
         du är intresserad av.
@@ -32,5 +30,6 @@
 
 <footer><p>&copy; Uppkopplad 2026</p></footer>
 <script src="../modulesJS/mainModules.js" type="module"></script>
+<script src="../account/userAuth.js" type="module"></script>
 </body>
 </html>

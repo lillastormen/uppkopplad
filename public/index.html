@@ -10,15 +10,7 @@
   </head>
   <body>
     <header>
-      <nav>
-        <a href="index.html">
-          <img
-            src="./images/uppkopplad_logo.svg"
-            alt="uppkoppladLogo"
-            id="logo"
-          />
-        </a>
-      </nav>
+           <div data-include="/nav.html"></div>
     </header>
     <main>
       <section id="quiz">
@@ -29,12 +21,13 @@
             <article id="radios"></article>
             <article id="checkboxes"></article>
           </section>
-          <button type="submit" id="quizSubmitBtn">Visa resultat</button>
-          <button type="button" id="quizNextBtn">Skicka svar</button>
+          <button type="submit" id="quizSubmitBtn" class="primary-btn">Visa resultat</button>
+          <button type="button" id="quizNextBtn" class="primary-btn">Skicka svar</button>
         </form>
         <p id="noSelected">Du har inte valt något alternativ</p>
       </section>
     </main>
     <footer><p>&copy; Uppkopplad 2026</p></footer>
+    <script src="includeHTML.js" type="module" defer></script>
   </body>
 </html>

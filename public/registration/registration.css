@@ -21,8 +21,21 @@
 label {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+    font-size: 16px;
 }
 
+label[for="password"],
+label[for="passwordRepeat"],
+label[for="username"] {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+label[for="policy"] {
+    color: var(--text-medium-grey);
+}
+
+/* 
 button {
     background-color: var(--primary);
     color: var(--offwhite);
@@ -31,16 +44,13 @@ button {
     padding: 1.25rem 0;
     border-radius: 0.5rem;
     margin: 0 2rem;
-}
+} */
 
 h4 {
     margin-left: 0;
     padding-left: 0;
-}
-
-#toggle-visibility {
-    width: 24px;
-    height: 24px;
+    color: var(--primary);
+    font-weight: 300;
 }
 
 input {
@@ -50,5 +60,40 @@ input {
     color: var(--primary);
     border-color: var(--primary);
     border-style: solid;
+}
 
+#password {
+    width: 100%;
+    border-right: none;
+    border-radius: 0.5rem 0 0 0.5rem
+}
+
+.password-field {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+#toggle-visibility {
+    background-color: var(--backround);
+    border-radius: 0 0.5rem 0.5rem 0;
+    border: 1px var(--primary) solid;
+    border-left: none;
+}
+
+#password-container {
+    display: flex;
+}
+
+i {
+    color: var(--primary);
+    font-size: 18px
+}
+
+#policy-container {
+    margin-top: 1.5rem;
+}
+
+#registration-btn {
+    margin-top: 3rem;
 }

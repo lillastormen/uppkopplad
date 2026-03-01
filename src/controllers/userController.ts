@@ -78,13 +78,17 @@ export async function loginUser(req: Request, res: Response) {
         // console.log(`Inloggad som ${username}`);
         // console.log("Session ID:", req.sessionID);
         // console.log("Session object:", req.session);
+        
+        // res.redirect("/modules/mainModules.html");
 
         return res.status(200).json({
             success: true,
             sessionId: req.sessionID,  
             sessionUserId: req.session.userId, 
             data: user 
+            
         }) 
+        
     } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Unknown error occured." 
         return res.status(500).json({
@@ -116,6 +120,13 @@ export async function authenticateUser(req: Request, res: Response) {
         success: true,
         data: { id: user.id, username: user.username}
     });
+}
+
+export function logoutUser(req: Request, res: Response) {
+  req.session.destroy(() => {
+    res.clearCookie("sid");
+    res.status(200).json({ success: true });
+  });
 }
 
 export async function getUsers(req: Request, res: Response) {
