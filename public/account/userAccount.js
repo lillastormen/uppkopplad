@@ -10,12 +10,6 @@ async function loadAuthenticateUser() {
         credentials: "include"
     });
 
-    // console.log('auth status: ', res.status);
-    // console.log('con-type: ', res.headers.get("content-type"));
-
-    // const text = await res.text();
-    // console.log('text: ', text)
-
     if (res.status === 401) {
         //not logged in, send to login page
         window.location.href="/login";
@@ -25,6 +19,6 @@ async function loadAuthenticateUser() {
     let json = await res.json();
     const username = json.data.username;    
 
-    document.getElementById('greeting').textContent = `Hello ${username}`;
+    document.getElementById('greeting').textContent = `Välkommem ${username}`;
     
 }
