@@ -1,3 +1,7 @@
+import { includeHTML } from '../includeHTML.js'
+
+includeHTML();
+
 const url = 'http://localhost:3000/users/login';
 const form = document.getElementById('login-form');
 const message = document.getElementById('login-message');
@@ -29,19 +33,18 @@ form.addEventListener('submit', async (event) => {
 //toggle password visibility button
 const input = document.getElementById('password') || null;
 const toggleButton = document.getElementById('toggle-visibility');
+const icon = toggleButton?.querySelector('i');
 
-if (input && toggleButton) {
+if (input && toggleButton && icon) {
     toggleButton.addEventListener('click', () => {
-        if (input.type === 'password') {
-            input.type = 'text';
-            toggleButton.textContent = '🙈';
-        } else {
-            input.type = 'password';
-            toggleButton.textContent = '👀'
-        }
+        const isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+
+        icon.classList.toggle('bi-eye', !isPassword);
+        icon.classList.toggle('bi-eye-slash', isPassword);
     });
 }
 
-function login() {
+// function login() {
     
-}
+// }

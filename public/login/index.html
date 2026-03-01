@@ -3,26 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="./login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <title>Login</title>
 </head>
 <body>
+    <header>
+        <div data-include="/nav.html"></div>
+    </header>
+    
     <form id="login-form">
-    <h1>Logga in</h1>
-    <div class="container">
-        <p>Fyll i formuläret för att logga in</p>
+        <img src="/images/img_10.png" alt="login_img" id="log-img"/>
+        <div class="container">
+            <h4>Fyll i formuläret för att logga in</h4>
 
-        <label for="username">Användarnamn: </label>
-        <input type="text" placeholder="Fyll i ditt Användarnamn" name="username" id="username" required>
+            <label for="username">Användarnamn: </label>
+            <input type="text" placeholder="Fyll i ditt Användarnamn" name="username" id="username" required>
 
-        <label for="password">Lösenord: </label>
-        <input type="password" placeholder="Fyll i ditt Lösenord" name="password" id="password" required>
-        <button type="button" id="toggle-visibility" aria-label="Visa lösenord">Visa lösenord</button>
+            <div style="margin-top: 0.5rem;">
+                <label for="password">Lösenord: </label>
+                <div class="password-field">
+                    <input type="password" placeholder="Fyll i ditt Lösenord" name="password" id="password" required>
+                    <button type="button" id="toggle-visibility" aria-label="Visa lösenord">
+                        <i class="bi bi-eye"></i>
+                </div>
+                </button>
+            </div>
 
-        <button type="submit" class="login-btn">Logga in</button>
-        
-    </div>
-    <div id="login-message"></div>
-</form>
-    <script src="./login.js"></script>
+            <button type="submit" class="primary-btn" id="big-login-btn">Logga in</button>
+            
+        </div>
+        <div id="login-message"></div>
+    </form>    
+    <script src="./login.js" type="module" defer></script>
 </body>
 </html>
