@@ -21,21 +21,23 @@
         <label for="username">Användarnamn: </label>
         <input type="text" placeholder="Fyll i ditt Användarnamn" name="username" id="username" required>
 
-        <div>
+        <div style="margin-top: 0.5rem;">
             <label for="password">Lösenord: </label>
             <div class="password-field">
                   <input type="password" placeholder="Fyll i ditt Lösenord" name="password" id="password" required>
             <button type="button" id="toggle-visibility" aria-label="Visa lösenord"><i class="bi bi-eye"></i></button>
             </div>
-          
         </div>
 
         <label for="passwordRepeat">Bekfräta: </label>
         <input type="password" placeholder="Bekfräta ditt lösenord" name="passwordRepeat" id="passwordRepeat" required>
 
-        <p>Genom att skapa ett konto accepterar du våra <a href="#">Användarvillkor och integritetspolicy</a>.</p>
+        <div id="policy-container">
+            <input type="checkbox" id="policy" name="policy" value="Policy">
+            <label for="policy">Genom att skapa ett konto accepterar du våra <a href="#">Användarvillkor och integritetspolicy</a>.</label>
+        </div>
 
-        <button type="submit" class="primary-btn">Registera</button>
+        <button type="submit" class="primary-btn" id="registration-btn">Registera</button>
     </div>
     <div id="registration-message"></div>
 </form>
