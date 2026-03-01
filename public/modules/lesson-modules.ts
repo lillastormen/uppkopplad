@@ -25,3 +25,21 @@ async function fetchSubModules (mainModule: string): Promise<lessonsDocument[]> 
         throw error;
     }
 }
+
+function getMainModuleFromUrl (): string | null {
+    const params = new URLSearchParams(window.location.search);
+
+    return params.get('module');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const moduleName = getMainModuleFromUrl();
+
+    if (moduleName) {
+        fetchSubModules(moduleName)
+        .then((subModules) => {
+            console.log('Hämtade undermoduler', subModules);
+        })
+        // lägg till catch block 
+    }
+});
