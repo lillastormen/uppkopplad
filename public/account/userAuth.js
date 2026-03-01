@@ -28,11 +28,13 @@ async function loadAuthenticateUser() {
     const username = json.data.username;    
 
    if (greetingEl) {
-    greetingEl.textContent = `Välkommem ${username}`;
+        greetingEl.textContent = `Välkommem ${username}`;
    }
 
    if (authButton) {
         authButton.textContent = 'Logga ut';
+        authButton.classList.remove('primary-btn');
+        authButton.classList.add('secondary-btn');
         authButton.onclick = logout;
    }
 
