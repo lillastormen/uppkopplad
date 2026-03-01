@@ -122,6 +122,13 @@ export async function authenticateUser(req: Request, res: Response) {
     });
 }
 
+export function logoutUser(req: Request, res: Response) {
+  req.session.destroy(() => {
+    res.clearCookie("sid");
+    res.status(200).json({ success: true });
+  });
+}
+
 export async function getUsers(req: Request, res: Response) {
     try {
         const users = await getAllUsers();
