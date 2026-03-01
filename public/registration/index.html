@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="./registration.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <title>Registration</title>
 </head>
 <body>
@@ -13,7 +14,6 @@
     </header>
     
     <form id="registration-form">
-    <h1>Register</h1>
     <img src="/images/image_7.png" alt="registration_img" id="reg-img"/>
     <div class="container">
         <h4>Fyll i formuläret för att skapa ditt konto</h4>
@@ -21,9 +21,14 @@
         <label for="username">Användarnamn: </label>
         <input type="text" placeholder="Fyll i ditt Användarnamn" name="username" id="username" required>
 
-        <label for="password">Lösenord: </label>
-        <input type="password" placeholder="Fyll i ditt Lösenord" name="password" id="password" required>
-        <button id="toggle-visibility" aria-label="Visa lösenord">ZZZZ</button>
+        <div>
+            <label for="password">Lösenord: </label>
+            <div class="password-field">
+                  <input type="password" placeholder="Fyll i ditt Lösenord" name="password" id="password" required>
+            <button type="button" id="toggle-visibility" aria-label="Visa lösenord"><i class="bi bi-eye"></i></button>
+            </div>
+          
+        </div>
 
         <label for="passwordRepeat">Bekfräta: </label>
         <input type="password" placeholder="Bekfräta ditt lösenord" name="passwordRepeat" id="passwordRepeat" required>

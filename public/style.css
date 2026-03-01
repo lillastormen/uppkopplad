@@ -118,6 +118,16 @@ footer {
     margin: 1rem;
 }
 
+.secondary-btn {
+    background-color: var(--secondary);
+    color: var(--offwhite);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
+}
+
 
 .nav-mobile {
   display: flex;

@@ -38,10 +38,6 @@ h4 {
     padding-left: 0;
 }
 
-#toggle-visibility {
-    width: 24px;
-    height: 24px;
-}
 
 input {
     padding: 0.75rem;
@@ -51,4 +47,34 @@ input {
     border-color: var(--primary);
     border-style: solid;
 
+}
+
+#password {
+    width: 100%;
+    border-right: none;
+    border-radius: 0.5rem 0 0 0.5rem
+
+}
+
+.password-field {
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+#toggle-visibility {
+    background-color: var(--backround);
+    border-radius: 0 0.5rem 0.5rem 0;
+       border: 1px var(--primary) solid;
+       border-left: none;
+
+}
+
+#password-container {
+    display: flex;
+}
+
+i {
+    color: var(--primary);
+    font-size: 18px
 }
