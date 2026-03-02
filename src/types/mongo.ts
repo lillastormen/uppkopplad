@@ -19,6 +19,7 @@ export interface mainModulesDocument extends mainModules , mongoose.Document {
 
 export interface lessons {
     title: string;
+    order: number;
     slug: string;
     module: string;
     video: {

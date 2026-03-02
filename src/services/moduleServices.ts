@@ -52,7 +52,7 @@ export async function getSubModulesForMainModule (mainModuleName: 'mobil' | 'dat
     }
 }
 
-// CRUD for lessons
+// CRUD for Lesson Modules
 export async function createLesson (data: lessons): Promise<lessonsDocument> {
     try {
         const lesson = new Lesson(data);

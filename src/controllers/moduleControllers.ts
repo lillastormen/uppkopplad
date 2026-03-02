@@ -47,7 +47,7 @@ export const allSubModulesForMainModuleGet = async (req: Request, res: Response)
     }
 }
 
-// CRUD for Lessons
+// CRUD for Lessons Modules
 export const LessonCreate = async (req: Request, res: Response): Promise<void> => {
     try {
         const newLesson = await createLesson(req.body);

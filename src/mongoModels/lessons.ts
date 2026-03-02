@@ -4,6 +4,7 @@ import { type lessonsDocument } from "../types/mongo.ts";
 const lessonsSchema = new Schema<lessonsDocument>(
     {
         title: { type: String, required: true, trim: true },
+        order: { type: Number, required: true }, 
         slug: { type: String, required: true, unique: true, lowercase: true },
         module: { type: String, required: true },
         video: { type: {

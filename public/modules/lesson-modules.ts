@@ -43,6 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const lessonButtons = document.querySelector('#lesson-buttons')!;
 
                 lessonButtons.innerHTML = '';
+
+                subModules.forEach((subModule) => {
+                    const button = document.createElement('button');
+
+                    button.textContent = subModule.module;
+
+                    lessonButtons.appendChild(button);
+                });
             })
             .catch((err) => {
                 const error = err as Error;

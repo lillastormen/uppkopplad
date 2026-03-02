@@ -29,6 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchSubModules(moduleName)
             .then((subModules) => {
             console.log('Fetched submodules:', subModules);
+            const lessonButtons = document.querySelector('#lesson-buttons');
+            lessonButtons.innerHTML = '';
+            subModules.forEach((subModule) => {
+                const button = document.createElement('button');
+                button.textContent = subModule.module;
+                lessonButtons.appendChild(button);
+            });
         })
             .catch((err) => {
             const error = err;
