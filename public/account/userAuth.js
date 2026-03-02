@@ -31,11 +31,14 @@ async function loadAuthenticateUser() {
         greetingEl.textContent = `Välkommem ${username}`;
    }
 
-   if (authButton) {
-        authButton.textContent = 'Logga ut';
+   if (res.ok) {
+        if(authButton) {
+             authButton.textContent = 'Logga ut';
         authButton.classList.remove('primary-btn');
         authButton.classList.add('secondary-btn');
         authButton.onclick = logout;
+        }
+       
    }
 
    async function logout() {
