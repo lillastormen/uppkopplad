@@ -5,10 +5,10 @@
     background-color: var(--offwhite);
 }
 
+
 #reg-img {
     display: block;
-    width: 260px;
-    height: 390px;
+    width: 100%;
 }
 
 #registration-form {

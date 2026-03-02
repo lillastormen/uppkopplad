@@ -168,6 +168,9 @@ export async function createNewUser(req: Request, res: Response) {
 
         const newUser = await userService.registerUser({ username, password });
 
+         //automatically log in the user
+        req.session.userId = newUser.id;
+
         return res.status(201).json({
             success: true,
             message: 'User registered successfully.',
