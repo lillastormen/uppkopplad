@@ -1,6 +1,3 @@
-import { includeHTML } from '../includeHTML.js'
-
-includeHTML();
 
 const API_BASE = 'http://localhost:3000';
 async function fetchSubModules(mainModule) {
