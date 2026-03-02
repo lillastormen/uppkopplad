@@ -1,11 +1,13 @@
-#quizLayout {
+#quizMainLayout {
   border-radius: 5px;
   background-color: var(--offwhite);
   width: 300px;
-  padding-bottom: 30px;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 #quizQuestion {
+  font-weight: bold;
   border-radius: 5px 5px 0px 0px;
 }
 
@@ -17,6 +19,7 @@
 #quizForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #radios,
