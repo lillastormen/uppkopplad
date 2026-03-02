@@ -37,9 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (moduleName) {
         fetchSubModules(moduleName)
-        .then((subModules) => {
-            console.log('Hämtade undermoduler', subModules);
-        })
-        // lägg till catch block 
+            .then((subModules) => {
+                console.log('Fetched submodules:', subModules);
+
+                const lessonButtons = document.querySelector('#lesson-buttons')!;
+
+                lessonButtons.innerHTML = '';
+            })
+            .catch((err) => {
+                const error = err as Error;
+                console.log('Could not fetch submodules (lessons)', error.message);
+            });
+    } else {
+        console.log('No module in URL query');
     }
 });
