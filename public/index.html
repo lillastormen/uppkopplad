@@ -10,21 +10,34 @@
   </head>
   <body>
     <header>
-           <div data-include="/nav.html"></div>
+      <div data-include="/nav.html"></div>
     </header>
     <main>
       <section id="quiz">
-        <p id="numQuestion"></p>
+        <article id="quizResult">
+          <h1 id="resultHeading"></h1>
+          <p id="resultText"></p>
+          <a href="./registration/index.html"
+            ><button id="createAccountBtn" class="btn primary-btn">
+              Skapa konto
+            </button></a
+          >
+        </article>
         <form id="quizForm">
-          <section id="quizLayout">
+          <p id="numQuestion"></p>
+          <section id="quizMainLayout">
             <p id="quizQuestion">Laddar quiz...</p>
             <article id="radios"></article>
             <article id="checkboxes"></article>
           </section>
-          <button type="submit" id="quizSubmitBtn" class="primary-btn">Visa resultat</button>
-          <button type="button" id="quizNextBtn" class="primary-btn">Skicka svar</button>
+          <button type="submit" id="quizSubmitBtn" class="btn primary-btn">
+            Visa resultat
+          </button>
+          <button type="button" id="quizNextBtn" class="btn primary-btn">
+            Skicka svar
+          </button>
+          <p id="noSelected">Välj ett alternativ</p>
         </form>
-        <p id="noSelected">Du har inte valt något alternativ</p>
       </section>
     </main>
     <footer><p>&copy; Uppkopplad 2026</p></footer>

@@ -73,8 +73,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* min-height: 100vh;
-  min-width: 100vw; */
+  min-height: 100vh;
+  min-width: 100vw;
   overflow-x: hidden;
   margin: 0;
   background-color: var(--background);
@@ -89,48 +89,39 @@ header {
 }
 
 #logo {
-  width: 100%; 
-  height: 50px; 
+  width: 100%;
+  height: 50px;
   object-fit: contain;
   display: block;
   margin: 1rem 0.5rem;
-
 }
 
 main {
-  /* flex-grow: 1; */
+  flex-grow: 1;
   margin: 2rem;
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
 }
 
+.btn {
+  padding: 1rem 2rem;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border-style: none;
+  cursor: pointer;
+}
 
 .primary-btn {
-    background-color: var(--primary);
-    color: var(--offwhite);
-    font-size: 16px;
-    font-weight: bold;
-    padding: 1.25rem;
-    border-radius: 0.5rem;
-    margin: 1rem;
-    border-style: none;
+  background-color: var(--primary);
+  color: var(--offwhite);
 }
 
 .secondary-btn {
-    background-color: var(--secondary);
-    color: var(--offwhite);
-    font-size: 16px;
-    font-weight: bold;
-    padding: 1.25rem;
-    border-radius: 0.5rem;
-    margin: 1rem;
-    border-color: var(--secondary);
-    border-style: none;
+  background-color: var(--secondary);
+  color: var(--offwhite);
 }
-
 
 .nav-mobile {
   display: flex;
