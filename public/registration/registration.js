@@ -31,7 +31,7 @@ form.addEventListener('submit', async (event) => {
         message.textContent = data.error || 'Registering misslyckades. Kontrollera dina uppgifter och försök igen.';
         return;
     }
-    message.textContent = 'Ditt konto har skapats';
+    // message.textContent = 'Ditt konto har skapats';
     form.reset();
 });
 
