@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadAuthenticateUser();
 });
 
-async function loadAuthenticateUser() {
+export async function loadAuthenticateUser() {
 
     const res = await fetch (url, {
         credentials: "include"
@@ -14,45 +14,47 @@ async function loadAuthenticateUser() {
     const greetingEl = document.getElementById('greeting');
     const authButton = document.getElementById('auth-btn');
 
+    console.log(authButton);
+
     if (!res.ok) {
-        if (authButton) {
-            authButton.textContent ='Logga in';
-            authButton.onclick = () => {
-                window.location.href = '/login';
-            };
-        } else {
-                  authButton.textContent = 'Logga ut';
-        authButton.classList.remove('primary-btn');
-        authButton.classList.add('secondary-btn');
-        authButton.onclick = logout;
+        authButton.textContent ='Logga in';
+        authButton.classList.remove('secondary-btn');
+        authButton.classList.add('primary-btn');
+        authButton.onclick = () => {
+            window.location.href = '/login';
+        };
+    
+        if (greetingEl) {
+            greetingEl.textContent = "";
         }
-        }
-        return;
+         return;
     }
 
     let json = await res.json();
     const username = json.data.username;    
 
-   if (greetingEl) {
+    if (greetingEl) {
         greetingEl.textContent = `Välkommem ${username}`;
-   }
+    }
+  
+    if(authButton){
+        console.log('got it');
+        authButton.textContent = 'Logga ut';
+        authButton.classList.replace('primary-btn', 'secondary-btn');
+    }
 
-//    if (res.ok) {
-//         if(authButton) {
-//              authButton.textContent = 'Logga ut';
-//         authButton.classList.remove('primary-btn');
-//         authButton.classList.add('secondary-btn');
-//         authButton.onclick = logout;
-//         }
-       
-//    }
+    // authButton.classList.add('secondary-btn');
+     console.log(authButton);
+    authButton.onclick = logout;
+
+
 
    async function logout() {
-    await fetch("/logout", {
-        method: "POST",
-        credentials: "include"
-    });
+        await fetch("/logout", {
+            method: "POST",
+            credentials: "include"
+        });
 
-    window.location.href = "/";
-}
+        window.location.href = "/";
+    }
 }

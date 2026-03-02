@@ -1,4 +1,9 @@
 "use strict";
+
+import { includeHTML } from '../includeHTML.js'
+
+includeHTML();
+
 const mobileBtn = document.getElementById('mobile-btn');
 const computerBtn = document.getElementById('computer-btn');
 const internetBtn = document.getElementById('internet-btn');
