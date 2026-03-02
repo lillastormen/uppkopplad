@@ -1,4 +1,5 @@
 const quizSection = document.querySelector("#quiz");
+const quizResult = document.querySelector("#quizResult");
 const resultHeading = document.querySelector("#resultHeading");
 const resultText = document.querySelector("#resultText");
 const question = document.querySelector("#quizQuestion");
@@ -19,6 +20,7 @@ let label;
 
 form.addEventListener("submit", e => {
   e.preventDefault();
+  validateInput();
   form.style.display = "none";
 
   correctAnswers = currentQuiz.map(q =>
@@ -32,8 +34,17 @@ form.addEventListener("submit", e => {
       result.push(false);
     }
   }
+
+  quizResult.style.display = "block";
   resultHeading.textContent = "Här är ditt resultat!";
-  resultText.textContent = `Ditt svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.`;
+  resultText.textContent = `Ditt svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.
+
+  Bra jobbat! Du har en bra grund. Vill du fortsätta utveckla dina kunskaper?
+
+  Skapa ett konto för att:
+  - Spara dina resultat
+  - Följa din utveckling över tid
+  - Få full tillgång`;
   quizSection.appendChild(resultText);
 });
 
@@ -114,7 +125,8 @@ function validateInput() {
     currentQuestion++;
     if (currentQuiz[currentQuestion]) {
       showQuestion(currentQuiz);
-    } else {
+    }
+    if (!currentQuiz[currentQuestion + 1]) {
       next.style.display = "none";
       submit.style.display = "block";
     }
