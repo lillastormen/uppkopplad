@@ -1,36 +1,38 @@
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-h2{
-    color: #3B615E;
+h2 {
+  color: #3b615e;
 }
 
+/* Detta är anledningen att texten på logga in knappen inte syntes
 p {
-    color: #3B615E;
-    font-weight: bold;
+  color: #3b615e;
+  font-weight: bold;
 }
+*/
 
 #module-buttons {
-    display: flex;
-    flex-direction: column;
-    margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
 }
 
 #module-buttons button {
-    font-size: 150%;
-    padding: 1em 3em;
-    margin-bottom: 1.5em;
-    background-color: #3B615E;
-    color: #f1f1f1;
-    border: none;
-    border-radius: 5%;
+  font-size: 150%;
+  padding: 1em 3em;
+  margin-bottom: 1.5em;
+  background-color: #3b615e;
+  color: #f1f1f1;
+  border: none;
+  border-radius: 5%;
 }
 
 #module-buttons button:hover {
-    background-color: #2d4a47;
-    color: #e1dede;
+  background-color: #2d4a47;
+  color: #e1dede;
 }

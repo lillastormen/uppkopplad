@@ -1,38 +1,37 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    padding: 0 1.5rem 1.5rem;
-    background-color: var(--offwhite);
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem 1.5rem;
+  background-color: var(--offwhite);
 }
 
-
 #reg-img {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 50%;
 }
 
 #registration-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5rem;
 }
 
 label {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 16px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
 }
 
 label[for="password"],
 label[for="passwordRepeat"],
 label[for="username"] {
-    font-weight: bold;
-    color: var(--primary);
+  font-weight: bold;
+  color: var(--primary);
 }
 
 label[for="policy"] {
-    color: var(--text-medium-grey);
+  color: var(--text-medium-grey);
 }
 
 /* 
@@ -47,53 +46,53 @@ button {
 } */
 
 h4 {
-    margin-left: 0;
-    padding-left: 0;
-    color: var(--primary);
-    font-weight: 300;
+  margin-left: 0;
+  padding-left: 0;
+  color: var(--primary);
+  font-weight: 300;
 }
 
 input {
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    border: 1px var(--primary) solid;
-    color: var(--primary);
-    border-color: var(--primary);
-    border-style: solid;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px var(--primary) solid;
+  color: var(--primary);
+  border-color: var(--primary);
+  border-style: solid;
 }
 
 #password {
-    width: 100%;
-    border-right: none;
-    border-radius: 0.5rem 0 0 0.5rem
+  width: 100%;
+  border-right: none;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 .password-field {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
 }
 
 #toggle-visibility {
-    background-color: var(--backround);
-    border-radius: 0 0.5rem 0.5rem 0;
-    border: 1px var(--primary) solid;
-    border-left: none;
+  background-color: var(--backround);
+  border-radius: 0 0.5rem 0.5rem 0;
+  border: 1px var(--primary) solid;
+  border-left: none;
 }
 
 #password-container {
-    display: flex;
+  display: flex;
 }
 
 i {
-    color: var(--primary);
-    font-size: 18px
+  color: var(--primary);
+  font-size: 18px;
 }
 
 #policy-container {
-    margin-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 #registration-btn {
-    margin-top: 3rem;
+  margin-top: 3rem;
 }

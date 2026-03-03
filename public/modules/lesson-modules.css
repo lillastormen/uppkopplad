@@ -1,53 +1,55 @@
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 0;
 }
 
 img {
-    width: 100px;
-    height: auto;
+  width: 100px;
+  height: auto;
 }
 
+/* Detta är anledningen att texten på logga in knappen inte syntes
 p {
-    color: #3B615E;
-    font-weight: bold;
+  color: #3b615e;
+  font-weight: bold;
 }
+*/
 
 #lesson-buttons {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
 }
 
 #lesson-buttons button {
-    font-size: 130%;
-    padding: 1em 2em;
-    margin-bottom: 1em;
-    background-color: #3B615E;
-    color: #f1f1f1;
-    border: none;
-    border-radius: 5%;
+  font-size: 130%;
+  padding: 1em 2em;
+  margin-bottom: 1em;
+  background-color: #3b615e;
+  color: #f1f1f1;
+  border: none;
+  border-radius: 5%;
 }
 
 #lesson-buttons button:hover {
-    background-color: #2d4a47;
-    color: #e1dede;
+  background-color: #2d4a47;
+  color: #e1dede;
 }
 
 #quiz-btn {
-    font-size: 100%;
-    padding: 0.5em 1em;
-    background-color: #A65A00;
-    color: #f1f1f1;
-    border: none;
-    border-radius: 5%;
-    margin-top: 3em;
-    margin-bottom: 3em;
+  font-size: 100%;
+  padding: 0.5em 1em;
+  background-color: #a65a00;
+  color: #f1f1f1;
+  border: none;
+  border-radius: 5%;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 #back-btn {
-    margin-right: 13em;
+  margin-right: 13em;
 }
