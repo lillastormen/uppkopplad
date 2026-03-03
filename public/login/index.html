@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <title>Login</title>
 </head>
 <body>
     <header>
-        <div data-include="/nav.html"></div>
-
+        <nav class="nav-mobile">
+        <a href="../index.html">
+            <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo" />
+        </a>
+        <a href="./login/index.html">
+            <button class="primary-btn" id="auth-btn">
+        <p style="margin: 0.3rem">Logga in</p>
+        </button>
+    </a>
+    </nav>
         <script>console.log(document.getElementById('auth-btn'));</script>
     </header>
     
     <form id="login-form">
-        <img src="/images/img_10.png" alt="login_img" id="log-img"/>
+        <img src="../images/img_10.png" alt="login_img" id="log-img"/>
         <div class="container">
             <h4>Fyll i formuläret för att logga in</h4>
 

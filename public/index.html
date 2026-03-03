@@ -10,34 +10,51 @@
   </head>
   <body>
     <header>
-      <div data-include="/nav.html"></div>
+      <nav class="nav-mobile">
+        <a href="./index.html">
+          <img
+            src="./images/uppkopplad-logo.svg"
+            alt="uppkoppladLogo"
+            id="logo"
+          />
+        </a>
+        <a href="./login/index.html">
+          <button class="primary-btn" id="auth-btn">
+            <p style="margin: 0.3rem">Logga in</p>
+          </button>
+        </a>
+      </nav>
     </header>
 
-      <div id="hero-img-container">
-        <img src="./images/heroxxx.png" id="hero-pic">
-            <!-- <div id="gradient-hero"></div> -->
-      </div>
-    
-      <main>
-        <div id="hero-container">
-            <h1>Din enkla väg i den digitala världen</h1>
-            <p style="margin-top: 0;">Uppkopplad hjälper dig att känna sig självständig med moderna medier.<br><br>Börja ditt lärande genom att göra ett quiz.</p>
-            <!-- <p>Börja ditt lärande genom att göra ett quiz.</p> -->
-            <a href="#quizForm"><button class="primary-btn">Gör ett quiz</button></a>
+    <div id="hero-img-container">
+      <img src="./images/heroxxx.png" id="hero-pic" />
+      <!-- <div id="gradient-hero"></div> -->
+    </div>
 
-        </div>
-       
+    <main>
+      <div id="hero-container">
+        <h1>Din enkla väg i den digitala världen</h1>
+        <p style="margin-top: 0">
+          Uppkopplad hjälper dig att känna sig självständig med moderna
+          medier.<br /><br />Börja ditt lärande genom att göra ett quiz.
+        </p>
+        <!-- <p>Börja ditt lärande genom att göra ett quiz.</p> -->
+        <a href="#quizForm"
+          ><button class="primary-btn">Gör ett quiz</button></a
+        >
+      </div>
+
       <section id="quiz">
         <article id="quizResult">
           <h1 id="resultHeading"></h1>
-              <p id="resultText"></p>
-             <div><a href="./registration/index.html"
-            ><button id="createAccountBtn" class="btn primary-btn">
-              Skapa konto
-            </button></a
-          ></div>
-    
-       
+          <p id="resultText"></p>
+          <div>
+            <a href="./registration/index.html"
+              ><button id="createAccountBtn" class="btn primary-btn">
+                Skapa konto
+              </button></a
+            >
+          </div>
         </article>
         <form id="quizForm">
           <p id="numQuestion"></p>
