@@ -45,7 +45,8 @@ form.addEventListener("submit", e => {
   - Spara dina resultat
   - Följa din utveckling över tid
   - Få full tillgång`;
-  quizSection.appendChild(resultText);
+  
+  // quizSection.appendChild(resultText);
 });
 
 next.addEventListener("click", validateInput);
@@ -119,6 +120,11 @@ function validateInput() {
   }
 
   noSelected.style.opacity = "0";
+
+  //hides the hero if user answered the first question
+  if (currentQuestion === 0) {
+    document.body.classList.add("quiz-started");
+  }
 
   //PROCEED
   if (userSelected) {

@@ -73,7 +73,17 @@ label {
   color: var(--primary);
 }
 
-#createAccountBtn {
-  position: absolute;
-  margin-top: 12rem;
+/* #createAccountBtn {
+  bottom: 0;
+
+} */
+
+body.quiz-started #hero-container {
+  display: none;
+}
+
+
+#quiz {
+  display: flex;
+  flex-direction: column;
 }
