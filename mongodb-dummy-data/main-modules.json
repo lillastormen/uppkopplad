@@ -1,0 +1,33 @@
+[
+  {
+    "nameOfModule": "mobil",
+    "title": "Mobil",
+    "order": 1,
+    "subModuleSlug": [
+      "logga-in-med-mobilt-bankid",
+      "hur-du-anvander-swish",
+      "hur-du-skickar-sms-och-mms"
+    ]
+  },
+
+  {
+    "nameOfModule": "dator",
+    "title": "Dator",
+    "order": 2,
+    "subModuleSlug": [
+      "betala-rakningar",
+      "apple-pay"
+    ]
+  },
+
+  {
+    "nameOfModule": "internet",
+    "title": "Internet",
+    "order": 3,
+    "subModuleSlug": [
+      "sok-pa-google",
+      "lyssna-pa-radio",
+      "spara-ett-bokmarke"
+    ]
+  }
+]

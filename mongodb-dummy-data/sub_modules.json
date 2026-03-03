@@ -1,0 +1,139 @@
+[
+  {
+    "title": "Hur du loggar in med Mobilt BankID",
+    "order": 1,
+    "slug": "logga-in-med-mobilt-bankid",
+    "module": "BankID",
+    "video": {
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": 120,
+      "thumbnailUrl": "",
+    },
+    "steps": [
+      "Öppna din bankapp",
+      "Välj logga in med BankID",
+      "Du tas nu till din BankID app automatiskt",
+      "Ange din personliga kod, eller använd Face ID"
+    ]
+  },
+  {
+    "title": "Hur du använder Swish",
+    "order": 2,
+    "slug": "hur-du-anvander-swish",
+    "module": "Swish",
+    "video": {
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": 120,
+      "thumbnailUrl": "",
+    },
+    "steps": [
+      "Öppna din Swish-app på telefonen",
+      "Skriv in mottagarens telefonnummer",
+      "Skriv in beloppet du vill skicka.",
+      "Kontrollera att namnet på mottagaren stämmer (det visas automatiskt – viktigt!)",
+      "Tryck på 'Betala' eller 'Skicka'",
+      "Bekräfta med Mobilt BankID igen",
+      "Vänta några sekunder – betalningen är klar när du ser 'Betald' eller en grön bock"
+    ]
+  },
+  {
+    "title": "Hur du skickar SMS och MMS",
+    "order": 3,
+    "slug": "hur-du-skickar-sms-och-mms",
+    "module": "SMS och MMS",
+    "video": {
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": 120,
+      "thumbnailUrl": "",
+    },
+    "steps": [
+      "Öppna appen Meddelanden på din telefon",
+      "Tryck på den lilla penna-ikonen eller plus-tecknet för att skriva ett nytt meddelande",
+      "Skriv in mottagarens telefonnummer eller välj en kontakt från din telefonbok",
+      "Skriv din text i det stora fältet längst ner",
+      "Om du vill skicka en bild eller foto: tryck på kamera-ikonen eller plus-tecknet bredvid textfältet och välj ett foto",
+      "När allt är klart, tryck på den gröna pilen eller 'Skicka'",
+      "Vänta några sekunder – meddelandet är skickat när det står 'Levererat' eller en liten bock visas"
+    ]
+  },
+  {
+    "title": "Betala räkningar",
+    "order": 4,
+    "slug": "betala-rakningar",
+    "module": "Betala räkningar",
+    "video": {
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": 120,
+      "thumbnailUrl": "",
+    },
+    "steps": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "title": "Apple Pay",
+    "order": 5,
+    "slug": "apple-pay",
+    "module": "Apple Pay",
+    "video": {
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": 120,
+      "thumbnailUrl": "",
+    },
+    "steps": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "title": "Sök på Google",
+    "order": 6,
+    "slug": "sok-pa-google",
+    "module": "Sök med Google",
+    "video": {
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": 120,
+      "thumbnailUrl": "",
+    },
+    "steps": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "title": "Lyssna på radio",
+    "order": 7,
+    "slug": "lyssna-pa-radio",
+    "module": "Lyssna på radio",
+    "video": {
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": 120,
+      "thumbnailUrl": "",
+    },
+    "steps": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "title": "Spara ett bokmärke",
+    "order": 8,
+    "slug": "spara-ett-bokmarke",
+    "module": "Spara ett bokmärke",
+    "video": {
+      "youtubeId": "jNQXAC9IVRw",
+      "duration": 120,
+      "thumbnailUrl": "",
+    },
+    "steps": [
+      "1",
+      "2",
+      "3"
+    ]
+  }
+]
