@@ -39,13 +39,14 @@ form.addEventListener("submit", e => {
   resultHeading.textContent = "Här är ditt resultat!";
   resultText.textContent = `Ditt svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.
 
-  Bra jobbat! Du har en bra grund. Vill du fortsätta utveckla dina kunskaper?
-
-  Skapa ett konto för att:
-  - Spara dina resultat
-  - Följa din utveckling över tid
-  - Få full tillgång`;
+  Vill du fortsätta utveckla dina kunskaper? 
   
+  Skapa ett konto för att:
+
+  ● Spara dina resultat
+  ● Följa din utveckling över tid
+  ● Få full tillgång`;
+
   // quizSection.appendChild(resultText);
 });
 

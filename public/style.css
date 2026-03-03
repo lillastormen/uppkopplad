@@ -40,6 +40,10 @@
   --font-primary: "Atkinson Hyperlegible";
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   font-size: 32px;
   font-weight: bold;
@@ -106,15 +110,6 @@ footer {
   bottom: 0;
 }
 
-.btn {
-  padding: 1rem 2rem;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 0.5rem;
-  border-style: none;
-  cursor: pointer;
-}
-
 .primary-btn {
   background-color: var(--primary);
   color: var(--offwhite);
@@ -124,6 +119,7 @@ footer {
   border-radius: 0.5rem;
   margin: 1rem;
   border-style: none;
+  cursor: pointer;
 }
 
 .secondary-btn {
@@ -136,6 +132,7 @@ footer {
   margin: 1rem;
   border-color: var(--secondary);
   border-style: none;
+  cursor: pointer;
 }
 
 .nav-mobile {

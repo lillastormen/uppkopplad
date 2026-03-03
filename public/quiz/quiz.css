@@ -66,6 +66,7 @@ label {
 
 #resultText {
   white-space: pre-line;
+  margin-bottom: 3rem;
 }
 
 #resultText,
@@ -73,15 +74,9 @@ label {
   color: var(--primary);
 }
 
-/* #createAccountBtn {
-  bottom: 0;
-
-} */
-
 body.quiz-started #hero-container {
   display: none;
 }
-
 
 #quiz {
   display: flex;
