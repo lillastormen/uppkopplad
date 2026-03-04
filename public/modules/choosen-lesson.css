@@ -1,0 +1,77 @@
+#top {
+    display: flex;
+    gap: 15em;
+    color: var(--primary);
+}
+
+#top button {
+    margin-left: 1.5em;
+}
+
+#instructions {
+    display: flex;
+    flex-direction: column;
+    color: var(--primary);
+}
+
+#instructions h3 {
+    font-size: large;
+}
+
+#instructions p {
+    margin-bottom: 0;
+}
+
+#instructions .bottom-paragraph {
+    margin-top: 0;
+    margin-left: 1.3em;
+}
+
+#instructions .video-heading {
+    margin-top: 2em;
+}
+
+#instructions .video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#instructions .step-instructions {
+    margin-top: 2em;
+    margin-bottom: 0;
+}
+
+#instructions .steps-paragraphs {
+    margin-top: 0;
+    color: var(--text);
+}
+
+#instructions .bottom-paragraph-steps {
+    margin-top: 0;
+    margin-left: 0.9em;
+}
+
+#instructions .step-instructions-two {
+    margin-top: 2em;
+    margin-bottom: 0;
+}
+
+#instructions .steps-paragraphs-two {
+    color: var(--text);
+}
+
+#instructions .quiz-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+}
+
+.back-paragraph {
+    margin-top: 5em;
+}
+
+.next-modul-btn {
+    margin-left: 20em;
+}
