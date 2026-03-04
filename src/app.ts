@@ -1,7 +1,11 @@
-import express, { type Request, type Response, type NextFunction } from "express";
+import express, {
+  type Request,
+  type Response,
+  type NextFunction,
+} from "express";
 import userRoutes from "./routes/userRoutes.ts";
 import quizRoutes from "./routes/quizRoutes.ts";
-import modulesRoutes from './routes/moduleRoutes.ts';
+import modulesRoutes from "./routes/moduleRoutes.ts";
 import "dotenv/config";
 import cors from "cors";
 import { createSession } from "./config/session.ts";
@@ -28,8 +32,8 @@ app.use("/quiz", quizRoutes);
 
 // For global error handling
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-        console.error('Global error handler: ', err.message, err.stack);
-        res.status(500).json({ error: 'Internal server error' });
+  console.error("Global error handler: ", err.message, err.stack);
+  res.status(500).json({ error: "Internal server error" });
 });
 
 export default app;

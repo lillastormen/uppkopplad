@@ -33,12 +33,10 @@ ON qq.id = qa.quiz_question_id
 WHERE quiz.id = 1
 
 -- Hämtar quizfrågan och dess tillhörande svar+attribut
-SELECT
-qq.id,
-qq.question,
-qq.multiple_choices,
+SELECT qq.id, qq.question, qq.multiple_choices,
 JSON_ARRAYAGG(
 JSON_OBJECT(
+'id', qa.id,
 'answer', qa.answer,
 'is_correct', qa.is_correct
 ))
