@@ -1,7 +1,6 @@
 const url = 'http://localhost:3000/users/login';
 const form = document.getElementById('login-form');
 const errorBox = document.getElementById("error-msg");
-
 const username = document.getElementById('username');
 const password = document.getElementById('password');
 const button = document.getElementById('big-login-btn');
@@ -36,8 +35,7 @@ form.addEventListener('submit', async (event) => {
         errorBox.textContent = data.error;
         return;
     } else 
-         window.location.href = "/modules/mainModules.html";
-    
+        window.location.href = "/modules/mainModules.html";
     // message.textContent = `Inloggad som ${username}`;
     form.reset();
 });
@@ -56,7 +54,3 @@ if (input && toggleButton && icon) {
         icon.classList.toggle('bi-eye-slash', isPassword);
     });
 }
-
-// function login() {
-    
-// }
