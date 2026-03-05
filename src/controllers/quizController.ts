@@ -1,7 +1,10 @@
-import { getQuizById } from "../repositories/mysql/quizRepository.ts";
+import {
+  getQuizById,
+  createQuizResult,
+} from "../repositories/mysql/quizRepository.ts";
 import type { Request, Response } from "express";
 
-export async function getAQuiz(req: Request, res: Response) {
+export async function getQuiz(req: Request, res: Response) {
   try {
     const id = Number(req.params.id);
 
@@ -26,6 +29,22 @@ export async function getAQuiz(req: Request, res: Response) {
 
 export async function postQuizResult(req: Request, res: Response) {
   try {
-    const id = Number(req.params.id);
-  } catch {}
+    const quizId = Number(req.params.quizId);
+    const userId = Number(req.params.userId);
+
+    if (isNaN(quizId) || isNaN(userId)) {
+      return res
+        .status(400)
+        .json({ message: "Invalid input, quizID and userID must be a number" });
+    }
+
+    const quizResult = await createQuizResult(quizId, userId);
+    if (!quizResult) {
+      return res.status(404).json({ message: "Could not save quiz result" });
+    }
+    return res.status(201).json({ message: "Successfully saved quiz result" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
 }

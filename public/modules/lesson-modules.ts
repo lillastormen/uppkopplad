@@ -2,6 +2,12 @@ import type { lessonsDocument } from './types/mongo';
 
 const API_BASE = 'http://localhost:3000';
 
+export function getMainModuleFromUrl (): string | null {
+    const params = new URLSearchParams(window.location.search);
+
+    return params.get('module');
+}
+
 async function fetchSubModules (mainModule: string): Promise<lessonsDocument[]> {
     try {
         const response = await fetch(
@@ -26,12 +32,6 @@ async function fetchSubModules (mainModule: string): Promise<lessonsDocument[]> 
     }
 }
 
-function getMainModuleFromUrl (): string | null {
-    const params = new URLSearchParams(window.location.search);
-
-    return params.get('module');
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const moduleName = getMainModuleFromUrl();
 
@@ -48,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const button = document.createElement('button');
 
                     button.textContent = subModule.module;
+
+                    const chosenLesson = subModule.module;
+
+                    button.addEventListener('click', () => {
+                        window.location.href = `choosen-lesson.html?lesson=${chosenLesson}`;
+                    });
 
                     lessonButtons.appendChild(button);
                 });

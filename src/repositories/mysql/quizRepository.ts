@@ -23,18 +23,19 @@ export function getQuizById(id: number) {
   });
 }
 
-export function postAQuizResult(userId: number, quizId: number) {
+export function createQuizResult(quizId: number, userId: number) {
   return new Promise((resolve, reject) => {
     let sql = `
-            INSERT INTO quiz_result (user_id, quiz_id)
+            INSERT INTO quiz_result (quiz_id, user_id)
             VALUES (?, ?)
         `;
 
-    const params = [userId, quizId];
+    const params = [quizId, userId];
+    console.log("hej");
 
-    mySqlDbConnection.query(sql, params, (error: unknown, rows: any) => {
+    mySqlDbConnection.query(sql, params, (error: unknown, result: any) => {
       if (error) return reject(error);
-      else return resolve(rows);
+      else return resolve(result);
     });
   });
 }
