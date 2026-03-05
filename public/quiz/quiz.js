@@ -12,11 +12,13 @@ const noSelected = document.querySelector("#noSelected");
 const numQuestion = document.querySelector("#numQuestion");
 let currentQuestion = 0;
 let currentQuiz;
+let currentQuizId;
 let userAnswers = [];
 let correctAnswers = [];
 let result = [];
 let type = "";
 let label;
+let userId;
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -35,9 +37,10 @@ form.addEventListener("submit", e => {
     }
   }
 
-  quizResult.style.display = "block";
-  resultHeading.textContent = "Här är ditt resultat!";
-  resultText.textContent = `Ditt svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.
+  if (currentQuizId === 1) {
+    quizResult.style.display = "block";
+    resultHeading.textContent = "Här är ditt resultat!";
+    resultText.textContent = `Ditt svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.
 
   Vill du fortsätta utveckla dina kunskaper? 
   
@@ -46,16 +49,17 @@ form.addEventListener("submit", e => {
   ● Spara dina resultat
   ● Följa din utveckling över tid
   ● Få full tillgång`;
-
-  // quizSection.appendChild(resultText);
+  } else {
+    saveQuizResult(currentQuizId, 1337);
+  }
 });
 
 next.addEventListener("click", validateInput);
 
 async function loadQuiz(id) {
   try {
+    currentQuizId = id;
     const quizPromise = await fetch(`http://localhost:3000/quiz/${id}`);
-
     currentQuiz = await quizPromise.json();
     showQuestion(currentQuiz);
     next.style.display = "block";
@@ -140,10 +144,19 @@ function validateInput() {
   }
 }
 
+async function saveQuizResult(quizId, userId) {
+  fetch("http://localhost:3000/quiz/2/1", {
+    method: "POST",
+  })
+    .then(res => res.json())
+    .then(data => console.log(data));
+}
+
 const quiz = {
   loadQuiz,
   showQuestion,
   validateInput,
+  saveQuizResult,
 };
 
 export default quiz;
