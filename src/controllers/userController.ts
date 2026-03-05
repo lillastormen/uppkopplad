@@ -60,7 +60,7 @@ export async function loginUser(req: Request, res: Response) {
     if (!username || !password) {
         return res.status(400).json({
             success: false,
-            error: 'Username or password missing'
+            error: 'Username and password missing'
         })
     }
 
