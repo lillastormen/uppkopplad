@@ -1,10 +1,11 @@
-import { includeHTML } from "../includeHTML.js";
+// import { includeHTML } from "../includeHTML.js";
 
-includeHTML();
+// includeHTML();
 
 const url = "http://localhost:3000/users/registration";
 const form = document.getElementById("registration-form");
 const message = document.getElementById("registration-message");
+const errorBox = document.getElementById("error-msg");
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
@@ -14,7 +15,13 @@ form.addEventListener("submit", async event => {
   const repeatedPassword = form.passwordRepeat.value;
 
   if (repeatedPassword !== password) {
-    message.textContent = "Lösenorden matchar inte.";
+    errorBox.textContent = "Lösenorden matchar inte.";
+    return;
+  }
+
+  if (password.length < 8) {
+    errorBox.textContent = "Minst 8 tecken";
+    return; 
   }
 
   const response = await fetch(url, {
@@ -26,9 +33,7 @@ form.addEventListener("submit", async event => {
   const data = await response.json();
 
   if (!response.ok) {
-    message.textContent =
-      data.error ||
-      "Registering misslyckades. Kontrollera dina uppgifter och försök igen.";
+    errorBox.textContent = data.error;
     return;
   } else {
     window.location.href = "../modules/mainModules.html";

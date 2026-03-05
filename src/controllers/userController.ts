@@ -58,10 +58,10 @@ export async function loginUser(req: Request, res: Response) {
     const { username, password } = req.body as { username?: string, password?: string };
 
     if (!username || !password) {
-            return res.status(400).json({
-                success: false,
-                error: 'Username and password missing'
-            })
+        return res.status(400).json({
+            success: false,
+            error: 'Username and password missing'
+        })
     }
 
     try {
@@ -70,7 +70,7 @@ export async function loginUser(req: Request, res: Response) {
         if (!user) {
             return res.status(401).json({
                 success: false,
-                error: 'Invalid credentials'
+                error: 'Inloggningen misslyckades. Kontrollera dina uppgifter och försök igen.'
             })
         }
 
@@ -152,7 +152,14 @@ export async function createNewUser(req: Request, res: Response) {
     if (!username || !password) {
         return res.status(400). json({
             success: false,
-            error: 'Användarnamn och lösenord saknas.'
+            error: 'No username or password entered'
+        })
+    }
+
+    if (password.length < 8) {
+        return res.status(400).json({
+            success: false,
+            error: 'Min 8 characters.'
         })
     }
 
@@ -162,7 +169,7 @@ export async function createNewUser(req: Request, res: Response) {
         if(exsistingUser){
             return res.status(409).json({
                 success: false,
-                error: 'Användarnamn redan finns, väjl ett annat namn.'
+                error: 'Användaren redan finns. Välj ett annat namn.'
             });
         }
 
@@ -173,7 +180,7 @@ export async function createNewUser(req: Request, res: Response) {
 
         return res.status(201).json({
             success: true,
-            message: 'User registered successfully.',
+            // message: 'User registered successfully.',
             data: newUser
         });
     } catch (error: unknown) {

@@ -2,7 +2,7 @@
 #log-img {
     display: block;
     width: 100%;
-    height: 240px;
+    height: 250px;
 }
 
 .container {
@@ -76,4 +76,14 @@ input {
 
 #big-login-btn {
     margin-top: 3rem;
+}
+
+#error-msg {
+  color: var(--error);
+  font-size: 14px;
+}
+
+.nav-login-page {
+    display: flex;
+    justify-content: flex-start;
 }

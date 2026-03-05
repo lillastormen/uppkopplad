@@ -11,19 +11,14 @@
     />
     <title>Registration</title>
   </head>
+  
   <body>
     <header>
       <nav class="nav-mobile">
         <a href="../index.html">
-          <img
-            src="../images/uppkopplad-logo.svg"
-            alt="uppkoppladLogo"
-            id="logo"
-          />
+          <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo"/>
         </a>
-        <a href="../login/index.html" class="primary-btn" id="auth-btn"
-          >Logga in</a
-        >
+        <a href="../login/index.html" class="primary-btn" id="auth-btn">Logga in</a>
       </nav>
     </header>
 
@@ -31,58 +26,34 @@
       <img src="../images/img_7.png" alt="registration_img" id="reg-img" />
       <div class="container">
         <h4>Fyll i formuläret för att skapa ditt konto</h4>
-
         <label for="username">Användarnamn: </label>
-        <input
-          type="text"
-          placeholder="Fyll i ditt användarnamn"
-          name="username"
-          id="username"
-          required
-        />
-
+        <input type="text" placeholder="Fyll i ditt användarnamn" name="username" id="username" required/>
         <div style="margin-top: 0.5rem">
           <label for="password">Lösenord: </label>
           <div class="password-field">
-            <input
-              type="password"
-              placeholder="Fyll i ditt lösenord"
-              name="password"
-              id="password"
-              required
-            />
-            <button
-              type="button"
-              id="toggle-visibility"
-              aria-label="Visa lösenord"
-            >
+            <input type="password" placeholder="Fyll i ditt lösenord" name="password" id="password" minlength="8" required/>
+            <button type="button" id="toggle-visibility" aria-label="Visa lösenord">
               <i class="bi bi-eye"></i>
             </button>
           </div>
         </div>
-
         <label for="passwordRepeat">Bekräfta: </label>
-        <input
-          type="password"
-          placeholder="Bekräfta ditt lösenord"
-          name="passwordRepeat"
-          id="passwordRepeat"
-          required
-        />
+        <input type="password" placeholder="Bekräfta ditt lösenord" name="passwordRepeat" id="passwordRepeat" minlength="8" required/>
+        <span id="error-msg"></span>
+        <!-- <div id="policy-container">
+          <input 
+            type="checkbox" 
+            id="policy" 
+            name="policy" 
+            value="Policy" 
+          />
+          <label for="policy" style="font-size: 14px;">Genom att skapa ett konto accepterar du våra
+            <a href="#">Användarvillkor och integritetspolicy</a>.
+          </label>
+        </div> -->
 
-        <div id="policy-container">
-          <input type="checkbox" id="policy" name="policy" value="Policy" />
-          <label for="policy"
-            >Genom att skapa ett konto accepterar du våra
-            <a href="#">Användarvillkor och integritetspolicy</a>.</label
-          >
-        </div>
-
-        <button type="submit" class="primary-btn" id="registration-btn">
-          Registera
-        </button>
+        <button type="submit" class="primary-btn" id="registration-btn">Registera</button>
       </div>
-      <div id="registration-message"></div>
     </form>
     <script src="./registration.js" type="module"></script>
   </body>

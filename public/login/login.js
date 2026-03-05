@@ -1,30 +1,41 @@
-import { includeHTML } from '../includeHTML.js'
-
-includeHTML();
-
 const url = 'http://localhost:3000/users/login';
 const form = document.getElementById('login-form');
-const message = document.getElementById('login-message');
+const errorBox = document.getElementById("error-msg");
+const username = document.getElementById('username');
+const password = document.getElementById('password');
+const button = document.getElementById('big-login-btn');
+
+
+function validateInputs() {
+    if (username.value.trim() && password.value.trim()) {
+        button.removeAttribute('disabled');
+    } else {
+        button.setAttribute('disabled', true);
+    }
+}
+
+username.addEventListener('input', validateInputs);
+password.addEventListener('input', validateInputs);
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
-
-    const username = form.username.value.trim();
-    const password = form.password.value;
 
    const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         credentials: "include",
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ 
+            username: username.value, 
+            password: password.value })
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-        message.textContent = data.error || 'Fel lösenord. Kontrollera dina uppgifter och försök igen.';
+        errorBox.textContent = data.error;
         return;
-    } else {
-         window.location.href = "/modules/mainModules.html";
-    }
+    } else 
+        window.location.href = "/modules/mainModules.html";
     // message.textContent = `Inloggad som ${username}`;
     form.reset();
 });
@@ -43,7 +54,3 @@ if (input && toggleButton && icon) {
         icon.classList.toggle('bi-eye-slash', isPassword);
     });
 }
-
-// function login() {
-    
-// }
