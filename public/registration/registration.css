@@ -1,13 +1,13 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 0 1.5rem 1.5rem;
+  padding: 0 1rem 1rem;
   background-color: var(--offwhite);
 }
 
 #reg-img {
   display: block;
-  width: 50%;
+  width: 80%;
 }
 
 #registration-form {
@@ -95,4 +95,9 @@ i {
 
 #registration-btn {
   margin-top: 3rem;
+}
+
+#error-msg {
+  color: var(--error);
+  font-size: 14px;
 }
