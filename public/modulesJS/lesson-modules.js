@@ -1,5 +1,8 @@
-
 const API_BASE = 'http://localhost:3000';
+export function getMainModuleFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('module');
+}
 async function fetchSubModules(mainModule) {
     try {
         const response = await fetch(`${API_BASE}/api/mainModules/${mainModule}/subModules`, {
@@ -20,10 +23,6 @@ async function fetchSubModules(mainModule) {
         throw error;
     }
 }
-function getMainModuleFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('module');
-}
 document.addEventListener('DOMContentLoaded', () => {
     const moduleName = getMainModuleFromUrl();
     if (moduleName) {
@@ -35,6 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
             subModules.forEach((subModule) => {
                 const button = document.createElement('button');
                 button.textContent = subModule.module;
+                const chosenLesson = subModule.module;
+                button.addEventListener('click', () => {
+                    window.location.href = `choosen-lesson.html?lesson=${chosenLesson}`;
+                });
                 lessonButtons.appendChild(button);
             });
         })
