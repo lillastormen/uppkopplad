@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getAQuiz, postQuizResult } from "../controllers/quizController.ts";
+import { getQuiz, postQuizResult } from "../controllers/quizController.ts";
 
 const router = Router();
 
-router.get("/:id", getAQuiz);
-router.post("/:id", postQuizResult);
+router.get("/:id", getQuiz);
+router.post("/:quizId/:userId", postQuizResult);
 
 export default router;
