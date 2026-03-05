@@ -82,3 +82,8 @@ input {
   color: var(--error);
   font-size: 14px;
 }
+
+.nav-login-page {
+    display: flex;
+    justify-content: flex-start;
+}

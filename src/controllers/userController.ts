@@ -70,7 +70,7 @@ export async function loginUser(req: Request, res: Response) {
         if (!user) {
             return res.status(401).json({
                 success: false,
-                error: 'Invalid credentials'
+                error: 'Inloggningen misslyckades. Kontrollera dina uppgifter och försök igen.'
             })
         }
 
