@@ -14,8 +14,6 @@ export async function loadAuthenticateUser() {
     const greetingEl = document.getElementById('greeting');
     const authButton = document.getElementById('auth-btn');
 
-    console.log(authButton);
-
     if (!res.ok) {
         authButton.textContent ='Logga in';
         authButton.classList.remove('secondary-btn');
@@ -44,7 +42,7 @@ export async function loadAuthenticateUser() {
     }
 
     // authButton.classList.add('secondary-btn');
-     console.log(authButton);
+
     authButton.onclick = logout;
 
 

@@ -1,16 +1,20 @@
-import { includeHTML } from '../includeHTML.js'
-
-includeHTML();
-
 const url = 'http://localhost:3000/users/login';
 const form = document.getElementById('login-form');
-const message = document.getElementById('login-message');
+const errorBox = document.getElementById("error-msg");
+
+// const username = document.getElementById('username');
+// const password = document.getElementById('password');
+const button = document.getElementById('big-login-btn');
+const inputCheck = document.getElementById('username') && document.getElementById('password');
+
+inputCheck.addEventListener('input', () => {
+    if (inputCheck.value !== '') {
+        button.removeAttribute('disabled');
+    } 
+});
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
-
-    const username = form.username.value.trim();
-    const password = form.password.value;
 
    const response = await fetch(url, {
         method: 'POST',
@@ -19,12 +23,14 @@ form.addEventListener('submit', async (event) => {
         body: JSON.stringify({ username, password })
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-        message.textContent = data.error || 'Fel lösenord. Kontrollera dina uppgifter och försök igen.';
+        errorBox.textContent = data.error;
         return;
-    } else {
+    } else 
          window.location.href = "/modules/mainModules.html";
-    }
+    
     // message.textContent = `Inloggad som ${username}`;
     form.reset();
 });

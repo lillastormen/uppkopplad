@@ -77,3 +77,8 @@ input {
 #big-login-btn {
     margin-top: 3rem;
 }
+
+#error-msg {
+  color: var(--error);
+  font-size: 14px;
+}
