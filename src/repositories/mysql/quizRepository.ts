@@ -13,7 +13,7 @@ export function getQuizById(id: number) {
             AS answers
             FROM quiz_question qq
             JOIN quiz_answer qa ON qq.id = qa.quiz_question_id
-            WHERE qq.quiz_id = 1
+            WHERE qq.quiz_id = ?
             GROUP BY qq.id, qq.question, qq.multiple_choices`;
 
     mySqlDbConnection.query(sql, [id], (error: unknown, rows: any) => {
@@ -31,7 +31,6 @@ export function createQuizResult(quizId: number, userId: number) {
         `;
 
     const params = [quizId, userId];
-    console.log("hej");
 
     mySqlDbConnection.query(sql, params, (error: unknown, result: any) => {
       if (error) return reject(error);
