@@ -75,7 +75,7 @@ export async function loginUser(req: Request, res: Response) {
         }
 
         req.session.userId = user.id;
-        // console.log(`Inloggad som ${username}`);
+        console.log(`Inloggad som ${username} med userId: ${user.id}`);
         // console.log("Session ID:", req.sessionID);
         // console.log("Session object:", req.session);
         
