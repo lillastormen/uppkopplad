@@ -65,15 +65,38 @@ export async function getUserId(req: Request<GetUserParamsId>, res: Response) {
   }
 }
 
-export async function getCurrentUser(req: Request, res: Response) {
-  console.log(
-    `Kontrollerar och returnerar till frontend userId: ${req.session.userId}`,
-  );
-  if (req.session.userId) {
-    res.json({ userId: req.session.userId });
-  } else {
-    res.status(401).json({ message: "Not logged in" });
-  }
+    try {
+        const user = await userService.loginUser(username, password);
+
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                error: 'Inloggningen misslyckades. Kontrollera dina uppgifter och försök igen.'
+            })
+        }
+
+        req.session.userId = user.id;
+        console.log(`Inloggad som ${username} med userId: ${user.id}`);
+        // console.log("Session ID:", req.sessionID);
+        // console.log("Session object:", req.session);
+        
+        // res.redirect("/modules/mainModules.html");
+
+        return res.status(200).json({
+            success: true,
+            sessionId: req.sessionID,  
+            sessionUserId: req.session.userId, 
+            data: user 
+            
+        }) 
+        
+    } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error occured." 
+        return res.status(500).json({
+            success: false,
+            error: message
+        });
+    }
 }
 
 export async function loginUser(req: Request, res: Response) {
