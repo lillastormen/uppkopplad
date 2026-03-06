@@ -1,3 +1,3 @@
 import quiz from "./quiz/quiz.js";
 
-quiz.loadQuiz(2);
+quiz.loadQuiz(1);

@@ -6,6 +6,7 @@ const question = document.querySelector("#quizQuestion");
 const submit = document.querySelector("#quizSubmitBtn");
 const form = document.querySelector("#quizForm");
 const next = document.querySelector("#quizNextBtn");
+const createAcc = document.querySelector("#createAccountBtn");
 const radio = document.querySelector("#radios");
 const checkbox = document.querySelector("#checkboxes");
 const noSelected = document.querySelector("#noSelected");
@@ -20,10 +21,22 @@ let type = "";
 let label;
 let userId;
 
+const response = await fetch(`http://localhost:3000/users/current`, {
+  credentials: "include",
+});
+
+if (response.ok) {
+  const data = await response.json();
+  userId = data.userId;
+} else {
+  console.log("Not logged in or error:", response.status);
+}
+
 form.addEventListener("submit", e => {
   e.preventDefault();
   validateInput();
   form.style.display = "none";
+  quizResult.style.display = "block";
 
   correctAnswers = currentQuiz.map(q =>
     q.answers.filter(a => a.is_correct).map(a => a.answer),
@@ -37,10 +50,10 @@ form.addEventListener("submit", e => {
     }
   }
 
-  if (currentQuizId === 1) {
-    quizResult.style.display = "block";
+  // Initial Quiz, Not logged in
+  if (currentQuizId === 1 /* && !userId*/) {
     resultHeading.textContent = "Här är ditt resultat!";
-    resultText.textContent = `Ditt svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.
+    resultText.textContent = `Du svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.
 
   Vill du fortsätta utveckla dina kunskaper? 
   
@@ -49,8 +62,12 @@ form.addEventListener("submit", e => {
   ● Spara dina resultat
   ● Följa din utveckling över tid
   ● Få full tillgång`;
+
+    //Logged in
   } else {
-    saveQuizResult(currentQuizId, 1337);
+    resultHeading.textContent = "Här är ditt resultat!";
+    resultText.textContent = `Du svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.`;
+    saveQuizResult(currentQuizId, 3);
   }
 });
 
@@ -61,8 +78,11 @@ async function loadQuiz(id) {
     currentQuizId = id;
     const quizPromise = await fetch(`http://localhost:3000/quiz/${id}`);
     currentQuiz = await quizPromise.json();
-    showQuestion(currentQuiz);
+    console.log(
+      `Inloggad som userId ${userId} och laddar quizId ${currentQuizId}`,
+    );
     next.style.display = "block";
+    showQuestion(currentQuiz);
   } catch (error) {
     console.error(error);
   }
