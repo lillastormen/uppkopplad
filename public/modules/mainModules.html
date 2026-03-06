@@ -4,31 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uppkopplad | Huvudmoduler</title>
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="./mainModules.css" />
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="./mainModules.css"/>
+     <link rel="stylesheet" href="../account/account.css" />
   </head>
   <body>
     <header>
       <nav class="nav-mobile">
-        <a href="../index.html">
-          <img
-            src="../images/uppkopplad-logo.svg"
-            alt="uppkoppladLogo"
-            id="logo"
-          />
-        </a>
-        <a href="../login/index.html" class="primary-btn" id="auth-btn"
-          >Logga in</a
-        >
+          <a href="../index.html">
+              <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo"/>
+          </a>
+          <details class="secondary-btn menu-btn">
+              <summary></summary>
+              <div class="menu">
+                  <div class="menu-options-box">
+                      <a href="../account/index.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem;">Mitt konto</a>
+                      <a href="../login/index.html" class="primary-btn menu-btn-s" id="auth-btn" style="margin: 0 0.5rem 0.5rem 0.5rem;">Logga in</a>
+                  </div>
+              </div>
+          </details>
       </nav>
     </header>
     <main>
-      <h2 id="greeting">Loading...</h2>
+      <h1 id="greeting" style="margin-left: 2rem; margin-right: 2rem">Loading...</h1>
 
-      <p>
-        Välj en modul för att utveckla dina kunskaper inom det område du är
-        intresserad av.
-      </p>
+      <h5 style="margin: 1rem 0;">Välj en modul för att utveckla dina kunskaper inom det område du är intresserad av.</h5>
 
       <div id="module-buttons">
         <button id="mobile-btn">Mobil</button>
@@ -40,5 +40,6 @@
     <footer><p>&copy; Uppkopplad 2026</p></footer>
     <script src="../modulesJS/mainModules.js" type="module"></script>
     <script src="../account/userAuth.js" type="module" defer></script>
+    <script src="../account/account.js" type="module" defer></script>
   </body>
 </html>
