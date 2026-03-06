@@ -133,7 +133,14 @@ footer {
   bottom: 0;
   border: 1px solid var(--primary);
   cursor: pointer;
-  width: 80px;
+}
+
+.menu-btn {
+    width: 100px;
+}
+
+.menu-btn-s {
+    width: 80px;
 }
 
 .secondary-btn {
@@ -148,8 +155,6 @@ footer {
   border-style: none;
   cursor: pointer;
 }
-
-
 
 .nav-mobile {
   display: flex;

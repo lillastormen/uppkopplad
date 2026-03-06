@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./account.css">
+    <script src="./userAuth.js" type="module" defer></script>
+    <script src="./account.js" type="module" defer></script>
     <title>User Account</title>
 </head>
 <body>
-     <header>
+    <header>
         <nav class="nav-mobile">
             <a href="../index.html">
                 <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo"/>
             </a>
-            <details class="primary-reversed-btn">
+            <details class="secondary-btn menu-btn">
                 <summary></summary>
                 <div class="menu">
                     <div class="menu-options-box">
-                        <a href="../account" class="primary-reversed-btn" style="margin: 1rem 0 0 0;">Mitt konto</a>
-                        <a href="../account" class="primary-reversed-btn" style="margin: 1rem 0 1rem 0;">Logga ut</a>
+                        <a href="../account/index.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem;">Mitt konto</a>
+                        <a href="../login/index.html" class="primary-btn menu-btn-s" id="auth-btn" style="margin: 0 0.5rem 0.5rem 0.5rem;">Logga in</a>
                     </div>
                 </div>
             </details>

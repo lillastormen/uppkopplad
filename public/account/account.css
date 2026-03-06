@@ -15,7 +15,7 @@ summary::-webkit-details-marker {
 }
 
 details[open] summary::before {
-  content: "X";
+  content: "STÄNG";
 
 }
 details[open] summary::after {
@@ -27,6 +27,8 @@ details[open] summary::after {
     top: 100%;
     left: 0;
     display: none;
+    width: 100%;
+    
 }
 
 details[open] .menu {
@@ -42,4 +44,9 @@ details[open] .menu {
 .menu-options-box {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: var(--offwhite);
+    border: 1px solid var(--secondary);
+    border-radius: 0.5rem;
+    position: relative;
 }
