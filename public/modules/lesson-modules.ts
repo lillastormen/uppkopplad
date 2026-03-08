@@ -2,7 +2,7 @@ import type { lessonsDocument } from './types/mongo';
 
 const API_BASE = 'http://localhost:3000';
 
-export function getMainModuleFromUrl (): string | null {
+function getMainModuleFromUrl (): string | null {
     const params = new URLSearchParams(window.location.search);
 
     return params.get('module');

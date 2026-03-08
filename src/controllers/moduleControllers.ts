@@ -1,6 +1,7 @@
 import {
     createLesson,
     getAllLessons,
+    getSpecificLesson,
     createMainModule,
     getAllMainModules,
     getSubModulesForMainModule
@@ -67,5 +68,24 @@ export const lessonGet = async (req: Request, res: Response): Promise<void> => {
         const error = err as Error;
         res.status(500).json({error: 'Internal server error'});
         console.error('Error fetching lesson modules:', error.message, error.stack);
+    }
+}
+
+export const specificLessonGet = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const {module} = req.params;
+
+        if (typeof module !== "string") {
+            res.status(400).json({ error: 'Ogiltigt modulnamn' });
+            return;
+        }
+
+        const lesson = await getSpecificLesson(module);
+
+        res.status(200).json(lesson);
+    } catch (err) {
+        const error = err as Error;
+        console.error('Fail getting specific lesson', error.message, error.stack);
+        res.status(500).json({ error: 'Internal server error' });
     }
 }

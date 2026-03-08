@@ -2,6 +2,7 @@ import express from 'express';
 import {
     LessonCreate,
     lessonGet,
+    specificLessonGet,
     mainModuleCreate,
     mainModulesGet,
     allSubModulesForMainModuleGet
@@ -18,5 +19,6 @@ mainModulesRoutes.get('/:nameOfModule/subModules', allSubModulesForMainModuleGet
 // Lesson modules routes
 lessonsRoutes.post('/', LessonCreate);
 lessonsRoutes.get('/', lessonGet);
+lessonsRoutes.get('/:module/lesson', specificLessonGet);
 
 export default { mainModulesRoutes, lessonsRoutes };

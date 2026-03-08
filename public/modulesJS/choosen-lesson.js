@@ -1,11 +1,14 @@
-import { getMainModuleFromUrl } from "./lesson-modules";
 const API_BASE = 'http://localhost:3000';
+function getMainModuleFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('lesson');
+}
 async function fetchLesson(lesson) {
     try {
-        const response = await fetch(`${API_BASE}/api/mainModules/${lesson}/subModules`, {
+        const response = await fetch(`${API_BASE}/api/lessons/${lesson}/lesson`, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             }
         });
         if (!response.ok) {
@@ -43,4 +46,5 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('No lesson in URL query');
     }
 });
+export {};
 //# sourceMappingURL=choosen-lesson.js.map

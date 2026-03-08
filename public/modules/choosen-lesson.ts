@@ -1,16 +1,21 @@
 import type { lessonsDocument } from "./types/mongo";
-import { getMainModuleFromUrl } from "./lesson-modules";
 
 const API_BASE = 'http://localhost:3000';
+
+function getMainModuleFromUrl (): string | null {
+    const params = new URLSearchParams(window.location.search);
+
+    return params.get('lesson');
+}
 
 async function fetchLesson (lesson: string): Promise<lessonsDocument[]> {
     try {
         const response = await fetch(
-            `${API_BASE}/api/mainModules/${lesson}/subModules`,
+            `${API_BASE}/api/lessons/${lesson}/lesson`, 
             {
                 method: "GET",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 }
             }
         );

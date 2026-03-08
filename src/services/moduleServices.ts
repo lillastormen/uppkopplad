@@ -73,3 +73,17 @@ export async function getAllLessons (): Promise<lessonsDocument[]> {
         throw new Error(`Could not fetch lessons: ${error.message}`);
     }
 }
+
+export async function getSpecificLesson (lesson: string): Promise<lessonsDocument | null> {
+    try {
+        const specificLesson = await Lesson.findOne(
+            { module: lesson })
+            .lean()
+            .exec();
+
+        return specificLesson;
+    } catch (err) {
+        const error = err as Error;
+        throw new Error(`Could not get specific lesson ${lesson}: ${error.message}`);
+    }
+}

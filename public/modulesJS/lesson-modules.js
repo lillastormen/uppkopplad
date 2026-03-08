@@ -1,5 +1,5 @@
 const API_BASE = 'http://localhost:3000';
-export function getMainModuleFromUrl() {
+function getMainModuleFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get('module');
 }
@@ -50,4 +50,5 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('No module in URL query');
     }
 });
+export {};
 //# sourceMappingURL=lesson-modules.js.map
