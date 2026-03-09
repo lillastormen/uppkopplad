@@ -30,7 +30,7 @@ JOIN quiz_question qq
 ON quiz.id = qq.quiz_id
 JOIN quiz_answer qa
 ON qq.id = qa.quiz_question_id
-WHERE quiz.id = 1
+WHERE quiz.id = 1;
 
 -- Hämtar quizfrågan och dess tillhörande svar+attribut
 SELECT qq.id, qq.question, qq.multiple_choices,

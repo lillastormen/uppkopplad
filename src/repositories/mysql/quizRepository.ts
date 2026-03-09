@@ -26,7 +26,7 @@ export function getQuizById(id: number) {
 export function createQuizResult(quizId: number, userId: number) {
   return new Promise((resolve, reject) => {
     let sql = `
-            INSERT INTO quiz_result (quiz_id, user_id)
+            INSERT IGNORE INTO quiz_result (quiz_id, user_id)
             VALUES (?, ?)
         `;
 

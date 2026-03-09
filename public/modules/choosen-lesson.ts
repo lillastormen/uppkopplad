@@ -8,7 +8,7 @@ function getMainModuleFromUrl (): string | null {
     return params.get('lesson');
 }
 
-async function fetchLesson (lesson: string): Promise<lessonsDocument[]> {
+async function fetchLesson (lesson: string): Promise<lessonsDocument> {
     try {
         const response = await fetch(
             `${API_BASE}/api/lessons/${lesson}/lesson`, 
@@ -40,15 +40,24 @@ document.addEventListener('DOMContentLoaded', () => {
             .then((lesson) => {
                 console.log('Fetched lesson:', lesson);
 
-                const header = document.querySelector('#top')!;
-                header.innerHTML = '';
+                const mainHeader = document.querySelector('#header-two')! as HTMLElement;
+                mainHeader.innerHTML = '';
+                const nameOflesson = document.createElement('h2');
+                nameOflesson.textContent = lesson.module;
+                mainHeader.appendChild(nameOflesson);
 
-                lesson.forEach((lesson) => {
-                    const nameOflesson = document.createElement('h2');
+                const iframe = document.querySelector('iframe')! as HTMLIFrameElement;
+                iframe.src = `https://www.youtube-nocookie.com/embed/${lesson.video.youtubeId}`;
 
-                    nameOflesson.textContent = lesson.module;
+                const stepsHeader = document.querySelector('.step-instructions')! as HTMLElement;
+                stepsHeader.innerHTML = lesson.title;
 
-                    header.appendChild(nameOflesson);
+                const paragraphSteps = document.querySelector('.steps-paragraphs');
+                const steps = lesson.steps;
+                steps.forEach((step) => {
+                    const paragraphStep = document.createElement('p');
+                    paragraphStep.textContent = step;
+                    paragraphSteps?.appendChild(paragraphStep);
                 });
             })
             .catch((err) => {

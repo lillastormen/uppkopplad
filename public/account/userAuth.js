@@ -30,7 +30,7 @@ export async function loadAuthenticateUser() {
   const username = json.data.username;
 
   if (greetingEl) {
-    greetingEl.textContent = `Välkommem ${username}`;
+    greetingEl.textContent = `Välkommen ${username}`;
   }
 
   if (authButton) {

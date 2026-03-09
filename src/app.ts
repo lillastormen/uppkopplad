@@ -14,7 +14,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5500",
+    /* För produktion
+      origin: "http://localhost:5500",*/
+
+      // För dev
+      origin: true,
     credentials: true,
   }),
 );

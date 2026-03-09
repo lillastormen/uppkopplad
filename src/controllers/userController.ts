@@ -1,13 +1,19 @@
-import { createUser, getUserByUsername, getUserById, getAllUsers, getUserCredentials } from "../repositories/mysql/userRepository.ts";
-import type { CreatedUser, GetUserParamsId, UserCredentials,
+import {
+  createUser,
+  getUserByUsername,
+  getUserById,
+  getAllUsers,
+  getUserCredentials,
+} from "../repositories/mysql/userRepository.ts";
+import type {
+  CreatedUser,
+  GetUserParamsId,
+  UserCredentials,
 } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
 
 export async function getCurrentUser(req: Request, res: Response) {
-  console.log(
-    `Kontrollerar och returnerar till frontend userId: ${req.session.userId}`,
-  );
   if (req.session.userId) {
     res.json({ userId: req.session.userId });
   } else {

@@ -12,7 +12,7 @@ async function startServer() {
     console.log("Connected to MySQL.");
 
     app.listen(PORT, () => {
-      console.log(`Server started and listening on port: ${PORT}`);
+      console.log(`Servers started and listening on port: ${PORT}`);
     });
   } catch (error) {
     console.log("Server could not not start: ", error);
