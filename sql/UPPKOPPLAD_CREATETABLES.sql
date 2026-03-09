@@ -27,7 +27,8 @@ CREATE TABLE quiz_result(
     quiz_id INT,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (quiz_id) REFERENCES quiz(id)
+    FOREIGN KEY (quiz_id) REFERENCES quiz(id),
+    UNIQUE (user_id, quiz_id)
 );
 
 CREATE TABLE quiz_question(
