@@ -42,7 +42,9 @@ export async function postQuizResult(req: Request, res: Response) {
     if (!quizResult) {
       return res.status(404).json({ message: "Could not save quiz result" });
     }
-    return res.status(201).json({ message: "Successfully saved quiz result" });
+    return res
+      .status(201)
+      .json({ message: "Quiz result saved or did already exist" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });

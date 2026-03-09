@@ -11,9 +11,11 @@ const radio = document.querySelector("#radios");
 const checkbox = document.querySelector("#checkboxes");
 const noSelected = document.querySelector("#noSelected");
 const numQuestion = document.querySelector("#numQuestion");
+const param = new URLSearchParams(window.location.search);
+const quizId = param.get("id") || 1;
+
 let currentQuestion = 0;
 let currentQuiz;
-let currentQuizId;
 let userAnswers = [];
 let correctAnswers = [];
 let result = [];
@@ -51,7 +53,7 @@ form.addEventListener("submit", e => {
   }
 
   // Initial Quiz, Not logged in
-  if (currentQuizId === 1 /* && !userId*/) {
+  if (userId === undefined) {
     resultHeading.textContent = "Här är ditt resultat!";
     resultText.textContent = `Du svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.
 
@@ -67,20 +69,17 @@ form.addEventListener("submit", e => {
   } else {
     resultHeading.textContent = "Här är ditt resultat!";
     resultText.textContent = `Du svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.`;
-    saveQuizResult(currentQuizId, 3);
+    saveQuizResult(quizId, userId);
   }
 });
 
 next.addEventListener("click", validateInput);
 
-async function loadQuiz(id) {
+async function loadQuiz(quizId) {
   try {
-    currentQuizId = id;
-    const quizPromise = await fetch(`http://localhost:3000/quiz/${id}`);
+    const quizPromise = await fetch(`http://localhost:3000/quiz/${quizId}`);
     currentQuiz = await quizPromise.json();
-    console.log(
-      `Inloggad som userId ${userId} och laddar quizId ${currentQuizId}`,
-    );
+    console.log(`Inloggad som userId ${userId} och laddar quizId ${quizId}`);
     next.style.display = "block";
     showQuestion(currentQuiz);
   } catch (error) {
@@ -165,18 +164,11 @@ function validateInput() {
 }
 
 async function saveQuizResult(quizId, userId) {
-  fetch("http://localhost:3000/quiz/2/1", {
+  fetch(`http://localhost:3000/quiz/${quizId}/${userId}`, {
     method: "POST",
   })
     .then(res => res.json())
     .then(data => console.log(data));
 }
 
-const quiz = {
-  loadQuiz,
-  showQuestion,
-  validateInput,
-  saveQuizResult,
-};
-
-export default quiz;
+loadQuiz(quizId);
