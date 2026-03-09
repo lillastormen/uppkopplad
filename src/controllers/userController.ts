@@ -1,15 +1,5 @@
-import {
-  createUser,
-  getUserByUsername,
-  getUserById,
-  getAllUsers,
-  getUserCredentials,
-} from "../repositories/mysql/userRepository.ts";
-import type {
-  CreatedUser,
-  GetUserParamsId,
-  UserCredentials,
-} from "../types/users.ts";
+import { createUser, getUserByUsername, getUserById, getAllUsers, getUserCredentials } from "../repositories/mysql/userRepository.ts";
+import type { CreatedUser, GetUserParamsId, UserCredentials } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
 
