@@ -29,12 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchLesson(lessonName)
             .then((lesson) => {
             console.log('Fetched lesson:', lesson);
-            const header = document.querySelector('#top');
-            header.innerHTML = '';
-            lesson.forEach((lesson) => {
-                const nameOflesson = document.createElement('h2');
-                nameOflesson.textContent = lesson.module;
-                header.appendChild(nameOflesson);
+            const mainHeader = document.querySelector('#header-two');
+            mainHeader.innerHTML = '';
+            const nameOflesson = document.createElement('h2');
+            nameOflesson.textContent = lesson.module;
+            mainHeader.appendChild(nameOflesson);
+            const iframe = document.querySelector('iframe');
+            iframe.src = `https://www.youtube-nocookie.com/embed/${lesson.video.youtubeId}`;
+            const stepsHeader = document.querySelector('.step-instructions');
+            stepsHeader.innerHTML = lesson.title;
+            const paragraphSteps = document.querySelector('.steps-paragraphs');
+            const steps = lesson.steps;
+            steps.forEach((step) => {
+                const paragraphStep = document.createElement('p');
+                paragraphStep.textContent = step;
+                paragraphSteps?.appendChild(paragraphStep);
             });
         })
             .catch((err) => {
