@@ -49,6 +49,6 @@ export async function loadAuthenticateUser() {
       credentials: "include",
     });
 
-    window.location.href = "/";
+    window.location.href = "/public/index.html";
   }
 }

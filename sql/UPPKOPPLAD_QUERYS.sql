@@ -36,7 +36,8 @@ WHERE quiz.id = 1;
 SELECT qq.id, qq.question, qq.multiple_choices,
 JSON_ARRAYAGG(
 JSON_OBJECT(
-'id', qa.id,
+'qq_id', qq.id,
+'qa_id', qa.id,
 'answer', qa.answer,
 'is_correct', qa.is_correct
 ))
