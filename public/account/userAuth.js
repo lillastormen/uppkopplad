@@ -17,7 +17,7 @@ export async function loadAuthenticateUser() {
     authButton.classList.remove("secondary-btn");
     authButton.classList.add("primary-btn");
     authButton.onclick = () => {
-      window.location.href = "/login";
+      window.location.href = "users/login";
     };
 
     if (greetingEl) {
@@ -44,7 +44,7 @@ export async function loadAuthenticateUser() {
   authButton.onclick = logout;
 
   async function logout() {
-    await fetch("/logout", {
+    await fetch("/users/logout", {
       method: "POST",
       credentials: "include",
     });
