@@ -17,7 +17,7 @@ export async function loadAuthenticateUser() {
     authButton.classList.remove("secondary-btn");
     authButton.classList.add("primary-btn");
     authButton.onclick = () => {
-      window.location.href = "users/login";
+      window.location.href = "/login";
     };
 
     if (greetingEl) {
