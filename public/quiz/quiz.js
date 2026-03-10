@@ -4,6 +4,7 @@ const resultHeading = document.querySelector("#resultHeading");
 const resultText = document.querySelector("#resultText");
 const question = document.querySelector("#quizQuestion");
 const submit = document.querySelector("#quizSubmitBtn");
+const goToQuiz = document.querySelector("#goToQuizBtn");
 const form = document.querySelector("#quizForm");
 const next = document.querySelector("#quizNextBtn");
 const createAcc = document.querySelector("#createAccountBtn");
@@ -69,7 +70,6 @@ form.addEventListener("submit", e => {
   } else {
     resultHeading.textContent = "Här är ditt resultat!";
     resultText.textContent = `Du svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.`;
-    saveQuizResult(quizId, userId);
   }
 });
 
@@ -77,10 +77,18 @@ next.addEventListener("click", validateInput);
 
 async function loadQuiz(quizId) {
   try {
+    if (userId !== undefined && quizId === 1) {
+      quizSection.style.display = "none";
+      //goToQuiz.href = "./modules/mainModules.html";
+      goToQuiz.href = "./quiz/quiz.html?id=1";
+      goToQuiz.textContent = "Mitt Konto / Moduler ?";
+      return;
+    }
     const quizPromise = await fetch(`http://localhost:3000/quiz/${quizId}`);
     currentQuiz = await quizPromise.json();
     console.log(`Inloggad som userId ${userId} och laddar quizId ${quizId}`);
     next.style.display = "block";
+    saveQuizResult(quizId, userId);
     showQuestion(currentQuiz);
   } catch (error) {
     console.error(error);
@@ -164,11 +172,16 @@ function validateInput() {
 }
 
 async function saveQuizResult(quizId, userId) {
-  fetch(`http://localhost:3000/quiz/${quizId}/${userId}`, {
-    method: "POST",
-  })
-    .then(res => res.json())
-    .then(data => console.log(data));
+  const resultPromise = await fetch(
+    `http://localhost:3000/quiz/${quizId}/${userId}`,
+    {
+      method: "POST",
+    },
+  );
+  const result = await resultPromise.json();
+  return console.log(result);
 }
+
+async function saveUserAnswer(quizResultId, quizQuestionId, quizAnswerId) {}
 
 loadQuiz(quizId);

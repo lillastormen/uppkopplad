@@ -34,7 +34,8 @@ export function createQuizResult(quizId: number, userId: number) {
 
     mySqlDbConnection.query(sql, params, (error: unknown, result: any) => {
       if (error) return reject(error);
-      else return resolve(result);
+      const id = result.insertId;
+      resolve(id);
     });
   });
 }
