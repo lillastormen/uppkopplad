@@ -12,6 +12,8 @@ export async function loadAuthenticateUser() {
   const greetingEl = document.getElementById("greeting");
   const authButton = document.getElementById("auth-btn");
 
+  if (!authButton) return;
+
   if (!res.ok) {
     authButton.textContent = "Logga in";
     authButton.classList.remove("secondary-btn");
