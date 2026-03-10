@@ -6,22 +6,25 @@
   <title>Uppkopplad | Vald lektion</title>
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="choosen-lesson.css" />
+  <link rel="stylesheet" href="../account/account.css"/>
 </head>
 <body>
   <header>
-    <nav class="nav-mobile">
-      <a href="../index.html">
-        <img
-          src="../images/uppkopplad-logo.svg"
-          alt="uppkoppladLogo"
-          id="logo"
-        />
-      </a>
-      <a href="../login/index.html" class="primary-btn" id="auth-btn"
-      >Logga in</a
-      >
-    </nav>
-  </header>
+  <nav class="nav-mobile">
+    <a href="/modules/mainModules.html">
+      <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo"/>
+    </a>
+    <details class="secondary-btn menu-btn">
+      <summary></summary>
+        <div class="menu">
+          <div class="menu-options-box">
+              <a href="../account/index.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem;">Mitt konto</a>
+              <a href="../login/index.html" class="primary-btn menu-btn-s" id="auth-btn" style="margin: 0 0.5rem 0.5rem 0.5rem;">Logga in</a>
+          </div>
+        </div>
+    </details>
+  </nav>
+</header>
 
   <main>
     <div id="top">
@@ -62,5 +65,7 @@
   <footer><p>&copy; Uppkopplad 2026</p></footer>
   <script src="https://kit.fontawesome.com/413bd002c8.js" crossorigin="anonymous"></script>
   <script src="../modulesJS/choosen-lesson.js" type="module" ></script>
+  <script src="../account/userAuth.js" type="module"></script>
+  <script src="../account/account.js" type="module"></script>
 </body>
 </html>
