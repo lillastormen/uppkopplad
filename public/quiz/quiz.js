@@ -37,7 +37,10 @@ if (response.ok) {
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  validateInput();
+  if (!validateInput()) {
+    return;
+  }
+  saveQuizResult(quizId, userId);
   form.style.display = "none";
   quizResult.style.display = "block";
 
@@ -88,7 +91,6 @@ async function loadQuiz(quizId) {
     currentQuiz = await quizPromise.json();
     console.log(`Inloggad som userId ${userId} och laddar quizId ${quizId}`);
     next.style.display = "block";
-    saveQuizResult(quizId, userId);
     showQuestion(currentQuiz);
   } catch (error) {
     console.error(error);
@@ -134,11 +136,13 @@ function validateInput() {
     userSelected = document.querySelector('input[name="question"]:checked');
     if (!userSelected) {
       noSelected.style.opacity = "1";
-      return;
+      return false;
     }
 
     userAnswers[currentQuestion] = [userSelected.value];
+    saveUserAnswer(1, 1, 1);
   }
+
   //CHECKBOX
   else if (type === "checkbox") {
     userSelected = [
@@ -146,7 +150,7 @@ function validateInput() {
     ].map(i => i.value);
     if (userSelected.length === 0) {
       noSelected.style.opacity = "1";
-      return;
+      return false;
     }
     userAnswers[currentQuestion] = userSelected;
   }
@@ -169,6 +173,7 @@ function validateInput() {
       submit.style.display = "block";
     }
   }
+  return true;
 }
 
 async function saveQuizResult(quizId, userId) {
@@ -182,6 +187,20 @@ async function saveQuizResult(quizId, userId) {
   return console.log(result);
 }
 
-async function saveUserAnswer(quizResultId, quizQuestionId, quizAnswerId) {}
+async function saveUserAnswer(quizResultId, quizQuestionId, quizAnswerId) {
+  try {
+    const resultPromise = await fetch(
+      `http://localhost:3000/quiz/${quizResultId}/${quizQuestionId}/${quizAnswerId}`,
+      {
+        method: "POST",
+      },
+    );
+    const result = await resultPromise.json();
+    return console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
+//RUN
 loadQuiz(quizId);
