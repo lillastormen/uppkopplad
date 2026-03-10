@@ -1,8 +1,4 @@
-import express, {
-  type Request,
-  type Response,
-  type NextFunction,
-} from "express";
+import express, { type Request, type Response, type NextFunction } from "express";
 import userRoutes from "./routes/userRoutes.ts";
 import quizRoutes from "./routes/quizRoutes.ts";
 import modulesRoutes from "./routes/moduleRoutes.ts";
