@@ -1,7 +1,8 @@
-import { createUser, getUserByUsername, getUserById, getAllUsers, getUserCredentials } from "../repositories/mysql/userRepository.ts";
+import { createUser, getUserByUsername, getUserById, getAllUsers, getUserCredentials, updateUser } from "../repositories/mysql/userRepository.ts";
 import type { CreatedUser, GetUserParamsId, UserCredentials } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
+
 
 export async function getCurrentUser(req: Request, res: Response) {
   if (req.session.userId) {
@@ -195,15 +196,51 @@ export async function createNewUser(req: Request, res: Response) {
 
     return res.status(201).json({
       success: true,
-      // message: 'User registered successfully.',
       data: newUser,
     });
   } catch (error: unknown) {
-    const message =
-      error instanceof Error ? error.message : "Unknown error occured.";
-    return res.status(500).json({
-      success: false,
-      error: message,
+      const message = error instanceof Error ? error.message : "Unknown error occured.";
+      return res.status(500).json({
+        success: false,
+        error: message,
+    });
+  }
+}
+
+export async function patchUser(req: Request, res: Response) {
+  try {
+    const userId = req.session.userId;
+
+    if(!userId) {
+      return res.status(401).json({
+        success: false,
+        error: 'Not authenticated'
+      });
+    }
+
+    const { username, password } = req.body as {
+      username?: string,
+      password?: string
+    };
+
+    if (!username && !password) {
+      return res.status(400).json({
+        success: false,
+        error: 'Nothing to update'
+      })
+    }
+
+    const user = await updateUser({ id: userId, username, password });
+
+    return res.status(200).json({
+      success: true,
+      message: 'Successfully updated'
+    })
+  } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unknown error occured.";
+      return res.status(500).json({
+        success: false,
+        error: message,
     });
   }
 }
