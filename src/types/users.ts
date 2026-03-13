@@ -9,11 +9,21 @@ export type CreatedUser = {
 }
 
 export type UserCredentials = {
-    id: Number;
+    id: number;
     username: string;
     password: string;
 }
 
 export type GetUserParamsId = {
-    id: Number
+    id: number
+}
+
+export type UpdateUserPassword = {
+    id: number,
+    password?: string | undefined
+}
+
+export type UpdateUserUsername = {
+    id: number,
+    username?: string | undefined
 }
