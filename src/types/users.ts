@@ -18,8 +18,12 @@ export type GetUserParamsId = {
     id: number
 }
 
-export type UpdateUserData = {
+export type UpdateUserPassword = {
     id: number,
-    username?: string | undefined,
     password?: string | undefined
+}
+
+export type UpdateUserUsername = {
+    id: number,
+    username?: string | undefined
 }

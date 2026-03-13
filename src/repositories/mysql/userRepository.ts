@@ -1,6 +1,6 @@
 import { resolve } from "node:dns";
 import mySqlDbConnection from "../../db/mysql.ts";
-import type { CreateUserInput, CreatedUser, UpdateUserData, UserCredentials } from "../../types/users.ts";
+import type { CreateUserInput, CreatedUser, UpdateUserPassword, UpdateUserUsername, UserCredentials } from "../../types/users.ts";
 import { rejects } from "node:assert";
 
 export function getUserByUsername(username: string): Promise<CreatedUser | null> {
@@ -90,21 +90,40 @@ export function createUser({ username, password }: CreateUserInput): Promise<Cre
   });
 }
 
-export function updateUser({ id, username, password }: UpdateUserData): Promise<UserCredentials> {
+export function updatePassword({ id, password }: UpdateUserPassword): Promise<any> {
   return new Promise((resolve, reject) => {
     let sql = `
-      UPDATE users
-      SET username = ?, hashed_password = ? AS password
+      UPDATE user
+      SET hashed_password = ? 
       WHERE id = ?
     `;
 
-    const params = [id, username, password];
+    const params = [ password, id ];
 
     mySqlDbConnection.query(sql, params, (error: unknown, result: any) => {
       if (error)
         return reject(error);
-      else
-        return resolve(result);
+     
+      return resolve(result);
+    })
+  })
+}
+
+export function updateUsername({ id, username }: UpdateUserUsername): Promise<any> {
+  return new Promise((resolve, reject) => {
+    let sql = `
+      UPDATE user
+      SET username = ? 
+      WHERE id = ?
+    `;
+
+    const params = [ username, id];
+
+    mySqlDbConnection.query(sql, params, (error: unknown, result: any) => {
+      if (error)
+        return reject(error);
+     
+      return resolve(result);
     })
   })
 }
