@@ -1,7 +1,7 @@
-const API_BASE = 'http://localhost:3000';
+const API_BASE = "http://localhost:3000";
 function getMainModuleFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    return params.get('lesson');
+    return params.get("lesson");
 }
 async function fetchLesson(lesson) {
     try {
@@ -9,7 +9,7 @@ async function fetchLesson(lesson) {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-            }
+            },
         });
         if (!response.ok) {
             throw new Error(`Server error: ${response.status}`);
@@ -19,40 +19,52 @@ async function fetchLesson(lesson) {
     }
     catch (err) {
         const error = err;
-        console.error('Failure fetching lesson', error.message);
+        console.error("Failure fetching lesson", error.message);
         throw error;
     }
 }
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     const lessonName = getMainModuleFromUrl();
     if (lessonName) {
         fetchLesson(lessonName)
-            .then((lesson) => {
-            console.log('Fetched lesson:', lesson);
-            const mainHeader = document.querySelector('#header-two');
-            mainHeader.innerHTML = '';
-            const nameOflesson = document.createElement('h2');
+            .then(lesson => {
+            console.log("Fetched lesson:", lesson);
+            const mainHeader = document.querySelector("#header-two");
+            mainHeader.innerHTML = "";
+            const nameOflesson = document.createElement("h2");
             nameOflesson.textContent = lesson.module;
             mainHeader.appendChild(nameOflesson);
-            const iframe = document.querySelector('iframe');
+            const iframe = document.querySelector("iframe");
             iframe.src = `https://www.youtube-nocookie.com/embed/${lesson.video.youtubeId}`;
-            const stepsHeader = document.querySelector('.step-instructions');
+            const stepsHeader = document.querySelector(".step-instructions");
             stepsHeader.innerHTML = lesson.title;
-            const paragraphSteps = document.querySelector('.steps-paragraphs');
+            const paragraphSteps = document.querySelector(".steps-paragraphs");
             const steps = lesson.steps;
-            steps.forEach((step) => {
-                const paragraphStep = document.createElement('p');
+            steps.forEach(step => {
+                const paragraphStep = document.createElement("p");
                 paragraphStep.textContent = step;
                 paragraphSteps?.appendChild(paragraphStep);
             });
+            const doTest = document.querySelector("#doTestBtn");
+            const title = `${lesson?.module}`;
+            switch (title) {
+                case "BankID":
+                    doTest.href = "../quiz/quiz.html?id=2";
+                    break;
+                case "Swish":
+                    doTest.href = "../quiz/quiz.html?id=3";
+                    break;
+                default:
+                    doTest.href = "../quiz/quiz.html?id=1";
+            }
         })
-            .catch((err) => {
+            .catch(err => {
             const error = err;
-            console.log('Could not fetch lesson', error.message);
+            console.log("Could not fetch lesson", error.message);
         });
     }
     else {
-        console.log('No lesson in URL query');
+        console.log("No lesson in URL query");
     }
 });
 export {};
