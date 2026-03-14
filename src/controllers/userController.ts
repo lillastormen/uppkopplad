@@ -1,4 +1,4 @@
-import { createUser, getUserByUsername, getUserById, getAllUsers, updateUsername, updatePassword } from "../repositories/mysql/userRepository.ts";
+import { getUserByUsername, getUserById, getAllUsers, updateUsername, updatePassword } from "../repositories/mysql/userRepository.ts";
 import type { CreatedUser, GetUserParamsId, UserCredentials } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
@@ -180,9 +180,9 @@ export async function createNewUser(req: Request, res: Response) {
   }
 
   try {
-    const exsistingUser = await getUserByUsername(username);
+    const existingUser = await getUserByUsername(username);
 
-    if (exsistingUser) {
+    if (existingUser) {
       return res.status(409).json({
         success: false,
         error: "Användaren redan finns. Välj ett annat namn.",
@@ -234,6 +234,15 @@ export async function patchUser(req: Request, res: Response) {
   try {
 
     if (username) {
+      const existingUser = await getUserByUsername(username);
+
+      if (existingUser && existingUser.id !== userId) {
+        return res.status(409).json({
+          success: false,
+          error: "Username already taken"
+        });
+      }
+
       await updateUsername({ id: userId, username });
     }
     
