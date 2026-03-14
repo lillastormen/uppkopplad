@@ -1,7 +1,3 @@
-// import { includeHTML } from "../includeHTML.js";
-
-// includeHTML();
-
 const url = "http://localhost:3000/users/registration";
 const form = document.getElementById("registration-form");
 const message = document.getElementById("registration-message");

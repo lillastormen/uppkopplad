@@ -122,6 +122,20 @@ footer {
   cursor: pointer;
 }
 
+.primary-btn-s {
+  background-color: var(--primary);
+  color: var(--offwhite);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  border-color: transparent;
+  width: 50%;
+  align-self: center;
+}
+
 .primary-reversed-btn {
   background-color: var(--offwhite);
   color: var(--primary);

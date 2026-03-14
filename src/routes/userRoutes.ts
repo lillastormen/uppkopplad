@@ -10,7 +10,7 @@ router.get("/all/", getUsers);
 router.get("/auth", authenticateUser);
 router.get("/current", getCurrentUser);
 
-router.post("/register", createNewUser);
+router.post("/registration", createNewUser);
 router.post("/login", loginUser);
 router.post("/logout", logoutUser);
 

@@ -23,30 +23,108 @@ details[open] summary::after {
 }
 
 .menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: none;
-    width: 100%;
-    
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  width: 100%;
 }
 
 details[open] .menu {
-    display: block;
+  display: block;
 }
 
 .menu a {
-    display: block;
-    text-align: center;
-    gap: 0
+  display: block;
+  text-align: center;
+  gap: 0
 }
 
 .menu-options-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--offwhite);
-    border: 1px solid var(--secondary);
-    border-radius: 0.5rem;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--offwhite);
+  border: 1px solid var(--secondary);
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem 1rem;
+  margin-top: 2rem;
+  background-color: var(--offwhite);
+  justify-content: space-evenly;
+}
+
+#credentials-update-form {
+  margin: 1.5rem;
+}
+
+/* #username-upate-box {
+  display: flex;
+  flex-direction: row;
+} */
+
+label {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+}
+
+label[for="password-update"],
+label[for="password-update-repeat"],
+label[for="username-update"] {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+h4 {
+  margin-left: 0;
+  padding-left: 0;
+  color: var(--text-medium-grey);
+  font-weight: 300;
+}
+
+input {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px var(--primary) solid;
+}
+
+#password-update {
+  border-right: none;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.password-update-field {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--primary);
+  border-radius: 0.5rem;
+}
+
+#toggle-visibility {
+  background-color: var(--backround);
+  border-radius: 0.5rem;
+  border: 1px transparent solid;
+}
+
+i {
+  color: var(--primary);
+  font-size: 18px;
+}
+
+#error-msg-username, #error-msg-password {
+  color: var(--error);
+  font-size: 14px;
+}
+
+#success-msg-username, #success-msg-password {
+  color: var(--success);
+  font-size: 14px;
 }
