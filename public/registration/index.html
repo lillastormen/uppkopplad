@@ -22,39 +22,38 @@
       </nav>
     </header>
 
-    <form id="registration-form">
-      <img src="../images/img_7.png" alt="registration_img" id="reg-img" />
-      <div class="container">
-        <h4>Fyll i formuläret för att skapa ditt konto</h4>
-        <label for="username">Användarnamn: </label>
-        <input type="text" placeholder="Fyll i ditt användarnamn" name="username" id="username" required/>
-        <div style="margin-top: 0.5rem">
-          <label for="password">Lösenord: </label>
-          <div class="password-field">
-            <input type="password" placeholder="Fyll i ditt lösenord" name="password" id="password" minlength="8" required/>
-            <button type="button" id="toggle-visibility" aria-label="Visa lösenord">
-              <i class="bi bi-eye"></i>
-            </button>
+    <main>
+      <form id="registration-form">
+        <img src="../images/img_7.png" alt="registration_img" id="reg-img" />
+        <div class="container">
+          <h4>Fyll i formuläret för att skapa ditt konto</h4>
+          <label for="username">Användarnamn: </label>
+          <input type="text" placeholder="Fyll i ditt användarnamn" name="username" id="username" required/>
+          <div style="margin-top: 0.5rem">
+            <label for="password">Lösenord: </label>
+            <div class="password-field">
+              <input type="password" placeholder="Fyll i ditt lösenord" name="password" id="password" minlength="8" required/>
+              <button type="button" id="toggle-visibility" aria-label="Visa lösenord">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
           </div>
-        </div>
-        <label for="passwordRepeat">Bekräfta: </label>
-        <input type="password" placeholder="Bekräfta ditt lösenord" name="passwordRepeat" id="passwordRepeat" minlength="8" required/>
-        <span id="error-msg"></span>
-        <div id="policy-container">
-          <input 
-            type="checkbox" 
-            id="policy" 
-            name="policy" 
-            value="Policy" 
-          />
-          <label for="policy" style="font-size: 14px;">Genom att skapa ett konto accepterar du våra
-            <a href="#">Användarvillkor och integritetspolicy</a>.
-          </label>
-        </div>
+          <label for="passwordRepeat">Bekräfta: </label>
+          <input type="password" placeholder="Bekräfta ditt lösenord" name="passwordRepeat" id="passwordRepeat" minlength="8" required/>
+          <span id="error-msg"></span>
+          <div id="policy-container">
+            <input type="checkbox" id="policy" name="policy" value="Policy" required/>
+            <label for="policy" style="font-size: 14px;">Jag har läst och godkänner 
+              <a href="../gdpr/index.html">användarvillkor och integritetspolicy</a>.
+            </label>
+          </div>
 
-        <button type="submit" class="primary-btn" id="registration-btn">Registera</button>
-      </div>
-    </form>
+          <button type="submit" class="primary-btn" id="registration-btn">Registrera</button>
+        </div>
+      </form>
+      
+    </main>
+    <footer><p>&copy; Uppkopplad 2026</p></footer>
     <script src="./registration.js" type="module"></script>
   </body>
 </html>

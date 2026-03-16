@@ -92,8 +92,21 @@ async function loadQuiz(quizId) {
     currentQuiz = await response.json();
     console.log(`Laddar quizId ${quizId} och inloggad som userId ${userId}`);
     next.style.display = "block";
-    currentQuizResult = await fetchQuizResultId(quizId, userId);
-    saveQuizResult(quizId, userId);
+    
+
+    //create/fetch quiz result if the user is logged in
+    if (userId !== undefined) {
+      //trying to fetch an existing result
+      currentQuizResult = await fetchQuizResultId(quizId, userId);
+  
+    }
+    //if there is none, we create one and fetch its id
+    if(!currentQuizResult) {
+      await saveQuizResult(quizId, userId);
+      currentQuizResult = await fetchQuizResultId(quizId, userId);
+    }
+
+    // saveQuizResult(quizId, userId);
     showQuestion(currentQuiz);
   } catch (error) {
     console.error(error);
@@ -186,7 +199,16 @@ async function fetchQuizResultId(quizId, userId) {
   const response = await fetch(
     `http://localhost:3000/quiz/${quizId}/${userId}`,
   );
+  
   const result = await response.json();
+
+  console.log("quizResult response:", result);
+
+  //handle all "no result" cases
+  if (!result || !Array.isArray(result) || result.length === 0) {
+    return null;
+  }
+
   return result[0].id;
 }
 
@@ -198,7 +220,9 @@ async function saveQuizResult(quizId, userId) {
     },
   );
   const result = await response.json();
-  return console.log(result);
+  //
+  return result.id;
+  // return console.log(result);
 }
 
 async function saveUserAnswer(quizResultId, quizQuestionId, quizAnswerId) {
