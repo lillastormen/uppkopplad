@@ -17,6 +17,7 @@ const quizId = param.get("id") || 1;
 
 let currentQuestion = 0;
 let currentQuiz;
+let currentQuizResult;
 let userAnswers = [];
 let correctAnswers = [];
 let result = [];
@@ -40,13 +41,13 @@ form.addEventListener("submit", e => {
   if (!validateInput()) {
     return;
   }
-  saveQuizResult(quizId, userId);
   form.style.display = "none";
   quizResult.style.display = "block";
 
   correctAnswers = currentQuiz.map(q =>
     q.answers.filter(a => a.is_correct).map(a => a.answer),
   );
+  console.log(currentQuiz);
 
   for (let i = 0; i < correctAnswers.length; i++) {
     if (String(correctAnswers[i]) == String(userAnswers[i])) {
@@ -87,10 +88,12 @@ async function loadQuiz(quizId) {
       goToQuiz.textContent = "Mitt Konto / Moduler ?";
       return;
     }
-    const quizPromise = await fetch(`http://localhost:3000/quiz/${quizId}`);
-    currentQuiz = await quizPromise.json();
-    console.log(`Inloggad som userId ${userId} och laddar quizId ${quizId}`);
+    const response = await fetch(`http://localhost:3000/quiz/${quizId}`);
+    currentQuiz = await response.json();
+    console.log(`Laddar quizId ${quizId} och inloggad som userId ${userId}`);
     next.style.display = "block";
+    currentQuizResult = await fetchQuizResultId(quizId, userId);
+    saveQuizResult(quizId, userId);
     showQuestion(currentQuiz);
   } catch (error) {
     console.error(error);
@@ -140,7 +143,7 @@ function validateInput() {
     }
 
     userAnswers[currentQuestion] = [userSelected.value];
-    saveUserAnswer(1, 1, 1);
+    //saveUserAnswer(currentQuizResult, currentQuiz[currentQuestion].qa_id, 1);
   }
 
   //CHECKBOX
@@ -154,6 +157,9 @@ function validateInput() {
     }
     userAnswers[currentQuestion] = userSelected;
   }
+
+  console.log(userAnswers[currentQuestion]);
+  console.log(currentQuiz[currentQuestion].answers);
 
   noSelected.style.opacity = "0";
 
@@ -176,26 +182,34 @@ function validateInput() {
   return true;
 }
 
+async function fetchQuizResultId(quizId, userId) {
+  const response = await fetch(
+    `http://localhost:3000/quiz/${quizId}/${userId}`,
+  );
+  const result = await response.json();
+  return result[0].id;
+}
+
 async function saveQuizResult(quizId, userId) {
-  const resultPromise = await fetch(
+  const response = await fetch(
     `http://localhost:3000/quiz/${quizId}/${userId}`,
     {
       method: "POST",
     },
   );
-  const result = await resultPromise.json();
+  const result = await response.json();
   return console.log(result);
 }
 
 async function saveUserAnswer(quizResultId, quizQuestionId, quizAnswerId) {
   try {
-    const resultPromise = await fetch(
+    const response = await fetch(
       `http://localhost:3000/quiz/${quizResultId}/${quizQuestionId}/${quizAnswerId}`,
       {
         method: "POST",
       },
     );
-    const result = await resultPromise.json();
+    const result = await response.json();
     return console.log(result);
   } catch (error) {
     console.error(error);

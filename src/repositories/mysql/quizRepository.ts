@@ -41,6 +41,21 @@ export function createQuizResult(quizId: number, userId: number) {
   });
 }
 
+export function getQuizResultById(quizId: number, userId: number) {
+  return new Promise((resolve, reject) => {
+    let sql = `
+            SELECT qr.id FROM quiz_result qr
+            WHERE qr.quiz_id = ? AND qr.user_id = ?;`;
+
+    const params = [quizId, userId];
+
+    mySqlDbConnection.query(sql, params, (error: unknown, rows: any) => {
+      if (error) reject(error);
+      resolve(rows);
+    });
+  });
+}
+
 export function createUserAnswer(
   quizResultId: number,
   quizQuestionId: number,

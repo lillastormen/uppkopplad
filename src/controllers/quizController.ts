@@ -1,5 +1,6 @@
 import {
   getQuizById,
+  getQuizResultById,
   createQuizResult,
   createUserAnswer,
 } from "../repositories/mysql/quizRepository.ts";
@@ -22,6 +23,30 @@ export async function getQuiz(req: Request, res: Response) {
     }
 
     res.status(200).json(quiz);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+}
+
+export async function getQuizResult(req: Request, res: Response) {
+  try {
+    const quizId = Number(req.params.quizId);
+    const userId = Number(req.params.userId);
+
+    if (isNaN(quizId) || isNaN(userId)) {
+      return res
+        .status(400)
+        .json({ message: "Invalid input, quizID and userID must be a number" });
+    }
+
+    const quizResult = await getQuizResultById(quizId, userId);
+
+    if (!quizResult) {
+      return res.status(404).json({ message: `No quizResult found` });
+    }
+
+    res.status(200).json(quizResult);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
@@ -57,12 +82,10 @@ export async function postUserAnswer(req: Request, res: Response) {
     const quizAnswerId = Number(req.params.quizAnswerId);
 
     if (isNaN(quizResultId) || isNaN(quizQuestionId) || isNaN(quizAnswerId)) {
-      return res
-        .status(400)
-        .json({
-          message:
-            "Invalid input, quizResultID, quizQuestionID and quizAnswerID must be a number",
-        });
+      return res.status(400).json({
+        message:
+          "Invalid input, quizResultID, quizQuestionID and quizAnswerID must be a number",
+      });
     }
 
     const userAnswer = await createUserAnswer(
@@ -73,7 +96,9 @@ export async function postUserAnswer(req: Request, res: Response) {
     if (!userAnswer) {
       return res.status(200).json({ message: "Could not save user answer" });
     }
-    return res.status(201).json({ message: "User answer saved" });
+    return res.status(201).json({
+      message: `Saved user answer with quizresultid: ${quizResultId}, quizquestionid: ${quizQuestionId}, quizanswerid: ${quizAnswerId}`,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
