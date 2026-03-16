@@ -83,9 +83,9 @@ async function loadQuiz(quizId) {
   try {
     if (userId !== undefined && quizId === 1) {
       quizSection.style.display = "none";
-      //goToQuiz.href = "./modules/mainModules.html";
-      goToQuiz.href = "./quiz/quiz.html?id=1";
-      goToQuiz.textContent = "Mitt Konto / Moduler ?";
+      goToQuiz.href = "./modules/mainModules.html";
+      // goToQuiz.href = "./quiz/quiz.html?id=1";
+      goToQuiz.textContent = "Moduler";
       return;
     }
     const response = await fetch(`http://localhost:3000/quiz/${quizId}`);
