@@ -16,28 +16,31 @@
             </a>
         </nav>
     </header>
-    
-    <form id="login-form">
-        <img src="../images/img_10.png" alt="login_img" id="log-img"/>
-        <div class="container">
-            <h4>Fyll i formuläret för att logga in</h4>
 
-            <label for="username">Användarnamn: </label>
-            <input type="text" placeholder="Fyll i ditt användarnamn" name="username" id="username" required>
+    <main>
+        <form id="login-form">
+            <img src="../images/img_10.png" alt="login_img" id="log-img"/>
+            <div class="container">
+                <h4>Fyll i formuläret för att logga in</h4>
 
-            <div style="margin-top: 0.5rem;">
-                <label for="password">Lösenord: </label>
-                <div class="password-field">
-                    <input type="password" placeholder="Fyll i ditt lösenord" name="password" id="password" required>
-                    <button type="button" id="toggle-visibility" aria-label="Visa lösenord">
-                        <i class="bi bi-eye"></i>
-                    </button>
+                <label for="username">Användarnamn: </label>
+                <input type="text" placeholder="Fyll i ditt användarnamn" name="username" id="username" required>
+
+                <div style="margin-top: 0.5rem;">
+                    <label for="password">Lösenord: </label>
+                    <div class="password-field">
+                        <input type="password" placeholder="Fyll i ditt lösenord" name="password" id="password" required>
+                        <button type="button" id="toggle-visibility" aria-label="Visa lösenord">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
                 </div>
+                <span id="error-msg"></span>
+                <button type="submit" class="primary-btn" id="big-login-btn" disabled>Logga in</button>
             </div>
-            <span id="error-msg"></span>
-            <button type="submit" class="primary-btn" id="big-login-btn" disabled>Logga in</button>
-        </div>
-    </form>    
-   <script src="./login.js" type="module" defer></script>
+        </form>     
+    </main>
+    <footer style="position: absolute;"><p>&copy; Uppkopplad 2026</p></footer>
+    <script src="./login.js" type="module" defer></script>
 </body>
 </html>
