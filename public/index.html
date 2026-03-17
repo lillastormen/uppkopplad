@@ -9,15 +9,25 @@
     <link rel="stylesheet" href="./account/account.css" />
     <script src="./quiz/quiz.js" type="module" defer></script>
     <script src="./account/userAuth.js" type="module"></script>
-    <script src="./account/account.js" type="module" ></script>
+    <script src="./account/account.js" type="module"></script>
   </head>
   <body>
     <header>
       <nav class="nav-mobile">
-        <a href="/">
-            <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo"/>
+        <a href="./">
+          <img
+            src="./images/uppkopplad-logo.svg"
+            alt="uppkoppladLogo"
+            id="logo"
+          />
         </a>
-        <a href="../login/index.html" class="primary-btn" id="auth-btn" style="margin: 0.5rem;">Logga in</a>
+        <a
+          href="./login/index.html"
+          class="primary-btn"
+          id="auth-btn"
+          style="margin: 0.5rem"
+          >Logga in</a
+        >
       </nav>
     </header>
 
@@ -38,7 +48,12 @@
         <article id="quizResult">
           <h1 id="resultHeading"></h1>
           <p id="resultText"></p>
-          <a href="./registration/index.html" id="createAccountBtn" class="primary-btn">Skapa konto</a>
+          <a
+            href="./registration/index.html"
+            id="createAccountBtn"
+            class="primary-btn"
+            >Skapa konto</a
+          >
         </article>
 
         <form id="quizForm">
