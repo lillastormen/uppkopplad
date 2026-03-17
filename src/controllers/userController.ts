@@ -1,5 +1,15 @@
-import { getUserByUsername, getUserById, getAllUsers, updateUsername, updatePassword } from "../repositories/mysql/userRepository.ts";
-import type { CreatedUser, GetUserParamsId, UserCredentials } from "../types/users.ts";
+import {
+  getUserByUsername,
+  getUserById,
+  getAllUsers,
+  updateUsername,
+  updatePassword,
+} from "../repositories/mysql/userRepository.ts";
+import type {
+  CreatedUser,
+  GetUserParamsId,
+  UserCredentials,
+} from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
 
@@ -120,7 +130,7 @@ export async function authenticateUser(req: Request, res: Response) {
   }
 
   const user = await getUserById(userId);
-  
+
   if (!user) {
     return res.status(401).json({
       success: false,
@@ -199,53 +209,52 @@ export async function createNewUser(req: Request, res: Response) {
       data: newUser,
     });
   } catch (error: unknown) {
-      const message = error instanceof Error ? error.message : "Unknown error occured.";
-      return res.status(500).json({
-        success: false,
-        error: message,
+    const message =
+      error instanceof Error ? error.message : "Unknown error occured.";
+    return res.status(500).json({
+      success: false,
+      error: message,
     });
   }
 }
 
 export async function patchUser(req: Request, res: Response) {
-  
   const userId = req.session.userId;
-  console.log(userId)
-  
-  if(!userId) {
+  console.log(userId);
+
+  if (!userId) {
     return res.status(401).json({
       success: false,
-      error: 'Not authenticated'
+      error: "Not authenticated",
     });
   }
 
   const { username, password } = req.body as {
-    username?: string,
-    password?: string
+    username?: string;
+    password?: string;
   };
 
   if (!username && !password) {
     return res.status(400).json({
       success: false,
-      error: 'Nothing to update'
-    })
+      error: "Nothing to update",
+    });
   }
 
   try {
-
     if (username) {
       const existingUser = await getUserByUsername(username);
 
       if (existingUser && existingUser.id !== userId) {
         return res.status(409).json({
           success: false,
-          error: "Username already taken"
+          error: "Username already taken",
         });
       }
 
       await updateUsername({ id: userId, username });
     }
-    
+
     if (password) {
       const hashedPassword = await userService.hashPassword(password);
       await updatePassword({ id: userId, password: hashedPassword });
@@ -253,17 +262,15 @@ export async function patchUser(req: Request, res: Response) {
 
     return res.status(200).json({
       success: true,
-      message: 'Successfully updated',
-    })
-
+      message: "Successfully updated",
+    });
   } catch (error: unknown) {
-      const message = error instanceof Error ? error.message : "Unknown error occured.";
-      
-      return res.status(500).json({
-        success: false,
-        error: message,
+    const message =
+      error instanceof Error ? error.message : "Unknown error occured.";
+
+    return res.status(500).json({
+      success: false,
+      error: message,
     });
   }
-    
-
 }
