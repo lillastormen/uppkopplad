@@ -36,7 +36,6 @@ export async function loadAuthenticateUser() {
   }
 
   if (authButton) {
-    console.log("got it");
     authButton.textContent = "Logga ut";
     authButton.classList.replace("primary-btn", "secondary-btn");
   }
