@@ -27,3 +27,9 @@ export type UpdateUserUsername = {
     id: number,
     username?: string | undefined
 }
+
+export type DbUser = {
+    id: number,
+    username: string,
+    hashed_password: string
+}

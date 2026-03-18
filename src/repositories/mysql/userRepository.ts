@@ -1,7 +1,8 @@
 import { resolve } from "node:dns";
 import mySqlDbConnection from "../../db/mysql.ts";
-import type { CreateUserInput, CreatedUser, GetUserParamsId, UpdateUserPassword, UpdateUserUsername, UserCredentials } from "../../types/users.ts";
+import type { CreateUserInput, CreatedUser, DbUser, GetUserParamsId, UpdateUserPassword, UpdateUserUsername, UserCredentials } from "../../types/users.ts";
 import { rejects } from "node:assert";
+
 
 export function getUserByUsername(username: string): Promise<CreatedUser | null> {
   return new Promise((resolve, reject) => {
@@ -21,7 +22,7 @@ export function getUserByUsername(username: string): Promise<CreatedUser | null>
   });
 }
 
-export function getUserById(id: number) {
+export function getUserById(id: number): Promise<DbUser | null> {
   return new Promise((resolve, reject) => {
     const sql = `
       SELECT id, username
