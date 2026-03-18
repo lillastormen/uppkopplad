@@ -169,6 +169,20 @@ footer {
   cursor: pointer;
 }
 
+.secondary-btn-s {
+  background-color: var(--secondary);
+  color: var(--offwhite);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  border-color: transparent;
+  width: 50%;
+  align-self: center;
+}
+
 .nav-mobile {
   display: flex;
   justify-content: space-between;

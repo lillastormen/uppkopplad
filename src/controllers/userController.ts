@@ -4,6 +4,7 @@ import {
   getAllUsers,
   updateUsername,
   updatePassword,
+  deleteUser,
 } from "../repositories/mysql/userRepository.ts";
 import type {
   CreatedUser,
@@ -12,6 +13,8 @@ import type {
 } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
+import mySqlDbConnection from "../db/mysql.ts";
+
 
 export async function getCurrentUser(req: Request, res: Response) {
   if (req.session.userId) {
@@ -87,7 +90,7 @@ export async function loginUser(req: Request, res: Response) {
   }
 
   try {
-    const user = await userService.loginUser(username, password);
+    const user = await userService.logInUser(username, password);
 
     if (!user) {
       return res.status(401).json({
@@ -272,5 +275,47 @@ export async function patchUser(req: Request, res: Response) {
       success: false,
       error: message,
     });
+  } 
+}
+
+export async function removeUser(req: Request, res: Response) {
+  const userId = req.session.userId;
+
+  const { password } = req.body as {
+    password: string
   }
+
+  let sql = `
+    SELECT password FROM user 
+    WHERE id = ?
+  `;
+
+ 
+
+  const user = mySqlDbConnection.query(sql, [userId]);
+
+  if(!userId) {
+    return res.status(400).json({
+      success: false,
+      error: 'Id missing'
+    })
+  }
+
+  try {
+    if (userId) {
+      await deleteUser({ id: userId });
+      return res.status(200).json({
+        success: true
+      });
+    } 
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Unknown error occured.";
+
+    return res.status(500).json({
+      success: false,
+      error: message,
+    });
+  }
+
 }

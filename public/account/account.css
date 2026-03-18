@@ -53,8 +53,8 @@ details[open] .menu {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 0 1rem 1rem;
-  margin-top: 2rem;
+  padding: 1rem 1.5rem ;
+  margin-top: 1rem;
   background-color: var(--offwhite);
   justify-content: space-evenly;
 }
@@ -81,11 +81,11 @@ label[for="username-update"] {
   color: var(--primary);
 }
 
-h4 {
+h3 {
   margin-left: 0;
   padding-left: 0;
-  color: var(--text-medium-grey);
-  font-weight: 300;
+  color: var(--primary);
+
 }
 
 input {

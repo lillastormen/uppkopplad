@@ -4,11 +4,12 @@ import type { CreateUserInput } from '../types/users.ts';
 import type { Request, Response, NextFunction } from 'express';
 
 //crypting password
-const SALT_ROUNDS = 12;
+// const SALT_ROUNDS = 12;
 
 export async function registerUser(input: CreateUserInput) {
     
-    const hashedPassword = await bcrypt.hash(input.password, SALT_ROUNDS);
+    const hashedPassword = await hashPassword(input.password);
+   
 
     return createUser({
         username: input.username,
@@ -16,7 +17,7 @@ export async function registerUser(input: CreateUserInput) {
     });
 }
 
-export async function loginUser(username: string, password: string) {
+export async function logInUser(username: string, password: string) {
     
     const user = await getUserCredentials(username);
     if(!user) return null;
