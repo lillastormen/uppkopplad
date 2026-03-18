@@ -293,7 +293,7 @@ export async function deleteUser(req: Request, res: Response) {
       });
     }
 
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    const isPasswordCorrect = await bcrypt.compare(password, user.hashed_password);
 
     if (!isPasswordCorrect) {
       return res.status(401).json({
