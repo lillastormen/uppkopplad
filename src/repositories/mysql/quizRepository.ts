@@ -56,6 +56,23 @@ export function getQuizResultById(quizId: number, userId: number) {
   });
 }
 
+export function deleteUserAnswersByQuizResultId(quizResultId: number) {
+  return new Promise((resolve, reject) => {
+    let sql = `
+            DELETE FROM user_answer ua
+            WHERE quiz_result_id = ?;`;
+
+    mySqlDbConnection.query(
+      sql,
+      [quizResultId],
+      (error: unknown, rows: any) => {
+        if (error) reject(error);
+        resolve(rows);
+      },
+    );
+  });
+}
+
 export function createUserAnswer(
   quizResultId: number,
   quizQuestionId: number,
