@@ -15,7 +15,7 @@ export type UserCredentials = {
 }
 
 export type GetUserParamsId = {
-    id: number
+    id: string
 }
 
 export type UpdateUserPassword = {

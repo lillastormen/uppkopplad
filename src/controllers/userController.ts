@@ -43,9 +43,10 @@ export async function getUser(req: Request<CreatedUser>, res: Response) {
 
 export async function getUserId(req: Request<GetUserParamsId>, res: Response) {
   const { id } = req.params;
+  const idNumber = Number(id)
 
   try {
-    const userId = await getUserById(id);
+    const userId = await getUserById(idNumber);
 
     if (!userId) {
       return res.status(404).json({
@@ -277,7 +278,8 @@ export async function deleteUser(req: Request, res: Response) {
 
   if(!userId || !password) {
     return res.status(400).json({
-      success: false
+      success: false,
+      error: 'Password missing'
     });
   }
 
@@ -291,13 +293,24 @@ export async function deleteUser(req: Request, res: Response) {
       });
     }
 
-    const isMatch = await bcrypt.compare(password, user.hashed_password)
-    if (userId) {
-      await deleteUserById({ id: userId });
-      return res.status(200).json({
-        success: true
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordCorrect) {
+      return res.status(401).json({
+        success: false,
+        error: 'Incorrect password'
       });
-    } 
+    }
+
+    await deleteUserById(userId);
+     
+    req.session.destroy(() => {
+      res.clearCookie("sid");
+      return res.status(401).json({
+          success: false,
+          error: 'Session invalid'
+      });
+    });
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : "Unknown error occured.";

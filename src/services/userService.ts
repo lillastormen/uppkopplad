@@ -56,14 +56,13 @@ export async function requireAuthentication(req: Request, res: Response, next: N
                 });
             });
         }
-            next();
+        
+        next();
     } catch {
         return res.status(500).json({
             success: false
         })
     }
-
-
 }
 
 export async function hashPassword(password: string): Promise<string> {

@@ -5,7 +5,7 @@ import { rejects } from "node:assert";
 
 export function getUserByUsername(username: string): Promise<CreatedUser | null> {
   return new Promise((resolve, reject) => {
-    let sql = `
+    const sql = `
       SELECT username, hashed_password
       FROM user
       WHERE username = ? 
@@ -23,7 +23,7 @@ export function getUserByUsername(username: string): Promise<CreatedUser | null>
 
 export function getUserById(id: number) {
   return new Promise((resolve, reject) => {
-    let sql = `
+    const sql = `
       SELECT id, username
       FROM user
       WHERE id = ? 
@@ -41,7 +41,7 @@ export function getUserById(id: number) {
 
 export function getUserCredentials(username: string): Promise<UserCredentials> {
   return new Promise((resolve, reject) => {
-    let sql = `
+    const sql = `
       SELECT id, username, hashed_password AS password
       FROM user
       WHERE username = ?
@@ -59,7 +59,7 @@ export function getUserCredentials(username: string): Promise<UserCredentials> {
 
 export function getAllUsers(): Promise<void> {
   return new Promise((resolve, reject) => {
-    let sql = `
+    const sql = `
       SELECT id, username
       FROM user
       ORDER BY id ASC
@@ -76,7 +76,7 @@ export function getAllUsers(): Promise<void> {
 
 export function createUser({ username, password }: CreateUserInput): Promise<CreatedUser> {
   return new Promise((resolve, reject) => {
-    let sql = `
+    const sql = `
       INSERT INTO user (username, hashed_password)
       VALUES (?, ?)
     `;
@@ -93,8 +93,8 @@ export function createUser({ username, password }: CreateUserInput): Promise<Cre
 }
 
 export function updatePassword({ id, password }: UpdateUserPassword): Promise<any> {
-  return new Promise((resolve, reject) => {
-    let sql = `
+  return new Promise<void>((resolve, reject) => {
+    const sql = `
       UPDATE user
       SET hashed_password = ? 
       WHERE id = ?
@@ -106,14 +106,14 @@ export function updatePassword({ id, password }: UpdateUserPassword): Promise<an
       if (error)
         return reject(error);
      
-      return resolve(result);
+      return resolve();
     });
   });
 }
 
 export function updateUsername({ id, username }: UpdateUserUsername): Promise<any> {
-  return new Promise((resolve, reject) => {
-    let sql = `
+  return new Promise<void>((resolve, reject) => {
+    const sql = `
       UPDATE user
       SET username = ? 
       WHERE id = ?
@@ -125,32 +125,14 @@ export function updateUsername({ id, username }: UpdateUserUsername): Promise<an
       if (error)
         return reject(error);
      
-      return resolve(result);
+      return resolve();
     });
   });
 }
 
-export function deleteUserById(userId: number) {
-  return new Promise((resolve, reject) => {
-    let sql = `
-      DELETE * FROM user
-      WHERE id = ?
-    `;
-
-    const id = [ userId ];
-
-    mySqlDbConnection.query(sql, id, (error: unknown, result: any) => {
-      if (error)
-        return reject(error);
-
-      return resolve(result);
-    });
-  });
-}
-
-export async function assignSessionToUser(sessionId: string, userId: number) {
-  return new Promise((resolve, reject) => {
-    let sql = `
+export function assignSessionToUser(sessionId: string, userId: number) {
+  return new Promise<void>((resolve, reject) => {
+    const sql = `
       UPDATE sessions
       SET user_id = ?
       WHERE session_id = ?
@@ -160,7 +142,78 @@ export async function assignSessionToUser(sessionId: string, userId: number) {
     if (error)
       return reject(error);
 
-    return resolve(result)
+    return resolve()
   });
 });
+}
+
+
+export async function deleteUserById(userId: number): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+
+    mySqlDbConnection.beginTransaction((error) => {
+      if (error)
+        return reject(error);
+
+      const sqlDeleteUserAnswers = `
+        DELETE user_answer ua
+        WHERE ua.quiz_result_id qri IN (
+          SELECT qr.id
+          FROM quiz_result qr
+          WHERE qr-user_id = ?
+        )
+      `;
+
+      const sqlDeleteResults = `
+        DELETE FROM quiz_result qr
+        WHERE qr.user_id = ?
+      `;
+
+      const sqlDeleteSession = `
+        DELETE FROM sessions s
+        WHERE s.user_id = ?
+      `;
+
+      const sqlDeleteUser = `
+        DELETE FROM user u
+        WHERE u.id = ?
+      `;
+
+
+      //creating a monster
+      mySqlDbConnection.query(sqlDeleteUserAnswers, [ userId ], (error1) => {
+        if (error1) {
+          return mySqlDbConnection.rollback(() => reject(error1));
+        }
+
+        mySqlDbConnection.query(sqlDeleteResults, [ userId ], (error2) => {
+          if (error2) {
+            return mySqlDbConnection.rollback(() => reject(error2));
+          }
+
+          mySqlDbConnection.query(sqlDeleteSession, [ userId ], (error3) => {
+            if (error3) {
+              return mySqlDbConnection.rollback(() => reject(error3));
+            }
+
+            mySqlDbConnection.query(sqlDeleteUser, [ userId ], (error4) => {
+              if (error4) {
+                return mySqlDbConnection.rollback(() => reject(error4));
+              }
+
+              mySqlDbConnection.commit((commitError) => {
+                if (commitError) {
+                  return mySqlDbConnection.rollback(() => 
+                    reject(commitError)
+                  );
+                }
+
+                resolve();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 }
