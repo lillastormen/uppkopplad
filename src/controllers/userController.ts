@@ -1,19 +1,10 @@
-import {
-  getUserByUsername,
-  getUserById,
-  getAllUsers,
-  updateUsername,
-  updatePassword,
-  deleteUser,
-} from "../repositories/mysql/userRepository.ts";
-import type {
-  CreatedUser,
-  GetUserParamsId,
-  UserCredentials,
-} from "../types/users.ts";
+import { getUserByUsername, getUserById, getAllUsers, updateUsername, updatePassword, deleteUserById } from "../repositories/mysql/userRepository.ts";
+import type { CreatedUser, GetUserParamsId, UserCredentials } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
 import mySqlDbConnection from "../db/mysql.ts";
+import { brotliCompressSync } from "node:zlib";
+import bcrypt from 'bcrypt';
 
 
 export async function getCurrentUser(req: Request, res: Response) {
@@ -77,6 +68,7 @@ export async function getUserId(req: Request<GetUserParamsId>, res: Response) {
 }
 
 export async function loginUser(req: Request, res: Response) {
+  
   const { username, password } = req.body as {
     username?: string;
     password?: string;
@@ -101,10 +93,8 @@ export async function loginUser(req: Request, res: Response) {
     }
 
     req.session.userId = user.id;
-    // console.log("Session ID:", req.sessionID);
-    // console.log("Session object:", req.session);
-
-    // res.redirect("/modules/mainModules.html");
+    console.log("Session Id:", req.sessionID);
+    console.log("Session object:", req.session);
 
     return res.status(200).json({
       success: true,
@@ -278,32 +268,32 @@ export async function patchUser(req: Request, res: Response) {
   } 
 }
 
-export async function removeUser(req: Request, res: Response) {
+export async function deleteUser(req: Request, res: Response) {
+  
   const userId = req.session.userId;
-
   const { password } = req.body as {
     password: string
   }
 
-  let sql = `
-    SELECT password FROM user 
-    WHERE id = ?
-  `;
-
- 
-
-  const user = mySqlDbConnection.query(sql, [userId]);
-
-  if(!userId) {
+  if(!userId || !password) {
     return res.status(400).json({
-      success: false,
-      error: 'Id missing'
-    })
+      success: false
+    });
   }
 
   try {
+    const user = await getUserById(userId);
+
+    if(!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'User not found'
+      });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.hashed_password)
     if (userId) {
-      await deleteUser({ id: userId });
+      await deleteUserById({ id: userId });
       return res.status(200).json({
         success: true
       });

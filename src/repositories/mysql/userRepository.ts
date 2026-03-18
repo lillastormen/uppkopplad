@@ -21,7 +21,7 @@ export function getUserByUsername(username: string): Promise<CreatedUser | null>
   });
 }
 
-export function getUserById(id: Number): Promise<CreatedUser | null> {
+export function getUserById(id: number) {
   return new Promise((resolve, reject) => {
     let sql = `
       SELECT id, username
@@ -31,8 +31,10 @@ export function getUserById(id: Number): Promise<CreatedUser | null> {
   `;
 
     mySqlDbConnection.query(sql, [id], (error: unknown, result: any[]) => {
-      if (error) return reject(error);
-      else return resolve(result?.[0] ?? null);
+      if (error) 
+        return reject(error);
+      else 
+        return resolve(result?.[0] ?? null);
     });
   });
 }
@@ -67,7 +69,7 @@ export function getAllUsers(): Promise<void> {
       if (error) 
         return reject(error);
       else 
-          return resolve(result);
+        return resolve(result);
     });
   });
 }
@@ -128,20 +130,37 @@ export function updateUsername({ id, username }: UpdateUserUsername): Promise<an
   });
 }
 
-export function deleteUser({ id }: GetUserParamsId) {
+export function deleteUserById(userId: number) {
   return new Promise((resolve, reject) => {
     let sql = `
-      DELETE FROM user
+      DELETE * FROM user
       WHERE id = ?
     `;
 
-    const params = [ id ];
+    const id = [ userId ];
 
-    mySqlDbConnection.query(sql, params, (error: unknown, result: any) => {
+    mySqlDbConnection.query(sql, id, (error: unknown, result: any) => {
       if (error)
         return reject(error);
 
       return resolve(result);
     });
   });
+}
+
+export async function assignSessionToUser(sessionId: string, userId: number) {
+  return new Promise((resolve, reject) => {
+    let sql = `
+      UPDATE sessions
+      SET user_id = ?
+      WHERE session_id = ?
+  `;
+
+  mySqlDbConnection.query(sql, [ userId, sessionId ], (error: unknown, result: any) => {
+    if (error)
+      return reject(error);
+
+    return resolve(result)
+  });
+});
 }
