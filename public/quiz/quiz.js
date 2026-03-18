@@ -75,6 +75,7 @@ form.addEventListener("submit", e => {
     resultHeading.textContent = "Här är ditt resultat!";
     resultText.textContent = `Du svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.`;
     saveUserAnswer(stashedUserAnswers);
+    console.log(stashedUserAnswers);
   }
 });
 
@@ -85,7 +86,6 @@ async function loadQuiz(quizId) {
     if (userId !== undefined && quizId === 1) {
       quizSection.style.display = "none";
       goToQuiz.href = "./modules/mainModules.html";
-      // goToQuiz.href = "./quiz/quiz.html?id=1";
       goToQuiz.textContent = "Moduler";
       return;
     }
@@ -94,18 +94,13 @@ async function loadQuiz(quizId) {
     console.log(`Laddar quizId ${quizId} och inloggad som userId ${userId}`);
     next.style.display = "block";
 
-    //create/fetch quiz result if the user is logged in
     if (userId !== undefined) {
-      //trying to fetch an existing result
       currentQuizResult = await fetchQuizResultId(quizId, userId);
     }
-    //if there is none, we create one and fetch its id
     if (!currentQuizResult) {
       await saveQuizResult(quizId, userId);
       currentQuizResult = await fetchQuizResultId(quizId, userId);
     }
-
-    // saveQuizResult(quizId, userId);
     showQuestion(currentQuiz);
   } catch (error) {
     console.error(error);
@@ -168,12 +163,8 @@ function validateInput() {
     }
     userAnswers[currentQuestion] = userSelected;
   }
-  //console.log(currentQuiz);
-  //console.log(userAnswers[currentQuestion]);
-  //console.log(currentQuiz[currentQuestion].answers);
 
   for (let i = 0; i < userAnswers[currentQuestion].length; i++) {
-    //console.log(userAnswers[currentQuestion][i]);
     const ans = currentQuiz[currentQuestion].answers.find(
       a => a.answer === userAnswers[currentQuestion][i],
     );
@@ -183,12 +174,6 @@ function validateInput() {
       currentQuiz[currentQuestion].id,
       ans.qa_id,
     ]);
-
-    /*saveUserAnswer(
-      currentQuizResult,
-      currentQuiz[currentQuestion].id,
-      ans.qa_id,
-    );*/
   }
 
   noSelected.style.opacity = "0";
@@ -241,15 +226,16 @@ async function saveQuizResult(quizId, userId) {
 
 async function saveUserAnswer(ua) {
   try {
+    console.log(await fetch(`http://localhost:3000/quiz/${ua[0][0]}`));
     for (let i = 0; i < ua.length; i++) {
       const response = await fetch(
-        `http://localhost:3000/quiz/${ua[i][1]}/${ua[i][2]}/${ua[i][3]}`,
+        `http://localhost:3000/quiz/${ua[i][0]}/${ua[i][1]}/${ua[i][2]}`,
         {
           method: "POST",
         },
       );
       const result = await response.json();
-      return console.log(result);
+      console.log(result);
     }
   } catch (error) {
     console.error(error);
