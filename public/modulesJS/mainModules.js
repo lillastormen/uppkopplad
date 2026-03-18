@@ -22,6 +22,13 @@ const searchBtn = document.querySelector('#search-button');
 function getSearchQuery() {
     return searchField.value.trim();
 }
+searchBtn.addEventListener('click', () => {
+    const userQuery = getSearchQuery();
+    const filteredLesson = allLessons.filter((lesson) => {
+        return lesson.module.toLowerCase().includes(userQuery.toLowerCase());
+    });
+    console.log(filteredLesson);
+});
 const mobileBtn = document.getElementById('mobile-btn');
 const computerBtn = document.getElementById('computer-btn');
 const internetBtn = document.getElementById('internet-btn');

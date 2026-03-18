@@ -25,9 +25,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 const searchField = document.querySelector('#search-field') as HTMLInputElement;
 const searchBtn = document.querySelector('#search-button') as HTMLButtonElement;
 
-function getSearchQuery () {
+function getSearchQuery (): string {
     return searchField.value.trim();
 }
+
+searchBtn.addEventListener('click', () => {
+    const userQuery = getSearchQuery();
+
+    const filteredLesson = allLessons.filter((lesson) => {
+        return lesson.module.toLowerCase().includes(userQuery.toLowerCase());
+    });
+    console.log(filteredLesson);
+});
 
 // For everything outside of search function
 const mobileBtn = document.getElementById('mobile-btn') as HTMLButtonElement;
