@@ -3,8 +3,13 @@ details {
   text-align: center;
 }
 
+summary {
+  display: block;
+  cursor: pointer;
+}
+
 summary::after {
-  content: 'MENY';
+  content: '';
 }
 
 summary::marker {
@@ -15,7 +20,7 @@ summary::-webkit-details-marker {
 }
 
 details[open] summary::before {
-  content: "STÄNG";
+  content: "";
 
 }
 details[open] summary::after {
