@@ -104,6 +104,7 @@ header {
 main {
   flex-grow: 1;
   margin: 1rem 2rem;
+  align-items: center;
 }
 
 footer {
