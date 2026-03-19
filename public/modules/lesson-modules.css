@@ -11,13 +11,6 @@ img {
   height: auto;
 }
 
-/* Detta är anledningen att texten på logga in knappen inte syntes
-p {
-  color: #3b615e;
-  font-weight: bold;
-}
-*/
-
 #lesson-buttons {
   display: flex;
   flex-direction: column;
@@ -28,28 +21,14 @@ p {
   font-size: 130%;
   padding: 1em 2em;
   margin-bottom: 1em;
-  background-color: #3b615e;
+  background-color: var(--primary);
   color: #f1f1f1;
   border: none;
   border-radius: 5%;
+  cursor: pointer;
 }
 
 #lesson-buttons button:hover {
   background-color: #2d4a47;
   color: #e1dede;
-}
-
-#quiz-btn {
-  font-size: 100%;
-  padding: 0.5em 1em;
-  background-color: #a65a00;
-  color: #f1f1f1;
-  border: none;
-  border-radius: 5%;
-  margin-top: 3em;
-  margin-bottom: 3em;
-}
-
-#back-btn {
-  margin-right: 13em;
 }
