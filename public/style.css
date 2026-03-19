@@ -120,6 +120,7 @@ footer {
   border-radius: 0.5rem;
   margin: 1rem;
   cursor: pointer;
+   border-color: transparent;
 }
 
 .primary-btn-s {
@@ -154,10 +155,9 @@ footer {
   color: var(--primary);
   font-size: 16px;
   font-weight: bold;
-  padding: 1rem;
+  padding: 1.25rem;
   border-radius: 0.5rem;
   margin: 1rem;
-  bottom: 0;
   border: 1px solid var(--primary);
   cursor: pointer;
 }

@@ -62,5 +62,8 @@
 .bi {
   color: var(--off-white);
   font-size: 20px;
-  font-weight: bold;
+}
+
+#search-results {
+  margin-bottom: 3rem;
 }
