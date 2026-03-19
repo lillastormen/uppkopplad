@@ -75,7 +75,6 @@ form.addEventListener("submit", e => {
     resultHeading.textContent = "Här är ditt resultat!";
     resultText.textContent = `Du svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.`;
     saveUserAnswer(stashedUserAnswers);
-    console.log(stashedUserAnswers);
   }
 });
 
@@ -96,10 +95,7 @@ async function loadQuiz(quizId) {
 
     if (userId !== undefined) {
       currentQuizResult = await fetchQuizResultId(quizId, userId);
-    }
-    if (!currentQuizResult) {
       await saveQuizResult(quizId, userId);
-      currentQuizResult = await fetchQuizResultId(quizId, userId);
     }
     showQuestion(currentQuiz);
   } catch (error) {
@@ -220,13 +216,18 @@ async function saveQuizResult(quizId, userId) {
     },
   );
   const result = await response.json();
+  console.log(result);
 
   return result.id;
 }
 
 async function saveUserAnswer(ua) {
   try {
-    console.log(await fetch(`http://localhost:3000/quiz/${ua[0][0]}`));
+    const response = await fetch(`http://localhost:3000/quiz/${ua[0][0]}`, {
+      method: "DELETE",
+    });
+    const result = await response.json();
+    console.log(result);
     for (let i = 0; i < ua.length; i++) {
       const response = await fetch(
         `http://localhost:3000/quiz/${ua[i][0]}/${ua[i][1]}/${ua[i][2]}`,

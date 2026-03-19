@@ -66,10 +66,10 @@ export async function postQuizResult(req: Request, res: Response) {
     }
 
     const quizResult = await createQuizResult(quizId, userId);
-    if (!quizResult) {
-      return res.status(200).json({ message: "Quiz result already exist" });
-    }
-    return res.status(201).json({ message: "Quiz result saved" });
+
+    return res
+      .status(201)
+      .json({ message: "Quiz result saved or already exists" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
@@ -119,7 +119,7 @@ export async function deleteUserAnswers(req: Request, res: Response) {
     const result = await deleteUserAnswersByQuizResultId(quizResultId);
 
     return res.status(200).json({
-      message: `User answers with quiz result id ${quizResultId} was deleted`,
+      message: `Previous user answers with quiz result id ${quizResultId} was deleted`,
       result,
     });
   } catch (error) {
