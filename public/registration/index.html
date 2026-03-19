@@ -24,7 +24,10 @@
 
     <main>
       <form id="registration-form">
-        <img src="../images/img_7.png" alt="registration_img" id="reg-img" />
+    
+                 <img src="../images/img_7.png" alt="registration_img" id="reg-img" />
+
+ 
         <div class="container">
           <h4>Fyll i formuläret för att skapa ditt konto</h4>
           <label for="username">Användarnamn: </label>
@@ -42,10 +45,12 @@
           <input type="password" placeholder="Bekräfta ditt lösenord" name="passwordRepeat" id="passwordRepeat" minlength="8" required/>
           <span id="error-msg"></span>
           <div id="policy-container">
-            <input type="checkbox" id="policy" name="policy" value="Policy" required/>
+            <input type="checkbox" id="policy" name="policy" value="Policy" />
             <label for="policy" style="font-size: 14px;">Jag har läst och godkänner 
               <a href="../gdpr/index.html">användarvillkor och integritetspolicy</a>.
             </label>
+            <div id="error-msg-policy"></div>
+          
           </div>
 
           <button type="submit" class="primary-btn" id="registration-btn">Registrera</button>
