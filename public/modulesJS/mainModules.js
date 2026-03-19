@@ -28,6 +28,17 @@ searchBtn.addEventListener('click', () => {
         return lesson.module.toLowerCase().includes(userQuery.toLowerCase());
     });
     console.log(filteredLesson);
+    const searchResultsContainer = document.querySelector('#search-results');
+    searchResultsContainer.innerHTML = '';
+    filteredLesson.forEach((lesson) => {
+        const resultItem = document.createElement('button');
+        resultItem.className = 'primary-btn';
+        resultItem.textContent = `${lesson.module}: ${lesson.title}`;
+        searchResultsContainer.appendChild(resultItem);
+        resultItem.addEventListener('click', () => {
+            window.location.href = `choosen-lesson.html?lesson=${encodeURIComponent(lesson.module)}`;
+        });
+    });
 });
 const mobileBtn = document.getElementById('mobile-btn');
 const computerBtn = document.getElementById('computer-btn');

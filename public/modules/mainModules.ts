@@ -36,6 +36,21 @@ searchBtn.addEventListener('click', () => {
         return lesson.module.toLowerCase().includes(userQuery.toLowerCase());
     });
     console.log(filteredLesson);
+
+    const searchResultsContainer = document.querySelector('#search-results') as HTMLDivElement;
+    searchResultsContainer.innerHTML = '';
+
+    filteredLesson.forEach((lesson) => {
+        const resultItem = document.createElement('button');
+        resultItem.className = 'primary-btn';
+        resultItem.textContent = `${lesson.module}: ${lesson.title}`;
+
+        searchResultsContainer.appendChild(resultItem);
+
+        resultItem.addEventListener('click', () => {
+            window.location.href = `choosen-lesson.html?lesson=${encodeURIComponent(lesson.module)}`;
+        });
+    });
 });
 
 // For everything outside of search function
