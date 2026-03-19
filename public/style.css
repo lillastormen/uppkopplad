@@ -167,7 +167,7 @@ footer {
 }
 
 .menu-btn-s {
-    width: 80px;
+  width: 80px;
 }
 
 .secondary-btn {
@@ -215,29 +215,11 @@ footer {
   align-items: center;
 }
 
-/* #hero {
-  position: relative;
-  width: 100%;
-  height: 60vh;
-  min-height: 30vh;
-  overflow: hidden;
-  margin: 3rem 1rem 3rem 1rem;
-  display: flex;
-  flex-direction: column;
-} */
-
 #hero-pic {
   object-fit: cover;
   display: block;
   margin-bottom: 0;
 }
-/* 
-#gradient-hero {
-  width: 100%;
-  height: 60px;
-  background-color: #d8b57c;
-  background-image: linear-gradient(to bottom, #dacfbd, var(--background));
-} */
 
 #hero-container {
   display: flex;
