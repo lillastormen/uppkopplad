@@ -1,17 +1,11 @@
-import {
-  getUserByUsername,
-  getUserById,
-  getAllUsers,
-  updateUsername,
-  updatePassword,
-} from "../repositories/mysql/userRepository.ts";
-import type {
-  CreatedUser,
-  GetUserParamsId,
-  UserCredentials,
-} from "../types/users.ts";
+import { getUserByUsername, getUserById, getAllUsers, updateUsername, updatePassword, deleteUserById } from "../repositories/mysql/userRepository.ts";
+import type { CreatedUser, GetUserParamsId, UserCredentials } from "../types/users.ts";
 import type { Request, Response } from "express";
 import * as userService from "../services/userService.ts";
+import mySqlDbConnection from "../db/mysql.ts";
+import { brotliCompressSync } from "node:zlib";
+import bcrypt from 'bcrypt';
+
 
 export async function getCurrentUser(req: Request, res: Response) {
   if (req.session.userId) {
@@ -49,9 +43,10 @@ export async function getUser(req: Request<CreatedUser>, res: Response) {
 
 export async function getUserId(req: Request<GetUserParamsId>, res: Response) {
   const { id } = req.params;
+  const idNumber = Number(id)
 
   try {
-    const userId = await getUserById(id);
+    const userId = await getUserById(idNumber);
 
     if (!userId) {
       return res.status(404).json({
@@ -74,6 +69,7 @@ export async function getUserId(req: Request<GetUserParamsId>, res: Response) {
 }
 
 export async function loginUser(req: Request, res: Response) {
+  
   const { username, password } = req.body as {
     username?: string;
     password?: string;
@@ -87,7 +83,7 @@ export async function loginUser(req: Request, res: Response) {
   }
 
   try {
-    const user = await userService.loginUser(username, password);
+    const user = await userService.logInUser(username, password);
 
     if (!user) {
       return res.status(401).json({
@@ -98,10 +94,8 @@ export async function loginUser(req: Request, res: Response) {
     }
 
     req.session.userId = user.id;
-    // console.log("Session ID:", req.sessionID);
-    // console.log("Session object:", req.session);
-
-    // res.redirect("/modules/mainModules.html");
+    console.log("Session Id:", req.sessionID);
+    console.log("Session object:", req.session);
 
     return res.status(200).json({
       success: true,
@@ -272,5 +266,59 @@ export async function patchUser(req: Request, res: Response) {
       success: false,
       error: message,
     });
+  } 
+}
+
+export async function deleteUser(req: Request, res: Response) {
+  
+  const userId = req.session.userId;
+  const { password } = req.body as {
+    password: string
   }
+
+  if(!userId || !password) {
+    return res.status(400).json({
+      success: false,
+      error: 'Password missing'
+    });
+  }
+
+  try {
+    const user = await getUserById(userId);
+
+    if(!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'User not found'
+      });
+    }
+    
+    const isPasswordCorrect = await bcrypt.compare(password, user.hashed_password);
+
+    if (!isPasswordCorrect) {
+      return res.status(401).json({
+        success: false,
+        error: 'Incorrect password'
+      });
+    }
+
+    await deleteUserById(userId);
+     
+    req.session.destroy(() => {
+      res.clearCookie("sid");
+      return res.status(200).json({ 
+        success: true,
+        message: 'Successfully deleted'
+      });
+    });
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Unknown error occured.";
+
+    return res.status(500).json({
+      success: false,
+      error: message,
+    });
+  }
+
 }

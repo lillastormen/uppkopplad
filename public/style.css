@@ -136,6 +136,19 @@ footer {
   align-self: center;
 }
 
+.primary-btn-xs {
+  background-color: var(--primary);
+  color: var(--offwhite);
+  font-size: 16px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 2.5rem 0.5rem;
+  cursor: pointer;
+  border-color: transparent;
+  width: 8rem;
+  align-self: center;
+}
+
 .primary-reversed-btn {
   background-color: var(--offwhite);
   color: var(--primary);
@@ -167,6 +180,33 @@ footer {
   margin: 1rem;
   border-color: var(--secondary);
   cursor: pointer;
+}
+
+.secondary-btn-s {
+  background-color: var(--secondary);
+  color: var(--offwhite);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  border-color: transparent;
+  width: 50%;
+  align-self: center;
+}
+
+.secondary-btn-xs {
+   background-color: var(--secondary);
+  color: var(--offwhite);
+  font-size: 16px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 2.5rem 0.5rem;
+  cursor: pointer;
+  border-color: transparent;
+  width: 7.5rem;
+  align-self: center;
 }
 
 .nav-mobile {

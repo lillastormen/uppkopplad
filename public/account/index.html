@@ -35,16 +35,15 @@
     </header>
 
    <form id="credentials-update-form">
+        <h3>Uppdatera dina personliga uppgifter</h3>
         <div class="container">
-            <h4>Här kan du uppdatera dina personliga uppgifter</h4>
-            
-            <label for="username-update">Användarnamn: </label>
+            <label for="username-update">Nytt användarnamn: </label>
             <input type="text" placeholder="Fyll i ditt nya användarnamn" name="username-update" id="username-update"/>
             <span id="error-msg-username"></span>
             <span id="success-msg-username"></span>
             <button type="submit" class="primary-btn-s" id="update-btn">Spara</button>
 
-            <label for="password-update">Lösenord: </label>
+            <label for="password-update">Nytt lösenord: </label>
             <div class="password-update-field">
                 <div>
                 <input type="password" placeholder="Fyll i ditt nya lösenord" name="password-update" id="password-update" minlength="8" style="border: none;"/>
@@ -58,7 +57,23 @@
             <span id="success-msg-password"></span>
             <button type="submit" class="primary-btn-s" id="update-btn">Spara</button>    
         </div>  
+
+        <h3 style="margin-top: 3rem;">Ta bort ditt konto</h3>
+        <div class="container">
+            <p>När du tar bort ditt konto raderas all din data permanent och kan inte återskapas.</p>
+            <button type="submit" class="secondary-btn-s" id="delete-acc-btn">Jag vill fortsätta</button>
+            <div id="delete-acc-container" style="display: none;">
+                <p>Bekräfta borttagning av ditt konto genom att skrina in ditt lösenord: </p>
+                <input type="password" id="delete-password" placeholder="Lösenord"/>
+                <div id="hell-box" style="gap: 1rem">
+                    <button id="confirm-delete" class="secondary-btn-xs" style="margin-bottom: 0;">Radera konto</button>
+                    <button id="cancel-delete" class="primary-btn-xs">Avbryt</button>
+                    <span id="delete-error"></span>
+                </div>
+            </div>
+        </div>  
+        
     </form>
-    <footer style="position: absolute;"><p>&copy; Uppkopplad 2026</p></footer>
+    <footer><p>&copy; Uppkopplad 2026</p></footer>
 </body>
 </html>

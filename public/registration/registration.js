@@ -2,6 +2,9 @@ const url = "http://localhost:3000/users/registration";
 const form = document.getElementById("registration-form");
 const message = document.getElementById("registration-message");
 const errorBox = document.getElementById("error-msg");
+const errorBox2 = document.getElementById("error-msg-policy");
+const checkBox = document.getElementById("policy")
+
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
@@ -16,14 +19,21 @@ form.addEventListener("submit", async event => {
   }
 
   if (password.length < 8) {
-    errorBox.textContent = "Minst 8 tecken";
+    errorBox.textContent = "Minst 8 tecken.";
     return; 
   }
+
+  if (!checkBox.checked) {
+    errorBox2.textContent = "Du måste godkänna vilkor";
+    return;
+  }
+
+  errorBox2.textContent = "";
 
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ username, password, checkBox }),
   });
 
   const data = await response.json();

@@ -15,7 +15,7 @@ export type UserCredentials = {
 }
 
 export type GetUserParamsId = {
-    id: number
+    id: string
 }
 
 export type UpdateUserPassword = {
@@ -26,4 +26,10 @@ export type UpdateUserPassword = {
 export type UpdateUserUsername = {
     id: number,
     username?: string | undefined
+}
+
+export type DbUser = {
+    id: number,
+    username: string,
+    hashed_password: string
 }
