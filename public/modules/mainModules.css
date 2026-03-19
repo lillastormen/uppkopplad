@@ -1,28 +1,66 @@
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
 #module-buttons {
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
+  margin-top: 1rem;
 }
 
 #module-buttons button {
-  font-size: 150%;
-  padding: 1em 3em;
-  margin-bottom: 1.5em;
-  background-color: var(--primary);
-  color: var(--offwhite);
+  font-size: 26px;
   border: none;
-  border-radius: 0.5rem;
   cursor: pointer;
 }
 
 #module-buttons button:hover {
   background-color: #2d4a47;
   color: #e1dede;
+}
+
+.greeting-container, .search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  color: var(--primary);
+  margin-top: 0.75rem;
+}
+
+#search-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0;
+  width: fit-content
+}
+
+.search-container h5{
+  padding: 0 1rem;
+}
+
+#search-field {
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-right: none;
+  margin-right: 0;
+  border-color: var(--text-medium-grey);
+  height: 3.5rem;
+}
+
+#search-button {
+  background-color: var(--secondary);
+  color: var(--offwhite);
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 2.5rem 0rem;
+  cursor: pointer;
+  border: 1px solid var(--secondary);
+  width: 5rem;
+  height: 3.5rem;
+  align-self: center;
+}
+
+.bi {
+  color: var(--off-white);
+  font-size: 20px;
+  font-weight: bold;
 }

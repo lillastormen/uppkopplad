@@ -178,7 +178,7 @@ footer {
   padding: 1.25rem;
   border-radius: 0.5rem;
   margin: 1rem;
-  border-color: var(--secondary);
+  border-color: transparent;
   cursor: pointer;
 }
 
