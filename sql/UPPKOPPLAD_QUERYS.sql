@@ -46,3 +46,4 @@ FROM quiz_question qq
 JOIN quiz_answer qa ON qq.id = qa.quiz_question_id
 WHERE qq.quiz_id = 1
 GROUP BY qq.id, qq.question, qq.multiple_choices;
+

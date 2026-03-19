@@ -3,6 +3,7 @@ import {
   getQuizResultById,
   createQuizResult,
   createUserAnswer,
+  deleteUserAnswersByQuizResultId,
 } from "../repositories/mysql/quizRepository.ts";
 import type { Request, Response } from "express";
 
@@ -65,10 +66,10 @@ export async function postQuizResult(req: Request, res: Response) {
     }
 
     const quizResult = await createQuizResult(quizId, userId);
-    if (!quizResult) {
-      return res.status(200).json({ message: "Quiz result already exist" });
-    }
-    return res.status(201).json({ message: "Quiz result saved" });
+
+    return res
+      .status(201)
+      .json({ message: "Quiz result saved or already exists" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
@@ -98,6 +99,28 @@ export async function postUserAnswer(req: Request, res: Response) {
     }
     return res.status(201).json({
       message: `Saved user answer with quizresultid: ${quizResultId}, quizquestionid: ${quizQuestionId}, quizanswerid: ${quizAnswerId}`,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+}
+
+export async function deleteUserAnswers(req: Request, res: Response) {
+  try {
+    const quizResultId = Number(req.params.quizResultId);
+
+    if (isNaN(quizResultId)) {
+      return res.status(400).json({
+        message: "Invalid input, quizResultID must be a number",
+      });
+    }
+
+    const result = await deleteUserAnswersByQuizResultId(quizResultId);
+
+    return res.status(200).json({
+      message: `Previous user answers with quiz result id ${quizResultId} was deleted`,
+      result,
     });
   } catch (error) {
     console.error(error);

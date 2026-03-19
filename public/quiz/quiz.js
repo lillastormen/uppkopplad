@@ -19,6 +19,7 @@ let currentQuestion = 0;
 let currentQuiz;
 let currentQuizResult;
 let userAnswers = [];
+let stashedUserAnswers = [];
 let correctAnswers = [];
 let result = [];
 let type = "";
@@ -47,7 +48,6 @@ form.addEventListener("submit", e => {
   correctAnswers = currentQuiz.map(q =>
     q.answers.filter(a => a.is_correct).map(a => a.answer),
   );
-  console.log(currentQuiz);
 
   for (let i = 0; i < correctAnswers.length; i++) {
     if (String(correctAnswers[i]) == String(userAnswers[i])) {
@@ -74,6 +74,7 @@ form.addEventListener("submit", e => {
   } else {
     resultHeading.textContent = "Här är ditt resultat!";
     resultText.textContent = `Du svarade rätt på ${result.filter(t => t === true).length} av ${result.length} frågor.`;
+    saveUserAnswer(stashedUserAnswers);
   }
 });
 
@@ -84,7 +85,6 @@ async function loadQuiz(quizId) {
     if (userId !== undefined && quizId === 1) {
       quizSection.style.display = "none";
       goToQuiz.href = "./modules/mainModules.html";
-      // goToQuiz.href = "./quiz/quiz.html?id=1";
       goToQuiz.textContent = "Moduler";
       return;
     }
@@ -92,21 +92,11 @@ async function loadQuiz(quizId) {
     currentQuiz = await response.json();
     console.log(`Laddar quizId ${quizId} och inloggad som userId ${userId}`);
     next.style.display = "block";
-    
 
-    //create/fetch quiz result if the user is logged in
     if (userId !== undefined) {
-      //trying to fetch an existing result
       currentQuizResult = await fetchQuizResultId(quizId, userId);
-  
-    }
-    //if there is none, we create one and fetch its id
-    if(!currentQuizResult) {
       await saveQuizResult(quizId, userId);
-      currentQuizResult = await fetchQuizResultId(quizId, userId);
     }
-
-    // saveQuizResult(quizId, userId);
     showQuestion(currentQuiz);
   } catch (error) {
     console.error(error);
@@ -156,7 +146,6 @@ function validateInput() {
     }
 
     userAnswers[currentQuestion] = [userSelected.value];
-    //saveUserAnswer(currentQuizResult, currentQuiz[currentQuestion].qa_id, 1);
   }
 
   //CHECKBOX
@@ -171,8 +160,17 @@ function validateInput() {
     userAnswers[currentQuestion] = userSelected;
   }
 
-  console.log(userAnswers[currentQuestion]);
-  console.log(currentQuiz[currentQuestion].answers);
+  for (let i = 0; i < userAnswers[currentQuestion].length; i++) {
+    const ans = currentQuiz[currentQuestion].answers.find(
+      a => a.answer === userAnswers[currentQuestion][i],
+    );
+
+    stashedUserAnswers.push([
+      currentQuizResult,
+      currentQuiz[currentQuestion].id,
+      ans.qa_id,
+    ]);
+  }
 
   noSelected.style.opacity = "0";
 
@@ -199,10 +197,8 @@ async function fetchQuizResultId(quizId, userId) {
   const response = await fetch(
     `http://localhost:3000/quiz/${quizId}/${userId}`,
   );
-  
-  const result = await response.json();
 
-  console.log("quizResult response:", result);
+  const result = await response.json();
 
   //handle all "no result" cases
   if (!result || !Array.isArray(result) || result.length === 0) {
@@ -220,21 +216,28 @@ async function saveQuizResult(quizId, userId) {
     },
   );
   const result = await response.json();
-  //
+  console.log(result);
+
   return result.id;
-  // return console.log(result);
 }
 
-async function saveUserAnswer(quizResultId, quizQuestionId, quizAnswerId) {
+async function saveUserAnswer(ua) {
   try {
-    const response = await fetch(
-      `http://localhost:3000/quiz/${quizResultId}/${quizQuestionId}/${quizAnswerId}`,
-      {
-        method: "POST",
-      },
-    );
+    const response = await fetch(`http://localhost:3000/quiz/${ua[0][0]}`, {
+      method: "DELETE",
+    });
     const result = await response.json();
-    return console.log(result);
+    console.log(result);
+    for (let i = 0; i < ua.length; i++) {
+      const response = await fetch(
+        `http://localhost:3000/quiz/${ua[i][0]}/${ua[i][1]}/${ua[i][2]}`,
+        {
+          method: "POST",
+        },
+      );
+      const result = await response.json();
+      console.log(result);
+    }
   } catch (error) {
     console.error(error);
   }
