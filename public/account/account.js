@@ -11,6 +11,7 @@ const confirmBtn = document.getElementById("confirm-delete");
 const cancelBtn = document.getElementById("cancel-delete");
 const passwordInput = document.getElementById("delete-password");
 const errorBox = document.getElementById("delete-error");
+const hellBox = document.getElementById("hell-box");
 
 
 //update
@@ -77,7 +78,10 @@ form.addEventListener("submit", async event => {
 
 //delete
 deleteBtn.addEventListener("click", () => {
-  deleteBox.style.display = "block";
+  deleteBox.style.display = "grid";
+  deleteBox.style.justifyItems = "center";
+  deleteBox.style.marginTop = "1rem";
+  deleteBox.style.justifyContent = "space-evenly"
 });
 
 cancelBtn.addEventListener("click", () => {
