@@ -1,22 +1,19 @@
 #top {
     display: flex;
-    gap: 15em;
+    flex-direction: row;
     color: var(--primary);
+    justify-content: space-between;
+    align-items: end;
 }
 
-#top button {
-    margin-left: 1.5em;
+h2 {
+   margin-bottom: 1rem;
 }
 
-#instructions {
-    display: flex;
-    flex-direction: column;
-    color: var(--primary);
+h3 {
+    margin-top: 1rem;
 }
 
-#instructions h3 {
-    font-size: large;
-}
 
 #instructions p {
     margin-bottom: 0;
@@ -25,10 +22,6 @@
 #instructions .bottom-paragraph {
     margin-top: 0;
     margin-left: 1.3em;
-}
-
-#instructions .video-heading {
-    margin-top: 2em;
 }
 
 #instructions .video {
@@ -74,4 +67,23 @@
 
 .next-modul-btn {
     margin-left: 20em;
+}
+
+#search-btn {
+  background-color: var(--secondary);
+  color: var(--offwhite);
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  cursor: pointer;
+  border: 1px solid var(--secondary);
+  width: 4rem;
+  height: 3.5rem;
+  align-self: center;
+}
+
+.bi {
+  color: var(--off-white);
+  font-size: 20px;
 }

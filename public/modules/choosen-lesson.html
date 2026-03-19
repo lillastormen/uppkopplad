@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="choosen-lesson.css" />
     <link rel="stylesheet" href="../account/account.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
   <header>
@@ -18,7 +22,7 @@
           id="logo"
         />
       </a>
-      <details class=" menu-btn">
+      <details class="menu-btn">
         <summary class="secondary-btn">MENY</summary>
         <div class="menu">
           <div class="menu-options-box">
@@ -36,37 +40,39 @@
     <main>
       <div id="top">
         <h2 id="header-two"></h2>
-        <button class="secondary-btn">Sök</button>
+        <button id="search-btn"><i class="bi bi-search"></i></button>
       </div>
 
-      <section id="instructions">
-        <h3 class="video-heading">Se introduktions video</h3>
+      <div class="container">
+        <section id="instructions">
+          <h3 class="video-heading">Se introduktions video</h3>
 
-        <div class="video">
-          <iframe
-            height="225"
-            width="400"
-            title="YouTube video player"
-            frameborder="0"
-            allow="web-share"
-            allowfullscreen
-          >
-          </iframe>
-        </div>
+          <div class="video">
+            <iframe
+              height="225"
+              width="400"
+              title="YouTube video player"
+              frameborder="0"
+              allow="web-share"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
 
-        <h3 class="step-instructions"></h3>
+          <h3 class="step-instructions"></h3>
 
-        <div class="steps-paragraphs"></div>
+          <div class="steps-paragraphs"></div>
 
-        <div class="quiz-button">
-          <a id="doTestBtn" class="primary-btn">Gör ett test</a>
-        </div>
+          <div class="quiz-button">
+            <a id="doTestBtn" class="primary-btn">Gör ett test</a>
+          </div>
+      </div>
       </section>
 
-      <p class="back-paragraph"><--Tillbaka</p>
+      <p class="back-paragraph"></p>
 
       <div class="next-modul-btn">
-        <button class="secondary-btn">Nästa modul</button>
+        <button class="secondary-btn-s">Nästa modul</button>
       </div>
     </main>
 
