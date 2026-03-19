@@ -25,7 +25,7 @@ export function getUserByUsername(username: string): Promise<CreatedUser | null>
 export function getUserById(id: number): Promise<DbUser | null> {
   return new Promise((resolve, reject) => {
     const sql = `
-      SELECT id, username
+      SELECT id, username, hashed_password
       FROM user
       WHERE id = ? 
       LIMIT 1
@@ -157,27 +157,27 @@ export async function deleteUserById(userId: number): Promise<void> {
         return reject(error);
 
       const sqlDeleteUserAnswers = `
-        DELETE user_answer ua
-        WHERE ua.quiz_result_id qri IN (
-          SELECT qr.id
-          FROM quiz_result qr
-          WHERE qr-user_id = ?
+        DELETE FROM user_answer 
+        WHERE user_answer.quiz_result_id IN (
+          SELECT quiz_result.id
+          FROM quiz_result 
+          WHERE quiz_result.user_id = ?
         )
       `;
 
       const sqlDeleteResults = `
-        DELETE FROM quiz_result qr
-        WHERE qr.user_id = ?
+        DELETE FROM quiz_result 
+        WHERE quiz_result.user_id = ?
       `;
 
       const sqlDeleteSession = `
-        DELETE FROM sessions s
-        WHERE s.user_id = ?
+        DELETE FROM sessions 
+        WHERE sessions.user_id = ?
       `;
 
       const sqlDeleteUser = `
-        DELETE FROM user u
-        WHERE u.id = ?
+        DELETE FROM user 
+        WHERE user.id = ?
       `;
 
 

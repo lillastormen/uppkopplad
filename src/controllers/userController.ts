@@ -292,7 +292,7 @@ export async function deleteUser(req: Request, res: Response) {
         error: 'User not found'
       });
     }
-
+    
     const isPasswordCorrect = await bcrypt.compare(password, user.hashed_password);
 
     if (!isPasswordCorrect) {
@@ -306,9 +306,9 @@ export async function deleteUser(req: Request, res: Response) {
      
     req.session.destroy(() => {
       res.clearCookie("sid");
-      return res.status(401).json({
-          success: false,
-          error: 'Session invalid'
+      return res.status(200).json({ 
+        success: true,
+        message: 'Successfully deleted'
       });
     });
   } catch (error: unknown) {
