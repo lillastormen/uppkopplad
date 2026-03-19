@@ -183,6 +183,19 @@ footer {
   align-self: center;
 }
 
+.secondary-btn-xs {
+   background-color: var(--secondary);
+  color: var(--offwhite);
+  font-size: 16px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  border-color: transparent;
+  width: 8rem;
+  align-self: center;
+}
+
 .nav-mobile {
   display: flex;
   justify-content: space-between;

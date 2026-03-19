@@ -5,6 +5,15 @@ const errorBoxUsername= document.getElementById("error-msg-username")
 const successBoxPassword = document.getElementById("success-msg-password");
 const successBoxUsername = document.getElementById("success-msg-username");
 
+const deleteBtn = document.getElementById("delete-acc-btn");
+const deleteBox = document.getElementById("delete-acc-container");
+const confirmBtn = document.getElementById("confirm-delete");
+const cancelBtn = document.getElementById("cancel-delete");
+const passwordInput = document.getElementById("delete-password");
+const errorBox = document.getElementById("delete-error");
+
+
+//update
 form.addEventListener("submit", async event => {
   event.preventDefault();
 
@@ -45,9 +54,11 @@ form.addEventListener("submit", async event => {
 
   const response = await fetch(url, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
+    headers: { 
+      "Content-Type": "application/json" 
+    },
     credentials: "include",
-    body: JSON.stringify(body),
+    body: JSON.stringify(body)
   });
 
   const data = await response.json();
@@ -63,6 +74,50 @@ form.addEventListener("submit", async event => {
 
   form.reset();
 });
+
+//delete
+deleteBtn.addEventListener("click", () => {
+  deleteBox.style.display = "block";
+});
+
+cancelBtn.addEventListener("click", () => {
+  deleteBox.style.display = "none";
+  errorBox.textContent = "";
+  passwordInput.value = "";
+});
+
+confirmBtn.addEventListener("click", async () => {
+  const password = passwordInput.value;
+  errorBox.textContent = "";
+
+  if (!password) {
+    errorBox.textContent = "Ange lösenord";
+    return;
+  }
+
+  try {
+    const response = await fetch(url, {
+      method: "DELETE", 
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      errorBox.textContent = data.error || 'Fel lösenord';
+      return;
+    }
+
+    //if success
+    window.location.href = "/";
+  } catch {
+    errorBox.textContent = "Unknown error occured";
+  }
+})
 
 
 //nav
