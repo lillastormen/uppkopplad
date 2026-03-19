@@ -98,7 +98,7 @@ i {
   margin-top: 3rem;
 }
 
-#error-msg {
+#error-msg, #error-msg-policy {
   color: var(--error);
   font-size: 14px;
 }
