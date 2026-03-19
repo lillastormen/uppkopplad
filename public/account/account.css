@@ -129,10 +129,18 @@ i {
   font-size: 14px;
 }
 
-/* #hell-box {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-} */
+#hell-box {
+  margin-top: 1rem;
+}
+
+#delete-password {
+  width: 70%;
+}
+
+#delete-acc-container {
+  padding-bottom: 1rem;
+}
+
+p {
+  color: var(--text);
+}

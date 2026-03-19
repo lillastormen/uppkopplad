@@ -59,15 +59,17 @@
         </div>  
 
         <h3 style="margin-top: 3rem;">Ta bort ditt konto</h3>
-        <div class="container">
+        <div class="container" style="margin-bottom: 3rem; text-align: center;" >
             <p>När du tar bort ditt konto raderas all din data permanent och kan inte återskapas.</p>
             <button type="submit" class="secondary-btn-s" id="delete-acc-btn">Jag vill fortsätta</button>
             <div id="delete-acc-container" style="display: none;">
-                <p>Bekräfta borttagning av ditt konto genom att skrina in ditt lösenord: </p>
+                <p>Bekräfta borttagning av ditt konto genom att skriva in ditt lösenord: </p>
                 <input type="password" id="delete-password" placeholder="Lösenord"/>
                 <div id="hell-box" style="gap: 1rem">
-                    <button id="confirm-delete" class="secondary-btn-xs" style="margin-bottom: 0;">Radera konto</button>
-                    <button id="cancel-delete" class="primary-btn-xs">Avbryt</button>
+                    <div id="hell-buttons">
+                        <button id="confirm-delete" class="secondary-btn-s" style="margin-bottom: 0;">Radera konto</button>
+                        <button id="cancel-delete" class="primary-btn-s">Avbryt</button>
+                    </div>
                     <span id="delete-error"></span>
                 </div>
             </div>
