@@ -7,28 +7,31 @@ main {
 }
 
 img {
-  width: 100px;
-  height: auto;
+  width: 150px;
+  height: 150px;
+  align-self: center;
+  margin-bottom: 1rem;
+  
 }
 
 #lesson-buttons {
   display: flex;
   flex-direction: column;
-  margin-top: 1em;
+  margin-top: 1rem;
 }
 
-#lesson-buttons button {
-  font-size: 130%;
-  padding: 1em 2em;
-  margin-bottom: 1em;
-  background-color: var(--primary);
-  color: #f1f1f1;
-  border: none;
-  border-radius: 5%;
-  cursor: pointer;
-}
 
 #lesson-buttons button:hover {
   background-color: #2d4a47;
   color: #e1dede;
+}
+
+.lesson-mod-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+p {
+  color: var(--primary);
 }

@@ -9,50 +9,31 @@
     <link rel="stylesheet" href="../account/account.css" />
   </head>
   <body>
-    <header>
-      <nav class="nav-mobile">
-        <a href="./mainModules.html">
-          <img
-            src="../images/uppkopplad-logo.svg"
-            alt="uppkoppladLogo"
-            id="logo"
-          />
-        </a>
-        <details class="secondary-btn menu-btn">
-          <summary></summary>
-          <div class="menu">
-            <div class="menu-options-box">
-              <a
-                href="../account/index.html"
-                class="secondary-btn menu-btn-s"
-                style="margin: 0.5rem"
-                >Mitt konto</a
-              >
-              <a
-                href="../quiz/quiz.html?id=1"
-                class="secondary-btn menu-btn-s"
-                style="margin: 0 0.5rem 0.5rem 0.5rem"
-                >Initial quiz</a
-              >
-              <a
-                href="../login/index.html"
-                class="primary-btn menu-btn-s"
-                id="auth-btn"
-                style="margin: 0 0.5rem 0.5rem 0.5rem"
-                >Logga in</a
-              >
-            </div>
-          </div>
-        </details>
-      </nav>
+       <header>
+        <nav class="nav-mobile">
+            <a href="/modules/mainModules.html">
+                <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo"/>
+            </a>
+            <details class="secondary-btn menu-btn">
+              <summary></summary>
+              <div class="menu">
+                <div class="menu-options-box">
+                  <a href="../account/index.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem;">Mitt konto</a>
+                  <a href="../modules/mainModules.html" class="secondary-btn menu-btn-s" style="margin: 0 0.5rem 0.5rem 0.5rem;">Moduler</a>
+                  <a href="../quiz/quiz.html?id=1" class="secondary-btn menu-btn-s" style="margin: 0 0.5rem 0.5rem 0.5rem;">Initial quiz</a>
+                  <a href="../login/index.html" class="primary-btn menu-btn-s" id="auth-btn" style="margin: 0 0.5rem 0.5rem 0.5rem;">Logga in</a>
+                </div>
+              </div>
+            </details>
+        </nav>
     </header>
 
     <main>
-      <img src="../images/image_9.png" alt="ladyImage" />
-
-      <p>Välj vilket ämne du vill utvecklas inom.</p>
-
-      <section id="lesson-buttons"></section>
+      <div class="lesson-mod-container">
+        <img id="module-img" alt="" />
+        <p>Välj vilket ämne du vill utvecklas inom.</p>
+        <section id="lesson-buttons"></section>
+      </div>
     </main>
 
     <footer><p>&copy; Uppkopplad 2026</p></footer>

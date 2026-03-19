@@ -104,6 +104,7 @@ header {
 main {
   flex-grow: 1;
   margin: 1rem 2rem;
+  align-items: center;
 }
 
 footer {
@@ -120,6 +121,7 @@ footer {
   border-radius: 0.5rem;
   margin: 1rem;
   cursor: pointer;
+   border-color: transparent;
 }
 
 .primary-btn-s {
@@ -132,7 +134,7 @@ footer {
   margin: 1.5rem 0;
   cursor: pointer;
   border-color: transparent;
-  width: 50%;
+  width: 9rem;
   align-self: center;
 }
 
@@ -154,10 +156,9 @@ footer {
   color: var(--primary);
   font-size: 16px;
   font-weight: bold;
-  padding: 1rem;
+  padding: 1.25rem;
   border-radius: 0.5rem;
   margin: 1rem;
-  bottom: 0;
   border: 1px solid var(--primary);
   cursor: pointer;
 }
@@ -178,7 +179,7 @@ footer {
   padding: 1.25rem;
   border-radius: 0.5rem;
   margin: 1rem;
-  border-color: var(--secondary);
+  border-color: transparent;
   cursor: pointer;
 }
 
@@ -192,7 +193,7 @@ footer {
   margin: 1.5rem 0;
   cursor: pointer;
   border-color: transparent;
-  width: 50%;
+  width: 9rem;
   align-self: center;
 }
 

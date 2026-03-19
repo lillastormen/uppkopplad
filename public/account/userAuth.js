@@ -9,7 +9,7 @@ export async function loadAuthenticateUser() {
     credentials: "include",
   });
 
-  const greetingEl = document.getElementById("greeting");
+  const greeting = document.getElementById("greeting");
   const authButton = document.getElementById("auth-btn");
 
   if (!authButton) return;
@@ -22,8 +22,8 @@ export async function loadAuthenticateUser() {
       window.location.href = "/login";
     };
 
-    if (greetingEl) {
-      greetingEl.textContent = "";
+    if (greeting) {
+      greeting.textContent = "";
     }
     return;
   }
@@ -31,8 +31,8 @@ export async function loadAuthenticateUser() {
   let json = await res.json();
   const username = json.data.username;
 
-  if (greetingEl) {
-    greetingEl.textContent = `Välkommen ${username}`;
+  if (greeting) {
+    greeting.textContent = `Välkommen, ${username}`;
   }
 
   if (authButton) {
