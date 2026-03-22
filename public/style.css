@@ -38,7 +38,13 @@
   --text-light-grey: #6b6b6b;
 
   --font-primary: "Atkinson Hyperlegible";
+
+  
 }
+
+/* --chart-1: #5a7d9a;
+  --chart-2: #8a6fa3;
+  --chart-3: #c27a6b; */
 
 a {
   text-decoration: none;
