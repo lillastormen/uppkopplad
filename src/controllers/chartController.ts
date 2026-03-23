@@ -19,6 +19,8 @@ export async function getAccuracy(req: Request, res: Response) {
 
         const formattedData = data.map((d: chartData) => ({
             category: d.category,
+            total: d.total,
+            correct: d.correct,
             accuracy: d.total === 0
                 ? 0
                 : Math.round((d.correct / d.total) * 100)

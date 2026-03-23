@@ -1,5 +1,7 @@
 // import Chart  from "https://cdn.jsdelivr.net/npm/chart.js";
 
+
+
 const url = "http://localhost:3000/users/statistics/accuracy";
 let chart;
 Chart.register(ChartDataLabels);
@@ -20,11 +22,14 @@ async function fetchAccuracy() {
 function prepChartData(data) {
     const labels = data.map(d => d.category);
     const values = data.map(d => d.accuracy);
+    const correct = data.map(d => d.correct);
+    const total = data.map(d => d.total);
 
-    return { labels, values };
+
+    return { labels, values, correct, total };
 }
 
-function renderChart(labels, values) {
+function renderChart(labels, values, correct, total) {
     const ctx = document.getElementById('myChart');
 
     //for re-rendering
@@ -101,7 +106,10 @@ function renderChart(labels, values) {
                     anchor: 'end',
                     align: 'end',
                     offset: 4,
-                    formatter: (value) => value + '%',
+                    formatter: (value, context) => {
+                        const i = context.dataIndex;
+                        return `${value}% (${correct[i]}/${total[i]})`;
+                    },
                     color: '#1f1f1f',
                     font: {
                         weight: 'bold',
@@ -111,17 +119,14 @@ function renderChart(labels, values) {
                 },
                 title: {
                     display: true,
-                    text: 'Accuracy (%)',
-                    color: '#1f1f1f',
-                    font: {
-                        size: 24,
-                        family: 'Atkinson Hyperlegible',
-                        weight: 600
-                    },
-                    padding: {
-                        bottom: 22
-                    }
-                }
+                    // color: '#1f1f1f',
+                    // font: {
+                    //     size: 24,
+                    //     family: 'Atkinson Hyperlegible',
+                    //     weight: 600,
+
+                    // },
+                },
             },
             animation: {
                 duration: 800,
@@ -140,10 +145,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        const { labels, values } = prepChartData(data);
+        const { labels, values, correct, total } = prepChartData(data);
 
-        renderChart(labels, values);
+        renderChart(labels, values, correct, total);
     } catch (error) {
         console.log(error);
+        document.querySelector('.container').innerHTML = '<p>Could not load the chart. </p>'
     }
 })
