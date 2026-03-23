@@ -64,9 +64,7 @@ details[open] .menu {
   justify-content: space-evenly;
 }
 
-#credentials-update-form {
-  margin: 1.5rem;
-}
+
 
 /* #username-upate-box {
   display: flex;
@@ -87,10 +85,11 @@ label[for="username-update"] {
 }
 
 h3 {
-  margin-left: 0;
-  padding-left: 0;
   color: var(--primary);
+}
 
+h2 {
+ color: var(--primary);
 }
 
 input {

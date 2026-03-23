@@ -34,48 +34,53 @@
         </nav>
     </header>
 
-   <form id="credentials-update-form">
-        <h3>Uppdatera dina personliga uppgifter</h3>
-        <div class="container">
-            <label for="username-update">Nytt användarnamn: </label>
-            <input type="text" placeholder="Fyll i ditt nya användarnamn" name="username-update" id="username-update"/>
-            <span id="error-msg-username"></span>
-            <span id="success-msg-username"></span>
-            <button type="submit" class="primary-btn-s" id="update-btn">Spara</button>
+    <main>
+        <form id="credentials-update-form">
+            <h2>Dina personliga uppgifter</h2>
+            <p>Här kan du ändra dina kontouppgifter. Du kan uppdatera ditt lösenord eller ditt användarnamn. Du kan också välja att ta bort ditt konto.</p>
+            <h3>Ändra lösenord eller användarnamn</h3>
+            <p>Här kan du ändra dina kontouppgifter. Du kan uppdatera ditt lösenord eller ditt användarnamn. Du kan också välja att ta bort ditt konto.</p>
+            <div class="container">
+                <label for="username-update">Nytt användarnamn: </label>
+                <input type="text" placeholder="Fyll i ditt nya användarnamn" name="username-update" id="username-update"/>
+                <span id="error-msg-username"></span>
+                <span id="success-msg-username"></span>
+                <button type="submit" class="primary-btn-s" id="update-btn">Spara</button>
 
-            <label for="password-update">Nytt lösenord: </label>
-            <div class="password-update-field">
-                <div>
-                <input type="password" placeholder="Fyll i ditt nya lösenord" name="password-update" id="password-update" minlength="8" style="border: none;"/>
-                  </div>
-                <button type="button" id="toggle-visibility" aria-label="Visa lösenord">
-                    <i class="bi bi-eye"></i>
-                </button>
-            </div>  
-            <input type="password" placeholder="Bekräfta ditt nya lösenord" name="passwor-update-repeat" id="password-update-repeat" minlength="8"/>
-            <span id="error-msg-password"></span>
-            <span id="success-msg-password"></span>
-            <button type="submit" class="primary-btn-s" id="update-btn">Spara</button>    
-        </div>  
-
-        <h3 style="margin-top: 3rem;">Ta bort ditt konto</h3>
-        <div class="container" style="margin-bottom: 3rem; text-align: center;" >
-            <p>När du tar bort ditt konto raderas all din data permanent och kan inte återskapas.</p>
-            <button type="submit" class="secondary-btn-s" id="delete-acc-btn">Jag vill fortsätta</button>
-            <div id="delete-acc-container" style="display: none;">
-                <p>Bekräfta borttagning av ditt konto genom att skriva in ditt lösenord: </p>
-                <input type="password" id="delete-password" placeholder="Lösenord"/>
-                <div id="hell-box" style="gap: 1rem">
-                    <div id="hell-buttons">
-                        <button id="confirm-delete" class="secondary-btn-s" style="margin-bottom: 0;">Radera konto</button>
-                        <button id="cancel-delete" class="primary-btn-s">Avbryt</button>
+                <label for="password-update">Nytt lösenord: </label>
+                <div class="password-update-field">
+                    <div>
+                    <input type="password" placeholder="Fyll i ditt nya lösenord" name="password-update" id="password-update" minlength="8" style="border: none;"/>
                     </div>
-                    <span id="delete-error"></span>
+                    <button type="button" id="toggle-visibility" aria-label="Visa lösenord">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>  
+                <input type="password" placeholder="Bekräfta ditt nya lösenord" name="passwor-update-repeat" id="password-update-repeat" minlength="8"/>
+                <span id="error-msg-password"></span>
+                <span id="success-msg-password"></span>
+                <button type="submit" class="primary-btn-s" id="update-btn">Spara</button>    
+            </div>  
+
+            <h3 style="margin-top: 3rem;">Ta bort konto</h3>
+            <p>Om du inte längre vill använda tjänsten kan du ta bort ditt konto. Detta kan inte ångras.</p>
+            <div class="container" style="margin-bottom: 3rem; text-align: center;" >
+                <p>När ditt konto tas bort försvinner dina kontouppgifter permanent.</p>
+                <button type="submit" class="secondary-btn-s" id="delete-acc-btn">Fortsätt till borttagning</button>
+                <div id="delete-acc-container" style="display: none;">
+                    <p>För att skydda ditt konto behöver du bekräfta borttagningen med ditt lösenord: </p>
+                    <input type="password" id="delete-password" placeholder="Lösenord"/>
+                    <div id="hell-box" style="gap: 1rem">
+                        <div id="hell-buttons">
+                            <button id="confirm-delete" class="secondary-btn-s" style="margin-bottom: 0;">Radera konto</button>
+                            <button id="cancel-delete" class="primary-btn-s">Avbryt</button>
+                        </div>
+                        <span id="delete-error"></span>
+                    </div>
                 </div>
-            </div>
-        </div>  
-        
-    </form>
+            </div>  
+        </form>
+    </main>
     <footer><p>&copy; Uppkopplad 2026</p></footer>
 </body>
 </html>
