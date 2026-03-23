@@ -1,3 +1,29 @@
 footer {
     position: absolute;
 }
+
+.container-stats {
+    min-height: 350px;
+    height: 25vh;
+    max-height: 500px;
+    background-color: var(--offwhite);
+
+}
+
+p {
+    color: var(--text);
+}
+
+h2 {
+    color: var(--primary);
+}
+
+@media (min-width: 769px) {
+    .container {
+    
+        margin: 1rem 2rem;
+        min-height: 320px;
+        height: 50vh;
+        max-height: 520px;
+    }
+}

@@ -87,3 +87,7 @@ h3 {
   color: var(--off-white);
   font-size: 20px;
 }
+
+main {
+    width: 90%
+}

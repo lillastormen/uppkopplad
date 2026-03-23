@@ -7,55 +7,65 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="quiz.css" />
      <link rel="stylesheet" href="../account/account.css"/>
+         <script src="../account/userAuth.js" type="module"></script>
     <script src="./quiz.js" type="module" defer></script>
     
   </head>
   <body>
-    <header>
-      <nav class="nav-mobile">
-        <a href="../modules/mainModules.html">
-          <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo"/>
+  <header>
+    <nav class="nav-mobile">
+        <a href="/modules/mainModules.html">
+            <img src="../images/uppkopplad-logo.svg" alt="uppkoppladLogo" id="logo"/>
         </a>
-        <details class="secondary-btn menu-btn">
-          <summary></summary>
+        <details class=" menu-btn">
+            <summary class="secondary-btn">MENY</summary>
             <div class="menu">
-              <div class="menu-options-box">
-                <a href="../account/index.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem;">Mitt konto</a>
-                <a href="../statistic/index.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem ;">Översikt<a>
-                <a href="../modules/mainModules.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem;">Moduler<a>
-                <a href="../login/index.html" class="primary-btn menu-btn-s" id="auth-btn" style="margin: 0 0.5rem 0.5rem 0.5rem;">Logga in</a>
-              </div>
+                <div class="menu-options-box">
+                    <a href="../account/index.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem;">Mitt konto</a>
+                    <a href="../statistic/index.html" class="secondary-btn menu-btn-s" style="margin: 0.5rem ;">Översikt</a>
+                    <a href="../modules/mainModules.html" class="secondary-btn menu-btn-s" style="margin: 0 0.5rem 0.5rem 0.5rem;">Moduler</a>
+                    <a href="../login/index.html" class="primary-btn menu-btn-s" id="auth-btn" style="margin: 0 0.5rem 0.5rem 0.5rem;">Logga in</a>
+                </div>
             </div>
         </details>
-      </nav>
-    </header>
-    <main>
-      <section id="quiz">
-        <article id="quizResult">
-          <h1 id="resultHeading"></h1>
-          <p id="resultText"></p>
-          <a href="" class="primary-btn"> Testa igen </a>
-        </article>
+    </nav>
+</header>
+<main>
+  <section id="quiz">
+    <article id="quizResult">
+      <h1 id="resultHeading"></h1>
+      <p id="resultText"></p>
+      <a href="" class="primary-btn"> Testa igen </a>
+    </article>
 
-        <form id="quizForm">
-          <p id="numQuestion"></p>
-          <section id="quizMainLayout">
-            <p id="quizQuestion">Laddar quiz...</p>
-            <article id="radios"></article>
-            <article id="checkboxes"></article>
-          </section>
-          <button type="submit" id="quizSubmitBtn" class="primary-btn">
-            Visa resultat
-          </button>
-          <button type="button" id="quizNextBtn" class="primary-btn">
-            Skicka svar
-          </button>
-          <p id="noSelected">Välj ett alternativ</p>
-        </form>
+    <!-- <div>
+      <h2>Startquiz</h2>
+      <p>Det här testet gjordes i början för att ge en första bild av dina kunskaper. Efter en period av träning och lärande kan du göra testet igen och jämföra ditt resultat.</p>
+    </div> -->
+
+    <div id="quizIntro">
+      <h2 id="quizTitle">Quiz</h2>
+      <p id="quizDescription"></p>
+    </div>
+
+    <form id="quizForm">
+      <p id="numQuestion"></p>
+      <section id="quizMainLayout">
+        <p id="quizQuestion">Laddar quiz...</p>
+        <article id="radios"></article>
+        <article id="checkboxes"></article>
       </section>
-    </main>
+      <button type="submit" id="quizSubmitBtn" class="primary-btn">
+        Visa resultat
+      </button>
+      <button type="button" id="quizNextBtn" class="primary-btn">
+        Skicka svar
+      </button>
+      <p id="noSelected">Välj ett alternativ</p>
+    </form>
+  </section>
+</main>
     <footer><p>&copy; Uppkopplad 2026</p></footer>
-    <script src="../account/userAuth.js" type="module"></script>
-    <script src="../account/account.js" type="module"></script>
+
   </body>
 </html>

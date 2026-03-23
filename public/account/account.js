@@ -124,20 +124,7 @@ confirmBtn.addEventListener("click", async () => {
 })
 
 
-//nav
-const details = document.querySelector('details');
-const summary = document.querySelector('summary');
 
-document.addEventListener('click', (event) => {
-    if (!details.contains(event.target)) {
-        details.removeAttribute('open');
-        summary.textContent = 'MENY';
-    }
-});
-
-details.addEventListener('toggle', () => {
-  summary.textContent = details.open ? 'STÄNG' : 'MENY';
-})
 
 //toggle password visibility button
 const input = document.getElementById("password-update") || null;
