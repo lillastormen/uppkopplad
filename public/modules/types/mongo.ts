@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 export interface mainModules {
     nameOfModule: 'mobil' | 'dator' | 'internet';
     title: string;
-    order: number; // sorting order in the UI, for flexibility
-    subModuleSlug: string[]; // Array of slugs referencing submodules (lessons)
+    order: number;
+    subModuleSlug: string[];
     description?: string;
-    icon?: string; // url or similar
-    enabled?: boolean; // optional flag to hide/show modules if needed
+    icon?: string;
+    enabled?: boolean; 
 }
 
 export interface mainModulesDocument extends mainModules , mongoose.Document {

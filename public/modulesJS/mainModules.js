@@ -32,7 +32,7 @@ searchBtn.addEventListener('click', () => {
     searchResultsContainer.innerHTML = '';
     filteredLesson.forEach((lesson) => {
         const resultItem = document.createElement('button');
-        resultItem.className = 'primary-reversed-btn';
+        resultItem.className = 'primary-btn';
         resultItem.textContent = `${lesson.module}: ${lesson.title}`;
         searchResultsContainer.appendChild(resultItem);
         resultItem.addEventListener('click', () => {
