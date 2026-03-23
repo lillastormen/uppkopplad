@@ -6,11 +6,7 @@ export async function getUSerAccuracyByCategory(userId: number) {
             SELECT
                 c.name AS category,
                 COUNT(*) AS total,
-                SUM(IF(qa.is_correct = 1, 1, 0)) AS correct,
-                ROUND(
-                    SUM(IF(qa.is_correct = 1, 1, 0)) * 100.0 / COUNT(*),
-                    0
-                ) AS accuracy
+                SUM(IF(qa.is_correct = 1, 1, 0)) AS correct
             FROM user_answer ua
             JOIN quiz_answer qa ON ua.quiz_answer_id = qa.id
             JOIN quiz_question qq ON ua.quiz_question_id = qq.id
