@@ -2,15 +2,13 @@ footer {
     position: absolute;
 }
 
-.container {
+.container-stats {
     min-height: 350px;
     height: 25vh;
     max-height: 500px;
-}
+    background-color: var(--offwhite);
 
-/* div {
-    margin: 0 2rem 0 2rem;
-} */
+}
 
 p {
     color: var(--text);
@@ -22,7 +20,7 @@ h2 {
 
 @media (min-width: 769px) {
     .container {
-        width: 90%;
+    
         margin: 1rem 2rem;
         min-height: 320px;
         height: 50vh;

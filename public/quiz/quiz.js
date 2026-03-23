@@ -105,7 +105,7 @@ async function loadQuiz(quizId) {
       if (Number(quizId) === 1) {
           quizTitle.textContent = "Inledande kunskapstest";
           quizDescription.textContent =
-            "Det här testet gjordes i början för att ge en första bild av dina kunskaper. Efter en period av träning och lärande kan du göra testet igen och jämföra ditt resultat.";
+            "Det här testet gjordes i början för att ge en första bild av dina kunskaper. Du kan göra det igen och jämföra ditt resultat.";
         } else {
           quizTitle.textContent = "Quiz";
           quizDescription.textContent = "";

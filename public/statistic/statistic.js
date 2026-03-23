@@ -65,7 +65,7 @@ function renderChart(labels, values, correct, total) {
                 data: values,
                 borderRadius: 5,
                 borderSkipped: false,
-                barThickness: 50,
+                barThickness: 45,
 
                 borderColor: labels.map((_, i) => borderColors[i % borderColors.length]),
                 backgroundColor: labels.map((_, i) => backgroundColors[i % backgroundColors.length]),
