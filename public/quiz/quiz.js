@@ -15,9 +15,9 @@ const numQuestion = document.querySelector("#numQuestion");
 const param = new URLSearchParams(window.location.search);
 const quizId = param.get("id") || 1;
 
-const quizTitle = document.querySelector("#quizTitle");
-const quizDescription = document.querySelector("#quizDescription");
-const quizIntro = document.querySelector("#quizIntro");
+// const quizTitle = document.querySelector("#quizTitle");
+// const quizDescription = document.querySelector("#quizDescription");
+// const quizIntro = document.querySelector("#quizIntro");
 
 let currentQuestion = 0;
 let currentQuiz;
@@ -48,7 +48,7 @@ form.addEventListener("submit", e => {
   }
   form.style.display = "none";
   quizResult.style.display = "block";
-  quizIntro.style.display = "none";
+    // quizIntro.style.display = "none";
 
   correctAnswers = currentQuiz.map(q =>
     q.answers.filter(a => a.is_correct).map(a => a.answer),
@@ -102,14 +102,14 @@ async function loadQuiz(quizId) {
       currentQuizResult = await fetchQuizResultId(quizId, userId);
       await saveQuizResult(quizId, userId);
 
-      if (Number(quizId) === 1) {
-          quizTitle.textContent = "Inledande kunskapstest";
-          quizDescription.textContent =
-            "Det här testet gjordes i början för att ge en första bild av dina kunskaper. Du kan göra det igen och jämföra ditt resultat.";
-        } else {
-          quizTitle.textContent = "Quiz";
-          quizDescription.textContent = "";
-        }
+      // if (Number(quizId) === 1) {
+      //     quizTitle.textContent = "Inledande kunskapstest";
+      //     quizDescription.textContent =
+      //       "Det här testet gjordes i början för att ge en första bild av dina kunskaper. Du kan göra det igen och jämföra ditt resultat.";
+      //   } else {
+      //     quizTitle.textContent = "Quiz";
+      //     quizDescription.textContent = "";
+      //   }
     }
     showQuestion(currentQuiz);
   } catch (error) {
